@@ -1,0 +1,69 @@
+type User {
+  id: ID! @unique
+  email: String @unique
+  name: String!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID! @unique
+  title: String!
+  published: Boolean! @default(value: "false")
+  author: User
+}
+
+type Product {
+  id: ID! @unique
+  name: String!
+  slug: String! @unique
+  imageUrl: String!
+  description: String!
+  votesCount: Int!
+  commentsCount: Int!
+  topics: [Topic!]! @relation(name: "ProductTopics")
+}
+
+type Topic {
+  id: ID! @unique
+  name: String!
+  slug: String! @unique
+  products: [Product!]! @relation(name: "ProductTopics")
+}
+
+# type Product {
+#   id: ID! @unique
+#   name: String!
+#   slug: String! @unique
+#   imageUrl: String!
+#   description: String!
+#   votesCount: Int!
+#   commentsCount: Int!
+#   productTopics: [ProductTopic!]! @relation(name: "ProductToProductTopic")
+# }
+#
+# type Topic {
+#   id: ID! @unique
+#   name: String!
+#   slug: String! @unique
+#   productTopics: [ProductTopic!]! @relation(name: "TopicToProductTopic")
+# }
+#
+# type ProductTopic {
+#   id: ID! @unique
+#   product: Product! @relation(name: "ProductToProductTopic")
+#   topic: Topic! @relation(name: "TopicToProductTopic")
+# }
+
+# type User {
+# id: ID!
+# favoriteMovies: [FavoriteMovie!]! @relation(name: "UserToFavoriteMovie")
+# }
+# type FavoriteMovie {
+#   id: ID!
+#   user: User! @relation(name: "UserToFavoriteMovie")
+#   movie: Movie! @relation(name: "MovieToFavoriteMovie")
+# }
+# type Movie {
+#   id: ID!
+#   favoriteMovies: [FavoriteMovie!]! @relation(name: "MovieToFavoriteMovie")
+# }

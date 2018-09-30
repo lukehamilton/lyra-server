@@ -1,0 +1,139 @@
+mutation {
+  topic1: createTopic(data: { name: "Productivity", slug: "productivity" }) {
+    id
+  }
+  topic2: createTopic(data: { name: "Tech", slug: "tech" }) {
+    id
+  }
+  topic3: createTopic(data: { name: "Games", slug: "games" }) {
+    id
+  }
+  topic4: createTopic(data: { name: "Books", slug: "books" }) {
+    id
+  }
+  topic5: createTopic(data: { name: "Design Tools", slug: "design-tools" }) {
+    id
+  }
+  product1: createProduct(
+    data: {
+      name: "Caramella"
+      slug: "caramella"
+      imageUrl: "https://ph-files.imgix.net/2363eea3-5840-4ff2-b419-01ecd59321bc?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "A clean, modern blogging platform without the fuss"
+      votesCount: 473
+      commentsCount: 28
+      # topics: { connect: [{ slug: "productivity" }, { slug: "tech" }] }
+    }
+  ) {
+    id
+  }
+  product2: createProduct(
+    data: {
+      name: "Cover Letter Generator"
+      slug: "cover-letter-generator"
+      imageUrl: "https://ph-files.imgix.net/89662bd4-1011-44f7-871b-6f543e9d75f0?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Quickly generate cover letters with minimum details"
+      votesCount: 313
+      commentsCount: 6
+      # topics: { connect: { slug: "productivity" } }
+    }
+  ) {
+    id
+  }
+  product3: createProduct(
+    data: {
+      name: "Checkbot for Chrome"
+      slug: "checkbot-for-chrome"
+      imageUrl: "https://ph-files.imgix.net/004f8f59-e738-4837-8c68-b1bf85d45cf8?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "SEO/speed/security tester. Test 1000s of pages in minutes. 🚀"
+      votesCount: 233
+      commentsCount: 18
+    }
+  ) {
+    id
+  }
+  product4: createProduct(
+    data: {
+      name: "Confs.tech"
+      slug: "confs-tech"
+      imageUrl: "https://ph-files.imgix.net/09b68945-0f8d-444c-b6c4-60cbd683806f?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Open source list of tech conferences: JS / Ruby / Data etc."
+      votesCount: 143
+      commentsCount: 2
+    }
+  ) {
+    id
+  }
+  product5: createProduct(
+    data: {
+      name: "Code Duet"
+      slug: "code-duet"
+      imageUrl: "https://ph-files.imgix.net/3c7df7f7-ac8f-4ef4-b837-fb377aa7f0c7?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Finding a partner for pair-programming in 5 minutes"
+      votesCount: 120
+      commentsCount: 3
+    }
+  ) {
+    id
+  }
+  product6: createProduct(
+    data: {
+      name: "Manos Accelerator Podcast"
+      slug: "manos-accelerator-podcast"
+      imageUrl: "https://ph-files.imgix.net/7bfa8a4a-a4ef-4ac8-b5cc-2d575869c7a4?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Silicon Valley interviews with abundant startup minds"
+      votesCount: 104
+      commentsCount: 7
+    }
+  ) {
+    id
+  }
+  product7: createProduct(
+    data: {
+      name: "Kale.World"
+      slug: "kale-world"
+      imageUrl: "https://ph-files.imgix.net/b913ffac-df80-47b0-84ad-fccab56f69bb?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Nutrient based food and recipe finder"
+      votesCount: 86
+      commentsCount: 5
+    }
+  ) {
+    id
+  }
+  product8: createProduct(
+    data: {
+      name: "Dapp Insight"
+      slug: "dapp-insight"
+      imageUrl: "https://ph-files.imgix.net/0a872871-14a2-409c-9333-07e1a84f4ec8?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Analytics for decentralised Ethereum applications"
+      votesCount: 79
+      commentsCount: 4
+    }
+  ) {
+    id
+  }
+  product9: createProduct(
+    data: {
+      name: "Coffee With Crypto"
+      slug: "coffee-with-crypto"
+      imageUrl: "https://ph-files.imgix.net/9a3b162c-7085-4bca-a2e6-3566f18d23c9?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Buy popular coffee blends with crypto 💰☕"
+      votesCount: 80
+      commentsCount: 8
+    }
+  ) {
+    id
+  }
+  product10: createProduct(
+    data: {
+      name: "Emoji Art"
+      slug: "emoji-art-2"
+      imageUrl: "https://ph-files.imgix.net/e725e7c8-e9b2-41f4-b817-e46b5500a48a?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+      description: "Copy and paste beautiful emoji art 🎨"
+      votesCount: 72
+      commentsCount: 7
+    }
+  ) {
+    id
+  }
+}
