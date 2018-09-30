@@ -22,7 +22,7 @@ mutation {
       description: "A clean, modern blogging platform without the fuss"
       votesCount: 473
       commentsCount: 28
-      # topics: { connect: [{ slug: "productivity" }, { slug: "tech" }] }
+      topics: { connect: [{ slug: "productivity" }, { slug: "tech" }] }
     }
   ) {
     id
@@ -35,7 +35,7 @@ mutation {
       description: "Quickly generate cover letters with minimum details"
       votesCount: 313
       commentsCount: 6
-      # topics: { connect: { slug: "productivity" } }
+      topics: { connect: { slug: "productivity" } }
     }
   ) {
     id
@@ -48,6 +48,7 @@ mutation {
       description: "SEO/speed/security tester. Test 1000s of pages in minutes. 🚀"
       votesCount: 233
       commentsCount: 18
+      topics: { connect: [{ slug: "productivity" }, { slug: "tech" }] }
     }
   ) {
     id
@@ -60,6 +61,7 @@ mutation {
       description: "Open source list of tech conferences: JS / Ruby / Data etc."
       votesCount: 143
       commentsCount: 2
+      topics: { connect: [{ slug: "books" }, { slug: "games" }] }
     }
   ) {
     id
@@ -72,6 +74,7 @@ mutation {
       description: "Finding a partner for pair-programming in 5 minutes"
       votesCount: 120
       commentsCount: 3
+      topics: { connect: [{ slug: "productivity" }, { slug: "tech" }] }
     }
   ) {
     id
@@ -84,6 +87,7 @@ mutation {
       description: "Silicon Valley interviews with abundant startup minds"
       votesCount: 104
       commentsCount: 7
+      topics: { connect: [{ slug: "productivity" }, { slug: "tech" }] }
     }
   ) {
     id
@@ -108,6 +112,7 @@ mutation {
       description: "Analytics for decentralised Ethereum applications"
       votesCount: 79
       commentsCount: 4
+      topics: { connect: [{ slug: "books" }, { slug: "games" }] }
     }
   ) {
     id
@@ -120,6 +125,7 @@ mutation {
       description: "Buy popular coffee blends with crypto 💰☕"
       votesCount: 80
       commentsCount: 8
+      topics: { connect: [{ slug: "books" }, { slug: "games" }] }
     }
   ) {
     id
@@ -132,6 +138,7 @@ mutation {
       description: "Copy and paste beautiful emoji art 🎨"
       votesCount: 72
       commentsCount: 7
+      topics: { connect: [{ slug: "books" }, { slug: "games" }] }
     }
   ) {
     id
