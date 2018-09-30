@@ -3,7 +3,6 @@ type Query {
   post(postId: ID!): Post
   postsByUser(userId: ID!): [Post!]!
   products(first: Int): [Product!]!
-  productTopics: [ProductTopic!]!
   topics: [Topic!]!
 }
 
@@ -23,23 +22,23 @@ type Mutation {
   publish(postId: ID!): Post
 }
 
-# type Product {
-#   id: ID!
-#   name: String!
-#   slug: String!
-#   imageUrl: String!
-#   description: String!
-#   votesCount: Int!
-#   commentsCount: Int!
-#   topics: [Topic!]!
-# }
-#
-# type Topic {
-#   id: ID!
-#   name: String!
-#   slug: String!
-#   products: [Product!]!
-# }
+type Product {
+  id: ID!
+  name: String!
+  slug: String!
+  imageUrl: String!
+  description: String!
+  votesCount: Int!
+  commentsCount: Int!
+  topics: [Topic!]!
+}
+
+type Topic {
+  id: ID!
+  name: String!
+  slug: String!
+  products: [Product!]!
+}
 
 # type Product {
 #   id: ID!

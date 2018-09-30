@@ -9,9 +9,6 @@ const resolvers = {
     post(root, args, context) {
       return context.prisma.post({ id: args.postId });
     },
-    productTopics(root, args, context) {
-      return context.prisma.productTopics();
-    },
     products(root, args, context, info) {
       // console.log("info", info);
       // return context.prisma.products({ first: args.first }).topics();
