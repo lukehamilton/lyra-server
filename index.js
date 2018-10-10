@@ -9,10 +9,15 @@ const resolvers = {
     post(root, args, context) {
       return context.prisma.post({ id: args.postId });
     },
+    // products(root, args, context, info) {
+    //   return context.prisma.products({ first: args.first });
+    // },
     products(root, args, context, info) {
-      // console.log("info", info);
-      // return context.prisma.products({ first: args.first }).topics();
-      return context.prisma.products({ first: args.first });
+      return context.prisma
+        .products({ first: args.first })
+        .$fragment(
+          `{ id name slug description imageUrl topics { id  name slug } }`
+        );
     },
     topics(root, args, context, info) {
       return context.prisma.topics();
@@ -27,7 +32,6 @@ const resolvers = {
   },
   // Product: {
   //   topics(root, args, context, info) {
-  //     console.log("root", context.prisma.topics());
   //     return context.prisma.topics();
   //   }
   // },
