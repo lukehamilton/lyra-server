@@ -14,7 +14,7 @@ const resolvers = {
     // },
     products(root, args, context, info) {
       return context.prisma
-        .products({ first: args.first })
+        .products({ first: args.first, skip: args.skip })
         .$fragment(
           `{ id name slug description imageUrl topics { id  name slug } }`
         );

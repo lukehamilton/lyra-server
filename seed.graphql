@@ -100,6 +100,7 @@ mutation {
       description: "Nutrient based food and recipe finder"
       votesCount: 86
       commentsCount: 5
+      topics: { connect: [{ slug: "productivity" }, { slug: "tech" }] }
     }
   ) {
     id
