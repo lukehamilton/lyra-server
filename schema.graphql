@@ -1,3 +1,8 @@
+enum Role {
+  ADMIN
+  USER
+}
+
 type Query {
   publishedPosts: [Post!]!
   post(postId: ID!): Post
@@ -65,9 +70,13 @@ type Topic {
 # }
 
 type User {
-  id: ID!
-  email: String
+  id: ID! @unique
+  email: String @unique
+  role: Role @default(value: USER)
   name: String!
+  avatar: String
+  auth0id: String! @unique
+  identity: String
   posts: [Post!]!
 }
 
