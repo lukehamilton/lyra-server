@@ -1,7 +1,4 @@
-enum Role {
-  ADMIN
-  USER
-}
+# import Role from "./generated/prisma.graphql"
 
 type Query {
   publishedPosts: [Post!]!
@@ -12,6 +9,7 @@ type Query {
 }
 
 type Mutation {
+  authenticate(idToken: String!): User
   createTopic(name: String!, slug: String!): Topic
   createProduct(
     name: String!
@@ -45,6 +43,23 @@ type Topic {
   products: [Product!]!
 }
 
+type User {
+  id: ID!
+  email: String
+  role: Role
+  name: String
+  avatar: String
+  identity: String
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  published: Boolean!
+  author: User
+}
+
 # type Product {
 #   id: ID!
 #   name: String!
@@ -69,20 +84,4 @@ type Topic {
 #   topic: Topic!
 # }
 
-type User {
-  id: ID! @unique
-  email: String @unique
-  role: Role @default(value: USER)
-  name: String!
-  avatar: String
-  auth0id: String! @unique
-  identity: String
-  posts: [Post!]!
-}
 
-type Post {
-  id: ID!
-  title: String!
-  published: Boolean!
-  author: User
-}
