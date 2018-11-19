@@ -1,5 +1,8 @@
 const { prisma } = require("./prisma-client");
 const { GraphQLServer } = require("graphql-yoga");
+const { checkJwt } = require("./middleware/jwt")
+const { getUser } = require("./middleware/getUser")
+const validateAndParseIdToken = require("./helpers/validateAndParseIdToken")
 
 const resolvers = {
   Query: {
@@ -36,6 +39,30 @@ const resolvers = {
   //   }
   // },
   Mutation: {
+    async authenticate(root, {idToken}, context, info) {
+      // console.log('root', root)
+      // console.log('args', args)
+      // console.log('context', context)
+      // console.log('info', info)
+      
+      // console.log('args', args)
+      // const {idToken} = args;
+      // console.log('idToken', idToken)
+      let userToken = null
+      try {
+        userToken = await validateAndParseIdToken(idToken)
+      } catch (err) {
+        throw new Error(err.message)
+      }
+      console.log('userToken', userToken)
+      // const auth0id = userToken.sub.split("|")[1]
+      // let user = await ctx.db.query.user({ where: { auth0id } }, info)
+      // if (!user) {
+      //   user = createPrismaUser(ctx, userToken)
+      // }
+      // return user
+    },
+
     createDraft(root, args, context) {
       return context.prisma.createPost({
         title: args.title,
