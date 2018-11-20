@@ -4,6 +4,17 @@ const { checkJwt } = require("./middleware/jwt")
 const { getUser } = require("./middleware/getUser")
 const validateAndParseIdToken = require("./helpers/validateAndParseIdToken")
 
+async function createPrismaUser(context, idToken) {
+  const user = await context.prisma.createUser({
+    identity: idToken.sub.split(`|`)[0],
+    auth0id: idToken.sub.split(`|`)[1],
+    name: idToken.name,
+    email: idToken.email,
+    avatar: idToken.picture 
+  })
+  return user
+}
+
 const resolvers = {
   Query: {
     publishedPosts(root, args, context) {
@@ -40,14 +51,6 @@ const resolvers = {
   // },
   Mutation: {
     async authenticate(root, {idToken}, context, info) {
-      // console.log('root', root)
-      // console.log('args', args)
-      // console.log('context', context)
-      // console.log('info', info)
-      
-      // console.log('args', args)
-      // const {idToken} = args;
-      // console.log('idToken', idToken)
       let userToken = null
       try {
         userToken = await validateAndParseIdToken(idToken)
@@ -55,12 +58,12 @@ const resolvers = {
         throw new Error(err.message)
       }
       console.log('userToken', userToken)
-      // const auth0id = userToken.sub.split("|")[1]
-      // let user = await ctx.db.query.user({ where: { auth0id } }, info)
-      // if (!user) {
-      //   user = createPrismaUser(ctx, userToken)
-      // }
-      // return user
+      const auth0id = userToken.sub.split("|")[1]
+      let user = await context.prisma.user( { auth0id } )
+      if (!user) {
+        user = createPrismaUser(context, userToken)
+      }
+      return user
     },
 
     createDraft(root, args, context) {
