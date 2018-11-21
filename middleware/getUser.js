@@ -1,6 +1,7 @@
-const getUser = async (req, res, next, db) => {
+const getUser = async (req, res, next, prisma) => {
   if (!req.user) return next()
-  const user = await db.query.user({ where: { auth0id: req.user.sub.split(`|`)[1] } })
+  const user = await prisma.user({ auth0id: req.user.sub.split(`|`)[1] })
+  console.log('user', user)
   req.user = { token: req.user, ...user }
   next()
 }

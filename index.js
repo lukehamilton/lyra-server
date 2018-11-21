@@ -1,3 +1,5 @@
+// const cookieParser = require('cookie-parser');
+// const jwt = require('jsonwebtoken');
 const { prisma } = require("./prisma-client");
 const { GraphQLServer } = require("graphql-yoga");
 const { checkJwt } = require("./middleware/jwt")
@@ -27,6 +29,7 @@ const resolvers = {
     //   return context.prisma.products({ first: args.first });
     // },
     products(root, args, context, info) {
+      // console.log('context.request.user', context.request.user)
       return context.prisma
         .products({ first: args.first, skip: args.skip })
         .$fragment(
@@ -57,7 +60,6 @@ const resolvers = {
       } catch (err) {
         throw new Error(err.message)
       }
-      console.log('userToken', userToken)
       const auth0id = userToken.sub.split("|")[1]
       let user = await context.prisma.user( { auth0id } )
       if (!user) {
@@ -130,4 +132,25 @@ const server = new GraphQLServer({
     prisma
   }
 });
+
+
+
+
+
+server.express.post(
+  server.options.endpoint,
+  checkJwt,
+  (err, req, res, next) => {
+    console.log('here')
+    console.log('err', err)
+    if (err) return res.status(401).send(err.message)
+    next()
+  }
+)
+server.express.post(server.options.endpoint, (req, res, next) => {
+  console.log("HERE");
+  getUser(req, res, next, prisma)
+});
+
+
 server.start(() => console.log("Server is running on http://localhost:4000"));
