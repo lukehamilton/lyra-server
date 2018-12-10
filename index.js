@@ -1,156 +1,85 @@
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 // const jwt = require('jsonwebtoken');
-const { prisma } = require("./prisma-client");
-const { GraphQLServer } = require("graphql-yoga");
-const { checkJwt } = require("./middleware/jwt")
-const { getUser } = require("./middleware/getUser")
-const validateAndParseIdToken = require("./helpers/validateAndParseIdToken")
+const { GraphQLServer } = require('graphql-yoga');
+const cors = require('cors');
+const { prisma } = require('./prisma-client');
+const createServer = require('./create-server');
+const { checkJwt } = require('./middleware/jwt');
+const { getUser } = require('./middleware/getUser');
+const Mutation = require('./resolvers/mutation');
+const Query = require('./resolvers/query');
 
-async function createPrismaUser(context, idToken) {
-  const user = await context.prisma.createUser({
-    identity: idToken.sub.split(`|`)[0],
-    auth0id: idToken.sub.split(`|`)[1],
-    name: idToken.name,
-    email: idToken.email,
-    avatar: idToken.picture 
-  })
-  return user
-}
-
-const resolvers = {
-  Query: {
-    publishedPosts(root, args, context) {
-      return context.prisma.posts({ where: { published: true } });
-    },
-    post(root, args, context) {
-      return context.prisma.post({ id: args.postId });
-    },
-    // products(root, args, context, info) {
-    //   return context.prisma.products({ first: args.first });
-    // },
-    products(root, args, context, info) {
-      // console.log('context.request.user', context.request.user)
-      return context.prisma
-        .products({ first: args.first, skip: args.skip })
-        .$fragment(
-          `{ id name slug description imageUrl topics { id  name slug } }`
-        );
-    },
-    topics(root, args, context, info) {
-      return context.prisma.topics();
-    },
-    postsByUser(root, args, context) {
-      return context.prisma
-        .user({
-          id: args.userId
-        })
-        .posts();
-    }
-  },
-  // Product: {
-  //   topics(root, args, context, info) {
-  //     return context.prisma.topics();
-  //   }
-  // },
-  Mutation: {
-    async authenticate(root, {idToken}, context, info) {
-      let userToken = null
-      try {
-        userToken = await validateAndParseIdToken(idToken)
-      } catch (err) {
-        throw new Error(err.message)
-      }
-      const auth0id = userToken.sub.split("|")[1]
-      let user = await context.prisma.user( { auth0id } )
-      if (!user) {
-        user = createPrismaUser(context, userToken)
-      }
-      return user
-    },
-
-    createDraft(root, args, context) {
-      return context.prisma.createPost({
-        title: args.title,
-        author: {
-          connect: { id: args.userId }
-        }
-      });
-    },
-    createTopic(root, args, context) {
-      return context.prisma.createTopic({
-        name: args.name,
-        slug: args.slug
-      });
-    },
-    createProduct(root, args, context) {
-      return context.prisma.createProduct({
-        name: args.name,
-        slug: args.slug,
-        imageUrl: args.imageUrl,
-        description: args.description,
-        votesCount: args.votesCount,
-        commentsCount: args.commentsCount,
-        topics: {
-          connect: { id: args.topicId }
-        }
-      });
-    },
-    publish(root, args, context) {
-      return context.prisma.updatePost({
-        where: { id: args.postId },
-        data: { published: true }
-      });
-    },
-    createUser(root, args, context) {
-      return context.prisma.createUser({ name: args.name });
-    }
-  },
-  User: {
-    posts(root, args, context) {
-      return context.prisma
-        .user({
-          id: root.id
-        })
-        .posts();
-    }
-  },
-  Post: {
-    author(root, args, context) {
-      return context.prisma
-        .post({
-          id: root.id
-        })
-        .author();
-    }
-  }
-};
+// const server = createServer();
 
 const server = new GraphQLServer({
-  typeDefs: "./schema.graphql",
-  resolvers,
+  typeDefs: './schema.graphql',
+  resolvers: { Mutation, Query },
   context: {
     prisma
   }
 });
 
+server.express.use(cookieParser());
 
-
-
-
-server.express.post(
-  server.options.endpoint,
-  checkJwt,
-  (err, req, res, next) => {
-    console.log('here')
-    console.log('err', err)
-    if (err) return res.status(401).send(err.message)
-    next()
-  }
-)
-server.express.post(server.options.endpoint, (req, res, next) => {
-  console.log("HERE");
-  getUser(req, res, next, prisma)
+// decode the JWT so we can get the user Id on each request
+server.express.use((req, res, next) => {
+  console.log('req.headers', req.headers);
+  console.log('req.cookies', req.cookies);
+  // const { token } = req.cookies;
+  // console.log('req.cookies', req);
+  // if (token) {
+  //   const { userId } = jwt.verify(token, process.env.APP_SECRET);
+  //   // put the userId onto the req for future requests to access
+  //   req.userId = userId;
+  // }
+  next();
 });
 
+// 2. Create a middleware that populates the user on each request
 
-server.start(() => console.log("Server is running on http://localhost:4000"));
+// Uncomment This Like
+// server.express.post(
+//   server.options.endpoint,
+//   checkJwt,
+//   (err, req, res, next) => {
+//     if (err) return res.status(401).send(err.message)
+//     next()
+//   }
+// )
+// server.express.post(server.options.endpoint, (req, res, next) => {
+//   // console.log('req', req)
+//   // console.log("At get User", req.user);
+//   // If there is a user on the request (get that)
+//   getUser(req, res, next, prisma)
+//   // Otherwise check if there is a cookie to get the user
+
+// });
+
+server.start(
+  {
+    cors: {
+      credentials: true,
+      origin: 'http://localhost:3000'
+    }
+  },
+  deets => {
+    console.log(`Server is now running on port http://localhost:${deets.port}`);
+  }
+);
+
+// server.express.use(
+//   cors({
+//     origin: 'http://localhost:3000'
+//     // credentials: true,
+//     // allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
+//   })
+// );
+
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+//   credentials: true // <-- REQUIRED backend setting
+// };
+// server.use(cors(corsOptions));
+// server.express.use(cors());
+
+// server.start(() => console.log('Server is running on http://localhost:4000'));
