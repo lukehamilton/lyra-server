@@ -9,51 +9,51 @@ const { getUser } = require('./middleware/getUser');
 const Mutation = require('./resolvers/mutation');
 const Query = require('./resolvers/query');
 
-// const server = createServer();
+const server = createServer();
 
-const server = new GraphQLServer({
-  typeDefs: './schema.graphql',
-  resolvers: { Mutation, Query },
-  context: {
-    prisma
-  }
-});
+// const server = new GraphQLServer({
+//   typeDefs: './schema.graphql',
+//   resolvers: { Mutation, Query },
+//   context: {
+//     prisma
+//   }
+// });
 
 server.express.use(cookieParser());
 
 // decode the JWT so we can get the user Id on each request
-server.express.use((req, res, next) => {
-  console.log('req.headers', req.headers);
-  console.log('req.cookies', req.cookies);
-  // const { token } = req.cookies;
-  // console.log('req.cookies', req);
-  // if (token) {
-  //   const { userId } = jwt.verify(token, process.env.APP_SECRET);
-  //   // put the userId onto the req for future requests to access
-  //   req.userId = userId;
-  // }
-  next();
-});
+// server.express.use((req, res, next) => {
+//   // console.log('req.headers', req.headers);
+//   // console.log('req.cookies', req.cookies);
+//   // const { token } = req.cookies;
+//   // console.log('req.cookies', req);
+//   // if (token) {
+//   //   const { userId } = jwt.verify(token, process.env.APP_SECRET);
+//   //   // put the userId onto the req for future requests to access
+//   //   req.userId = userId;
+//   // }
+//   next();
+// });
 
 // 2. Create a middleware that populates the user on each request
 
 // Uncomment This Like
-// server.express.post(
-//   server.options.endpoint,
-//   checkJwt,
-//   (err, req, res, next) => {
-//     if (err) return res.status(401).send(err.message)
-//     next()
-//   }
-// )
-// server.express.post(server.options.endpoint, (req, res, next) => {
-//   // console.log('req', req)
-//   // console.log("At get User", req.user);
-//   // If there is a user on the request (get that)
-//   getUser(req, res, next, prisma)
-//   // Otherwise check if there is a cookie to get the user
-
-// });
+server.express.post(
+  server.options.endpoint,
+  checkJwt,
+  (err, req, res, next) => {
+    if (err) return res.status(401).send(err.message);
+    next();
+  }
+);
+server.express.post(server.options.endpoint, (req, res, next) => {
+  console.log('HERE');
+  // console.log('req', req)
+  // console.log("At get User", req.user);
+  // If there is a user on the request (get that)
+  getUser(req, res, next, prisma);
+  // Otherwise check if there is a cookie to get the user
+});
 
 server.start(
   {

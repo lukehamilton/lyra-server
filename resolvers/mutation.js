@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const validateAndParseIdToken = require('../helpers/validateAndParseIdToken');
 
 async function createPrismaUser(context, idToken) {
@@ -13,17 +14,27 @@ async function createPrismaUser(context, idToken) {
 
 const Mutations = {
   async authenticate(root, { idToken }, context, info) {
+    console.log('authenticate', idToken);
     let userToken = null;
     try {
       userToken = await validateAndParseIdToken(idToken);
     } catch (err) {
       throw new Error(err.message);
     }
+    console.log('userToken', userToken);
     const auth0id = userToken.sub.split('|')[1];
+    console.log('auth0id', auth0id);
     let user = await context.prisma.user({ auth0id });
     if (!user) {
       user = createPrismaUser(context, userToken);
     }
+    // // 3. generate the JWT Token
+    // const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    // // We set the jwt as a cookie on the response
+    // context.response.cookie('overwatch', token, {
+    //   httpOnly: true,
+    //   maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
+    // });
     return user;
   },
 
