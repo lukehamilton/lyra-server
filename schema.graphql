@@ -6,6 +6,7 @@ type Query {
   postsByUser(userId: ID!): [Post!]!
   products(first: Int, skip: Int): [Product!]!
   topics: [Topic!]!
+  me: User
 }
 
 type Mutation {
@@ -23,6 +24,7 @@ type Mutation {
   createUser(name: String!): User
   createDraft(title: String!, userId: ID!): Post
   publish(postId: ID!): Post
+  followTopic(userId: ID!, topicId: ID!): User
 }
 
 type Product {
@@ -41,6 +43,7 @@ type Topic {
   name: String!
   slug: String!
   products: [Product!]!
+  followedBy: [User!]!
 }
 
 type User {
@@ -50,7 +53,9 @@ type User {
   name: String
   avatar: String
   identity: String
+  privateKey: String
   posts: [Post!]!
+  followedTopics: [Topic!]!
 }
 
 type Post {
@@ -83,5 +88,3 @@ type Post {
 #   product: Product!
 #   topic: Topic!
 # }
-
-

@@ -11,7 +11,9 @@ type User {
   avatar: String
   auth0id: String! @unique
   identity: String
+  privateKey: String
   posts: [Post!]!
+  followedTopics: [Topic!]! @relation(name: "FollowedTopics")
 }
 
 type Post {
@@ -37,6 +39,7 @@ type Topic {
   name: String!
   slug: String! @unique
   products: [Product!]! @relation(name: "ProductTopics")
+  followedBy: [User!]! @relation(name: "FollowedTopics")
 }
 
 # type Product {

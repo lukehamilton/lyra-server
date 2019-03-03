@@ -37,21 +37,23 @@ server.express.use(cookieParser());
 
 // 2. Create a middleware that populates the user on each request
 
-// Uncomment This Like
 server.express.post(
   server.options.endpoint,
   checkJwt,
   (err, req, res, next) => {
-    if (err) return res.status(401).send(err.message);
+    if (err) {
+      console.log('err', err);
+      // return res.status(401).send(err.message);
+    }
     next();
   }
 );
 server.express.post(server.options.endpoint, (req, res, next) => {
-  console.log('HERE');
   // console.log('req', req)
   // console.log("At get User", req.user);
   // If there is a user on the request (get that)
   getUser(req, res, next, prisma);
+  // next();
   // Otherwise check if there is a cookie to get the user
 });
 

@@ -1,30 +1,35 @@
-const jwt = require('jsonwebtoken');
 const validateAndParseIdToken = require('../helpers/validateAndParseIdToken');
+const { CryptoUtils } = require('loom-js');
 
 async function createPrismaUser(context, idToken) {
+  const bytes = CryptoUtils.generatePrivateKey();
+  const privateKey = Buffer.from(
+    bytes.buffer,
+    bytes.byteOffset,
+    bytes.byteLength
+  ).toString('base64');
   const user = await context.prisma.createUser({
     identity: idToken.sub.split(`|`)[0],
     auth0id: idToken.sub.split(`|`)[1],
     name: idToken.name,
     email: idToken.email,
-    avatar: idToken.picture
+    avatar: idToken.picture,
+    privateKey
   });
   return user;
 }
 
 const Mutations = {
   async authenticate(root, { idToken }, context, info) {
-    console.log('authenticate', idToken);
     let userToken = null;
     try {
       userToken = await validateAndParseIdToken(idToken);
     } catch (err) {
       throw new Error(err.message);
     }
-    console.log('userToken', userToken);
     const auth0id = userToken.sub.split('|')[1];
-    console.log('auth0id', auth0id);
     let user = await context.prisma.user({ auth0id });
+    console.log('PR', user.privateKey);
     if (!user) {
       user = createPrismaUser(context, userToken);
     }
