@@ -21,7 +21,9 @@ const Query = {
   },
   me(root, args, context, info) {
     if (context.request.user) {
-      return context.prisma.user({ id: ctxUser(context).id });
+      return context.prisma
+        .user({ id: ctxUser(context).id })
+        .$fragment(`{ id email name avatar followedTopics { id } }`);
     }
     // return { data: { me: null } };
   },

@@ -29,7 +29,8 @@ const Mutations = {
     }
     const auth0id = userToken.sub.split('|')[1];
     let user = await context.prisma.user({ auth0id });
-    console.log('PR', user.privateKey);
+    console.log('user', user);
+    // console.log('PR', user.privateKey);
     if (!user) {
       user = createPrismaUser(context, userToken);
     }
@@ -41,6 +42,21 @@ const Mutations = {
     //   maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
     // });
     return user;
+  },
+
+  async followTopic(root, { userId, topicId }, context) {
+    console.log('userId', userId);
+    console.log('topicId', topicId);
+    // const data = await context.prisma.updateUser({
+    //   where: { id: userId },
+    //   data: { followedTopics: { connect: { id: topicId } } }
+    // });
+    // const data = await context.prisma.updateUser({
+    //   where: { id: 'cjs6y5ddg007v0771xubhiimv' },
+    //   data: { followedTopics: { connect: { id: 'cjs6y41p1006a0771r6f0sowi' } } }
+    // });
+    // console.log
+    // console.log('--------COOL GUY-------', args);
   },
 
   createDraft(root, args, context) {
