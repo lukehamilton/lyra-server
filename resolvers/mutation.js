@@ -44,19 +44,13 @@ const Mutations = {
     return user;
   },
 
-  async followTopic(root, { userId, topicId }, context) {
-    console.log('userId', userId);
-    console.log('topicId', topicId);
-    // const data = await context.prisma.updateUser({
-    //   where: { id: userId },
-    //   data: { followedTopics: { connect: { id: topicId } } }
-    // });
-    // const data = await context.prisma.updateUser({
-    //   where: { id: 'cjs6y5ddg007v0771xubhiimv' },
-    //   data: { followedTopics: { connect: { id: 'cjs6y41p1006a0771r6f0sowi' } } }
-    // });
-    // console.log
-    // console.log('--------COOL GUY-------', args);
+  async updateFollowedTopic(root, { userId, topicId, following }, context) {
+    const action = following ? 'connect' : 'disconnect';
+    await context.prisma.updateUser({
+      where: { id: userId },
+      data: { followedTopics: { [action]: { id: topicId } } }
+    });
+    return context.prisma.topic({ id: topicId });
   },
 
   createDraft(root, args, context) {

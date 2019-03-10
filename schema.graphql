@@ -24,7 +24,7 @@ type Mutation {
   createUser(name: String!): User
   createDraft(title: String!, userId: ID!): Post
   publish(postId: ID!): Post
-  followTopic(userId: ID!, topicId: ID!): User
+  updateFollowedTopic(userId: ID!, topicId: ID!, following: Boolean): Topic
 }
 
 type Product {

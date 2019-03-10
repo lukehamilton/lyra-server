@@ -23,7 +23,7 @@ const Query = {
     if (context.request.user) {
       return context.prisma
         .user({ id: ctxUser(context).id })
-        .$fragment(`{ id email name avatar followedTopics { id } }`);
+        .$fragment(`{ id email name avatar followedTopics { id name } }`);
     }
     // return { data: { me: null } };
   },
