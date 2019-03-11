@@ -11,6 +11,10 @@ type AggregateProduct {
   count: Int!
 }
 
+type AggregateProductVote {
+  count: Int!
+}
+
 type AggregateTopic {
   count: Int!
 }
@@ -38,6 +42,11 @@ type Mutation {
   upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
   deleteProduct(where: ProductWhereUniqueInput!): Product
   deleteManyProducts(where: ProductWhereInput): BatchPayload!
+  createProductVote(data: ProductVoteCreateInput!): ProductVote!
+  updateProductVote(data: ProductVoteUpdateInput!, where: ProductVoteWhereUniqueInput!): ProductVote
+  upsertProductVote(where: ProductVoteWhereUniqueInput!, create: ProductVoteCreateInput!, update: ProductVoteUpdateInput!): ProductVote!
+  deleteProductVote(where: ProductVoteWhereUniqueInput!): ProductVote
+  deleteManyProductVotes(where: ProductVoteWhereInput): BatchPayload!
   createTopic(data: TopicCreateInput!): Topic!
   updateTopic(data: TopicUpdateInput!, where: TopicWhereUniqueInput!): Topic
   updateManyTopics(data: TopicUpdateManyMutationInput!, where: TopicWhereInput): BatchPayload!
@@ -275,6 +284,7 @@ type Product {
   votesCount: Int!
   commentsCount: Int!
   topics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic!]
+  votes(where: ProductVoteWhereInput, orderBy: ProductVoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVote!]
 }
 
 type ProductConnection {
@@ -291,11 +301,17 @@ input ProductCreateInput {
   votesCount: Int!
   commentsCount: Int!
   topics: TopicCreateManyWithoutProductsInput
+  votes: ProductVoteCreateManyWithoutProductInput
 }
 
 input ProductCreateManyWithoutTopicsInput {
   create: [ProductCreateWithoutTopicsInput!]
   connect: [ProductWhereUniqueInput!]
+}
+
+input ProductCreateOneWithoutVotesInput {
+  create: ProductCreateWithoutVotesInput
+  connect: ProductWhereUniqueInput
 }
 
 input ProductCreateWithoutTopicsInput {
@@ -305,6 +321,17 @@ input ProductCreateWithoutTopicsInput {
   description: String!
   votesCount: Int!
   commentsCount: Int!
+  votes: ProductVoteCreateManyWithoutProductInput
+}
+
+input ProductCreateWithoutVotesInput {
+  name: String!
+  slug: String!
+  imageUrl: String!
+  description: String!
+  votesCount: Int!
+  commentsCount: Int!
+  topics: TopicCreateManyWithoutProductsInput
 }
 
 type ProductEdge {
@@ -461,6 +488,7 @@ input ProductUpdateInput {
   votesCount: Int
   commentsCount: Int
   topics: TopicUpdateManyWithoutProductsInput
+  votes: ProductVoteUpdateManyWithoutProductInput
 }
 
 input ProductUpdateManyDataInput {
@@ -498,6 +526,13 @@ input ProductUpdateManyWithWhereNestedInput {
   data: ProductUpdateManyDataInput!
 }
 
+input ProductUpdateOneRequiredWithoutVotesInput {
+  create: ProductCreateWithoutVotesInput
+  update: ProductUpdateWithoutVotesDataInput
+  upsert: ProductUpsertWithoutVotesInput
+  connect: ProductWhereUniqueInput
+}
+
 input ProductUpdateWithoutTopicsDataInput {
   name: String
   slug: String
@@ -505,6 +540,17 @@ input ProductUpdateWithoutTopicsDataInput {
   description: String
   votesCount: Int
   commentsCount: Int
+  votes: ProductVoteUpdateManyWithoutProductInput
+}
+
+input ProductUpdateWithoutVotesDataInput {
+  name: String
+  slug: String
+  imageUrl: String
+  description: String
+  votesCount: Int
+  commentsCount: Int
+  topics: TopicUpdateManyWithoutProductsInput
 }
 
 input ProductUpdateWithWhereUniqueWithoutTopicsInput {
@@ -512,10 +558,154 @@ input ProductUpdateWithWhereUniqueWithoutTopicsInput {
   data: ProductUpdateWithoutTopicsDataInput!
 }
 
+input ProductUpsertWithoutVotesInput {
+  update: ProductUpdateWithoutVotesDataInput!
+  create: ProductCreateWithoutVotesInput!
+}
+
 input ProductUpsertWithWhereUniqueWithoutTopicsInput {
   where: ProductWhereUniqueInput!
   update: ProductUpdateWithoutTopicsDataInput!
   create: ProductCreateWithoutTopicsInput!
+}
+
+type ProductVote {
+  id: ID!
+  product: Product!
+  user: User!
+}
+
+type ProductVoteConnection {
+  pageInfo: PageInfo!
+  edges: [ProductVoteEdge]!
+  aggregate: AggregateProductVote!
+}
+
+input ProductVoteCreateInput {
+  product: ProductCreateOneWithoutVotesInput!
+  user: UserCreateOneInput!
+}
+
+input ProductVoteCreateManyWithoutProductInput {
+  create: [ProductVoteCreateWithoutProductInput!]
+  connect: [ProductVoteWhereUniqueInput!]
+}
+
+input ProductVoteCreateWithoutProductInput {
+  user: UserCreateOneInput!
+}
+
+type ProductVoteEdge {
+  node: ProductVote!
+  cursor: String!
+}
+
+enum ProductVoteOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProductVotePreviousValues {
+  id: ID!
+}
+
+input ProductVoteScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [ProductVoteScalarWhereInput!]
+  OR: [ProductVoteScalarWhereInput!]
+  NOT: [ProductVoteScalarWhereInput!]
+}
+
+type ProductVoteSubscriptionPayload {
+  mutation: MutationType!
+  node: ProductVote
+  updatedFields: [String!]
+  previousValues: ProductVotePreviousValues
+}
+
+input ProductVoteSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProductVoteWhereInput
+  AND: [ProductVoteSubscriptionWhereInput!]
+  OR: [ProductVoteSubscriptionWhereInput!]
+  NOT: [ProductVoteSubscriptionWhereInput!]
+}
+
+input ProductVoteUpdateInput {
+  product: ProductUpdateOneRequiredWithoutVotesInput
+  user: UserUpdateOneRequiredInput
+}
+
+input ProductVoteUpdateManyWithoutProductInput {
+  create: [ProductVoteCreateWithoutProductInput!]
+  delete: [ProductVoteWhereUniqueInput!]
+  connect: [ProductVoteWhereUniqueInput!]
+  set: [ProductVoteWhereUniqueInput!]
+  disconnect: [ProductVoteWhereUniqueInput!]
+  update: [ProductVoteUpdateWithWhereUniqueWithoutProductInput!]
+  upsert: [ProductVoteUpsertWithWhereUniqueWithoutProductInput!]
+  deleteMany: [ProductVoteScalarWhereInput!]
+}
+
+input ProductVoteUpdateWithoutProductDataInput {
+  user: UserUpdateOneRequiredInput
+}
+
+input ProductVoteUpdateWithWhereUniqueWithoutProductInput {
+  where: ProductVoteWhereUniqueInput!
+  data: ProductVoteUpdateWithoutProductDataInput!
+}
+
+input ProductVoteUpsertWithWhereUniqueWithoutProductInput {
+  where: ProductVoteWhereUniqueInput!
+  update: ProductVoteUpdateWithoutProductDataInput!
+  create: ProductVoteCreateWithoutProductInput!
+}
+
+input ProductVoteWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  product: ProductWhereInput
+  user: UserWhereInput
+  AND: [ProductVoteWhereInput!]
+  OR: [ProductVoteWhereInput!]
+  NOT: [ProductVoteWhereInput!]
+}
+
+input ProductVoteWhereUniqueInput {
+  id: ID
 }
 
 input ProductWhereInput {
@@ -608,6 +798,9 @@ input ProductWhereInput {
   topics_every: TopicWhereInput
   topics_some: TopicWhereInput
   topics_none: TopicWhereInput
+  votes_every: ProductVoteWhereInput
+  votes_some: ProductVoteWhereInput
+  votes_none: ProductVoteWhereInput
   AND: [ProductWhereInput!]
   OR: [ProductWhereInput!]
   NOT: [ProductWhereInput!]
@@ -625,6 +818,9 @@ type Query {
   product(where: ProductWhereUniqueInput!): Product
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
+  productVote(where: ProductVoteWhereUniqueInput!): ProductVote
+  productVotes(where: ProductVoteWhereInput, orderBy: ProductVoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVote]!
+  productVotesConnection(where: ProductVoteWhereInput, orderBy: ProductVoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductVoteConnection!
   topic(where: TopicWhereUniqueInput!): Topic
   topics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic]!
   topicsConnection(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TopicConnection!
@@ -642,6 +838,7 @@ enum Role {
 type Subscription {
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
+  productVote(where: ProductVoteSubscriptionWhereInput): ProductVoteSubscriptionPayload
   topic(where: TopicSubscriptionWhereInput): TopicSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
@@ -954,6 +1151,11 @@ input UserCreateManyWithoutFollowedTopicsInput {
   connect: [UserWhereUniqueInput!]
 }
 
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
 input UserCreateOneWithoutPostsInput {
   create: UserCreateWithoutPostsInput
   connect: UserWhereUniqueInput
@@ -1146,6 +1348,18 @@ input UserSubscriptionWhereInput {
   NOT: [UserSubscriptionWhereInput!]
 }
 
+input UserUpdateDataInput {
+  email: String
+  role: Role
+  name: String
+  avatar: String
+  auth0id: String
+  identity: String
+  privateKey: String
+  posts: PostUpdateManyWithoutAuthorInput
+  followedTopics: TopicUpdateManyWithoutFollowedByInput
+}
+
 input UserUpdateInput {
   email: String
   role: Role
@@ -1195,6 +1409,13 @@ input UserUpdateManyWithWhereNestedInput {
   data: UserUpdateManyDataInput!
 }
 
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+  connect: UserWhereUniqueInput
+}
+
 input UserUpdateOneWithoutPostsInput {
   create: UserCreateWithoutPostsInput
   update: UserUpdateWithoutPostsDataInput
@@ -1229,6 +1450,11 @@ input UserUpdateWithoutPostsDataInput {
 input UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
   where: UserWhereUniqueInput!
   data: UserUpdateWithoutFollowedTopicsDataInput!
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserUpsertWithoutPostsInput {

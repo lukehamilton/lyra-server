@@ -16,6 +16,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export interface Exists {
   post: (where?: PostWhereInput) => Promise<boolean>;
   product: (where?: ProductWhereInput) => Promise<boolean>;
+  productVote: (where?: ProductVoteWhereInput) => Promise<boolean>;
   topic: (where?: TopicWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
@@ -85,6 +86,29 @@ export interface Prisma {
       last?: Int;
     }
   ) => ProductConnectionPromise;
+  productVote: (where: ProductVoteWhereUniqueInput) => ProductVotePromise;
+  productVotes: (
+    args?: {
+      where?: ProductVoteWhereInput;
+      orderBy?: ProductVoteOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<ProductVote>;
+  productVotesConnection: (
+    args?: {
+      where?: ProductVoteWhereInput;
+      orderBy?: ProductVoteOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => ProductVoteConnectionPromise;
   topic: (where: TopicWhereUniqueInput) => TopicPromise;
   topics: (
     args?: {
@@ -169,6 +193,21 @@ export interface Prisma {
   ) => ProductPromise;
   deleteProduct: (where: ProductWhereUniqueInput) => ProductPromise;
   deleteManyProducts: (where?: ProductWhereInput) => BatchPayloadPromise;
+  createProductVote: (data: ProductVoteCreateInput) => ProductVotePromise;
+  updateProductVote: (
+    args: { data: ProductVoteUpdateInput; where: ProductVoteWhereUniqueInput }
+  ) => ProductVotePromise;
+  upsertProductVote: (
+    args: {
+      where: ProductVoteWhereUniqueInput;
+      create: ProductVoteCreateInput;
+      update: ProductVoteUpdateInput;
+    }
+  ) => ProductVotePromise;
+  deleteProductVote: (where: ProductVoteWhereUniqueInput) => ProductVotePromise;
+  deleteManyProductVotes: (
+    where?: ProductVoteWhereInput
+  ) => BatchPayloadPromise;
   createTopic: (data: TopicCreateInput) => TopicPromise;
   updateTopic: (
     args: { data: TopicUpdateInput; where: TopicWhereUniqueInput }
@@ -216,6 +255,9 @@ export interface Subscription {
   product: (
     where?: ProductSubscriptionWhereInput
   ) => ProductSubscriptionPayloadSubscription;
+  productVote: (
+    where?: ProductVoteSubscriptionWhereInput
+  ) => ProductVoteSubscriptionPayloadSubscription;
   topic: (
     where?: TopicSubscriptionWhereInput
   ) => TopicSubscriptionPayloadSubscription;
@@ -244,8 +286,6 @@ export type PostOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type Role = "ADMIN" | "USER";
-
 export type TopicOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -257,6 +297,8 @@ export type TopicOrderByInput =
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC";
+
+export type Role = "ADMIN" | "USER";
 
 export type ProductOrderByInput =
   | "id_ASC"
@@ -273,6 +315,14 @@ export type ProductOrderByInput =
   | "votesCount_DESC"
   | "commentsCount_ASC"
   | "commentsCount_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type ProductVoteOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -302,22 +352,740 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface ProductUpdateManyDataInput {
+export interface UserUpdateDataInput {
+  email?: String;
+  role?: Role;
   name?: String;
-  slug?: String;
-  imageUrl?: String;
-  description?: String;
-  votesCount?: Int;
-  commentsCount?: Int;
+  avatar?: String;
+  auth0id?: String;
+  identity?: String;
+  privateKey?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  followedTopics?: TopicUpdateManyWithoutFollowedByInput;
 }
 
 export type PostWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
-export interface TopicUpdateManyDataInput {
+export interface PostScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  published?: Boolean;
+  published_not?: Boolean;
+  AND?: PostScalarWhereInput[] | PostScalarWhereInput;
+  OR?: PostScalarWhereInput[] | PostScalarWhereInput;
+  NOT?: PostScalarWhereInput[] | PostScalarWhereInput;
+}
+
+export interface TopicWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  slug?: String;
+  slug_not?: String;
+  slug_in?: String[] | String;
+  slug_not_in?: String[] | String;
+  slug_lt?: String;
+  slug_lte?: String;
+  slug_gt?: String;
+  slug_gte?: String;
+  slug_contains?: String;
+  slug_not_contains?: String;
+  slug_starts_with?: String;
+  slug_not_starts_with?: String;
+  slug_ends_with?: String;
+  slug_not_ends_with?: String;
+  products_every?: ProductWhereInput;
+  products_some?: ProductWhereInput;
+  products_none?: ProductWhereInput;
+  followedBy_every?: UserWhereInput;
+  followedBy_some?: UserWhereInput;
+  followedBy_none?: UserWhereInput;
+  AND?: TopicWhereInput[] | TopicWhereInput;
+  OR?: TopicWhereInput[] | TopicWhereInput;
+  NOT?: TopicWhereInput[] | TopicWhereInput;
+}
+
+export interface UserUpdateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput;
+  update?: UserUpdateWithoutPostsDataInput;
+  upsert?: UserUpsertWithoutPostsInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserUpdateManyWithoutFollowedTopicsInput {
+  create?:
+    | UserCreateWithoutFollowedTopicsInput[]
+    | UserCreateWithoutFollowedTopicsInput;
+  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  set?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  update?:
+    | UserUpdateWithWhereUniqueWithoutFollowedTopicsInput[]
+    | UserUpdateWithWhereUniqueWithoutFollowedTopicsInput;
+  upsert?:
+    | UserUpsertWithWhereUniqueWithoutFollowedTopicsInput[]
+    | UserUpsertWithWhereUniqueWithoutFollowedTopicsInput;
+  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput;
+  updateMany?:
+    | UserUpdateManyWithWhereNestedInput[]
+    | UserUpdateManyWithWhereNestedInput;
+}
+
+export interface UserUpdateWithoutPostsDataInput {
+  email?: String;
+  role?: Role;
+  name?: String;
+  avatar?: String;
+  auth0id?: String;
+  identity?: String;
+  privateKey?: String;
+  followedTopics?: TopicUpdateManyWithoutFollowedByInput;
+}
+
+export interface PostUpdateManyWithWhereNestedInput {
+  where: PostScalarWhereInput;
+  data: PostUpdateManyDataInput;
+}
+
+export interface TopicUpdateManyWithoutFollowedByInput {
+  create?:
+    | TopicCreateWithoutFollowedByInput[]
+    | TopicCreateWithoutFollowedByInput;
+  delete?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
+  connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
+  set?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
+  disconnect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
+  update?:
+    | TopicUpdateWithWhereUniqueWithoutFollowedByInput[]
+    | TopicUpdateWithWhereUniqueWithoutFollowedByInput;
+  upsert?:
+    | TopicUpsertWithWhereUniqueWithoutFollowedByInput[]
+    | TopicUpsertWithWhereUniqueWithoutFollowedByInput;
+  deleteMany?: TopicScalarWhereInput[] | TopicScalarWhereInput;
+  updateMany?:
+    | TopicUpdateManyWithWhereNestedInput[]
+    | TopicUpdateManyWithWhereNestedInput;
+}
+
+export interface PostWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  published?: Boolean;
+  published_not?: Boolean;
+  author?: UserWhereInput;
+  AND?: PostWhereInput[] | PostWhereInput;
+  OR?: PostWhereInput[] | PostWhereInput;
+  NOT?: PostWhereInput[] | PostWhereInput;
+}
+
+export interface TopicUpdateWithWhereUniqueWithoutFollowedByInput {
+  where: TopicWhereUniqueInput;
+  data: TopicUpdateWithoutFollowedByDataInput;
+}
+
+export interface TopicSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: TopicWhereInput;
+  AND?: TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput;
+  OR?: TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput;
+  NOT?: TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput;
+}
+
+export interface TopicUpdateWithoutFollowedByDataInput {
   name?: String;
   slug?: String;
+  products?: ProductUpdateManyWithoutTopicsInput;
+}
+
+export interface ProductSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ProductWhereInput;
+  AND?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput;
+  OR?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput;
+  NOT?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput;
+}
+
+export interface ProductUpdateManyWithoutTopicsInput {
+  create?: ProductCreateWithoutTopicsInput[] | ProductCreateWithoutTopicsInput;
+  delete?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+  set?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+  disconnect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
+  update?:
+    | ProductUpdateWithWhereUniqueWithoutTopicsInput[]
+    | ProductUpdateWithWhereUniqueWithoutTopicsInput;
+  upsert?:
+    | ProductUpsertWithWhereUniqueWithoutTopicsInput[]
+    | ProductUpsertWithWhereUniqueWithoutTopicsInput;
+  deleteMany?: ProductScalarWhereInput[] | ProductScalarWhereInput;
+  updateMany?:
+    | ProductUpdateManyWithWhereNestedInput[]
+    | ProductUpdateManyWithWhereNestedInput;
+}
+
+export interface UserUpdateManyMutationInput {
+  email?: String;
+  role?: Role;
+  name?: String;
+  avatar?: String;
+  auth0id?: String;
+  identity?: String;
+  privateKey?: String;
+}
+
+export interface ProductUpdateWithWhereUniqueWithoutTopicsInput {
+  where: ProductWhereUniqueInput;
+  data: ProductUpdateWithoutTopicsDataInput;
+}
+
+export interface TopicUpdateManyMutationInput {
+  name?: String;
+  slug?: String;
+}
+
+export interface ProductUpdateWithoutTopicsDataInput {
+  name?: String;
+  slug?: String;
+  imageUrl?: String;
+  description?: String;
+  votesCount?: Int;
+  commentsCount?: Int;
+  votes?: ProductVoteUpdateManyWithoutProductInput;
+}
+
+export interface TopicCreateInput {
+  name: String;
+  slug: String;
+  products?: ProductCreateManyWithoutTopicsInput;
+  followedBy?: UserCreateManyWithoutFollowedTopicsInput;
+}
+
+export interface ProductVoteUpdateManyWithoutProductInput {
+  create?:
+    | ProductVoteCreateWithoutProductInput[]
+    | ProductVoteCreateWithoutProductInput;
+  delete?: ProductVoteWhereUniqueInput[] | ProductVoteWhereUniqueInput;
+  connect?: ProductVoteWhereUniqueInput[] | ProductVoteWhereUniqueInput;
+  set?: ProductVoteWhereUniqueInput[] | ProductVoteWhereUniqueInput;
+  disconnect?: ProductVoteWhereUniqueInput[] | ProductVoteWhereUniqueInput;
+  update?:
+    | ProductVoteUpdateWithWhereUniqueWithoutProductInput[]
+    | ProductVoteUpdateWithWhereUniqueWithoutProductInput;
+  upsert?:
+    | ProductVoteUpsertWithWhereUniqueWithoutProductInput[]
+    | ProductVoteUpsertWithWhereUniqueWithoutProductInput;
+  deleteMany?: ProductVoteScalarWhereInput[] | ProductVoteScalarWhereInput;
+}
+
+export interface ProductUpsertWithoutVotesInput {
+  update: ProductUpdateWithoutVotesDataInput;
+  create: ProductCreateWithoutVotesInput;
+}
+
+export interface ProductVoteUpdateWithWhereUniqueWithoutProductInput {
+  where: ProductVoteWhereUniqueInput;
+  data: ProductVoteUpdateWithoutProductDataInput;
+}
+
+export interface ProductUpdateOneRequiredWithoutVotesInput {
+  create?: ProductCreateWithoutVotesInput;
+  update?: ProductUpdateWithoutVotesDataInput;
+  upsert?: ProductUpsertWithoutVotesInput;
+  connect?: ProductWhereUniqueInput;
+}
+
+export interface ProductVoteUpdateWithoutProductDataInput {
+  user?: UserUpdateOneRequiredInput;
+}
+
+export interface ProductVoteUpdateInput {
+  product?: ProductUpdateOneRequiredWithoutVotesInput;
+  user?: UserUpdateOneRequiredInput;
+}
+
+export interface UserUpdateOneRequiredInput {
+  create?: UserCreateInput;
+  update?: UserUpdateDataInput;
+  upsert?: UserUpsertNestedInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface ProductCreateOneWithoutVotesInput {
+  create?: ProductCreateWithoutVotesInput;
+  connect?: ProductWhereUniqueInput;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutFollowedTopicsInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutFollowedTopicsDataInput;
+  create: UserCreateWithoutFollowedTopicsInput;
+}
+
+export interface ProductVoteCreateInput {
+  product: ProductCreateOneWithoutVotesInput;
+  user: UserCreateOneInput;
+}
+
+export interface PostUpdateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
+  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  set?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  update?:
+    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
+    | PostUpdateWithWhereUniqueWithoutAuthorInput;
+  upsert?:
+    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
+    | PostUpsertWithWhereUniqueWithoutAuthorInput;
+  deleteMany?: PostScalarWhereInput[] | PostScalarWhereInput;
+  updateMany?:
+    | PostUpdateManyWithWhereNestedInput[]
+    | PostUpdateManyWithWhereNestedInput;
+}
+
+export interface TopicUpsertWithWhereUniqueWithoutProductsInput {
+  where: TopicWhereUniqueInput;
+  update: TopicUpdateWithoutProductsDataInput;
+  create: TopicCreateWithoutProductsInput;
+}
+
+export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput;
+  data: PostUpdateWithoutAuthorDataInput;
+}
+
+export interface UserUpdateManyDataInput {
+  email?: String;
+  role?: Role;
+  name?: String;
+  avatar?: String;
+  auth0id?: String;
+  identity?: String;
+  privateKey?: String;
+}
+
+export interface PostUpdateWithoutAuthorDataInput {
+  title?: String;
+  published?: Boolean;
+}
+
+export interface UserScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  email?: String;
+  email_not?: String;
+  email_in?: String[] | String;
+  email_not_in?: String[] | String;
+  email_lt?: String;
+  email_lte?: String;
+  email_gt?: String;
+  email_gte?: String;
+  email_contains?: String;
+  email_not_contains?: String;
+  email_starts_with?: String;
+  email_not_starts_with?: String;
+  email_ends_with?: String;
+  email_not_ends_with?: String;
+  role?: Role;
+  role_not?: Role;
+  role_in?: Role[] | Role;
+  role_not_in?: Role[] | Role;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  avatar?: String;
+  avatar_not?: String;
+  avatar_in?: String[] | String;
+  avatar_not_in?: String[] | String;
+  avatar_lt?: String;
+  avatar_lte?: String;
+  avatar_gt?: String;
+  avatar_gte?: String;
+  avatar_contains?: String;
+  avatar_not_contains?: String;
+  avatar_starts_with?: String;
+  avatar_not_starts_with?: String;
+  avatar_ends_with?: String;
+  avatar_not_ends_with?: String;
+  auth0id?: String;
+  auth0id_not?: String;
+  auth0id_in?: String[] | String;
+  auth0id_not_in?: String[] | String;
+  auth0id_lt?: String;
+  auth0id_lte?: String;
+  auth0id_gt?: String;
+  auth0id_gte?: String;
+  auth0id_contains?: String;
+  auth0id_not_contains?: String;
+  auth0id_starts_with?: String;
+  auth0id_not_starts_with?: String;
+  auth0id_ends_with?: String;
+  auth0id_not_ends_with?: String;
+  identity?: String;
+  identity_not?: String;
+  identity_in?: String[] | String;
+  identity_not_in?: String[] | String;
+  identity_lt?: String;
+  identity_lte?: String;
+  identity_gt?: String;
+  identity_gte?: String;
+  identity_contains?: String;
+  identity_not_contains?: String;
+  identity_starts_with?: String;
+  identity_not_starts_with?: String;
+  identity_ends_with?: String;
+  identity_not_ends_with?: String;
+  privateKey?: String;
+  privateKey_not?: String;
+  privateKey_in?: String[] | String;
+  privateKey_not_in?: String[] | String;
+  privateKey_lt?: String;
+  privateKey_lte?: String;
+  privateKey_gt?: String;
+  privateKey_gte?: String;
+  privateKey_contains?: String;
+  privateKey_not_contains?: String;
+  privateKey_starts_with?: String;
+  privateKey_not_starts_with?: String;
+  privateKey_ends_with?: String;
+  privateKey_not_ends_with?: String;
+  AND?: UserScalarWhereInput[] | UserScalarWhereInput;
+  OR?: UserScalarWhereInput[] | UserScalarWhereInput;
+  NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
+}
+
+export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput;
+  update: PostUpdateWithoutAuthorDataInput;
+  create: PostCreateWithoutAuthorInput;
+}
+
+export interface PostCreateInput {
+  title: String;
+  published?: Boolean;
+  author?: UserCreateOneWithoutPostsInput;
+}
+
+export interface ProductWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  slug?: String;
+  slug_not?: String;
+  slug_in?: String[] | String;
+  slug_not_in?: String[] | String;
+  slug_lt?: String;
+  slug_lte?: String;
+  slug_gt?: String;
+  slug_gte?: String;
+  slug_contains?: String;
+  slug_not_contains?: String;
+  slug_starts_with?: String;
+  slug_not_starts_with?: String;
+  slug_ends_with?: String;
+  slug_not_ends_with?: String;
+  imageUrl?: String;
+  imageUrl_not?: String;
+  imageUrl_in?: String[] | String;
+  imageUrl_not_in?: String[] | String;
+  imageUrl_lt?: String;
+  imageUrl_lte?: String;
+  imageUrl_gt?: String;
+  imageUrl_gte?: String;
+  imageUrl_contains?: String;
+  imageUrl_not_contains?: String;
+  imageUrl_starts_with?: String;
+  imageUrl_not_starts_with?: String;
+  imageUrl_ends_with?: String;
+  imageUrl_not_ends_with?: String;
+  description?: String;
+  description_not?: String;
+  description_in?: String[] | String;
+  description_not_in?: String[] | String;
+  description_lt?: String;
+  description_lte?: String;
+  description_gt?: String;
+  description_gte?: String;
+  description_contains?: String;
+  description_not_contains?: String;
+  description_starts_with?: String;
+  description_not_starts_with?: String;
+  description_ends_with?: String;
+  description_not_ends_with?: String;
+  votesCount?: Int;
+  votesCount_not?: Int;
+  votesCount_in?: Int[] | Int;
+  votesCount_not_in?: Int[] | Int;
+  votesCount_lt?: Int;
+  votesCount_lte?: Int;
+  votesCount_gt?: Int;
+  votesCount_gte?: Int;
+  commentsCount?: Int;
+  commentsCount_not?: Int;
+  commentsCount_in?: Int[] | Int;
+  commentsCount_not_in?: Int[] | Int;
+  commentsCount_lt?: Int;
+  commentsCount_lte?: Int;
+  commentsCount_gt?: Int;
+  commentsCount_gte?: Int;
+  topics_every?: TopicWhereInput;
+  topics_some?: TopicWhereInput;
+  topics_none?: TopicWhereInput;
+  votes_every?: ProductVoteWhereInput;
+  votes_some?: ProductVoteWhereInput;
+  votes_none?: ProductVoteWhereInput;
+  AND?: ProductWhereInput[] | ProductWhereInput;
+  OR?: ProductWhereInput[] | ProductWhereInput;
+  NOT?: ProductWhereInput[] | ProductWhereInput;
+}
+
+export interface UserCreateWithoutPostsInput {
+  email?: String;
+  role?: Role;
+  name: String;
+  avatar?: String;
+  auth0id: String;
+  identity?: String;
+  privateKey?: String;
+  followedTopics?: TopicCreateManyWithoutFollowedByInput;
+}
+
+export interface ProductVoteWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  product?: ProductWhereInput;
+  user?: UserWhereInput;
+  AND?: ProductVoteWhereInput[] | ProductVoteWhereInput;
+  OR?: ProductVoteWhereInput[] | ProductVoteWhereInput;
+  NOT?: ProductVoteWhereInput[] | ProductVoteWhereInput;
+}
+
+export interface TopicCreateWithoutFollowedByInput {
+  name: String;
+  slug: String;
+  products?: ProductCreateManyWithoutTopicsInput;
+}
+
+export interface PostUpdateManyDataInput {
+  title?: String;
+  published?: Boolean;
+}
+
+export interface ProductCreateWithoutTopicsInput {
+  name: String;
+  slug: String;
+  imageUrl: String;
+  description: String;
+  votesCount: Int;
+  commentsCount: Int;
+  votes?: ProductVoteCreateManyWithoutProductInput;
+}
+
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
+}
+
+export interface ProductVoteCreateWithoutProductInput {
+  user: UserCreateOneInput;
+}
+
+export interface ProductVoteUpsertWithWhereUniqueWithoutProductInput {
+  where: ProductVoteWhereUniqueInput;
+  update: ProductVoteUpdateWithoutProductDataInput;
+  create: ProductVoteCreateWithoutProductInput;
+}
+
+export interface UserCreateInput {
+  email?: String;
+  role?: Role;
+  name: String;
+  avatar?: String;
+  auth0id: String;
+  identity?: String;
+  privateKey?: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  followedTopics?: TopicCreateManyWithoutFollowedByInput;
+}
+
+export interface ProductVoteScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  AND?: ProductVoteScalarWhereInput[] | ProductVoteScalarWhereInput;
+  OR?: ProductVoteScalarWhereInput[] | ProductVoteScalarWhereInput;
+  NOT?: ProductVoteScalarWhereInput[] | ProductVoteScalarWhereInput;
+}
+
+export interface PostCreateWithoutAuthorInput {
+  title: String;
+  published?: Boolean;
+}
+
+export interface ProductUpsertWithWhereUniqueWithoutTopicsInput {
+  where: ProductWhereUniqueInput;
+  update: ProductUpdateWithoutTopicsDataInput;
+  create: ProductCreateWithoutTopicsInput;
 }
 
 export interface UserWhereInput {
@@ -434,243 +1202,6 @@ export interface UserWhereInput {
   NOT?: UserWhereInput[] | UserWhereInput;
 }
 
-export interface UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput;
-  create: UserCreateWithoutPostsInput;
-}
-
-export interface ProductWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  slug?: String;
-  slug_not?: String;
-  slug_in?: String[] | String;
-  slug_not_in?: String[] | String;
-  slug_lt?: String;
-  slug_lte?: String;
-  slug_gt?: String;
-  slug_gte?: String;
-  slug_contains?: String;
-  slug_not_contains?: String;
-  slug_starts_with?: String;
-  slug_not_starts_with?: String;
-  slug_ends_with?: String;
-  slug_not_ends_with?: String;
-  imageUrl?: String;
-  imageUrl_not?: String;
-  imageUrl_in?: String[] | String;
-  imageUrl_not_in?: String[] | String;
-  imageUrl_lt?: String;
-  imageUrl_lte?: String;
-  imageUrl_gt?: String;
-  imageUrl_gte?: String;
-  imageUrl_contains?: String;
-  imageUrl_not_contains?: String;
-  imageUrl_starts_with?: String;
-  imageUrl_not_starts_with?: String;
-  imageUrl_ends_with?: String;
-  imageUrl_not_ends_with?: String;
-  description?: String;
-  description_not?: String;
-  description_in?: String[] | String;
-  description_not_in?: String[] | String;
-  description_lt?: String;
-  description_lte?: String;
-  description_gt?: String;
-  description_gte?: String;
-  description_contains?: String;
-  description_not_contains?: String;
-  description_starts_with?: String;
-  description_not_starts_with?: String;
-  description_ends_with?: String;
-  description_not_ends_with?: String;
-  votesCount?: Int;
-  votesCount_not?: Int;
-  votesCount_in?: Int[] | Int;
-  votesCount_not_in?: Int[] | Int;
-  votesCount_lt?: Int;
-  votesCount_lte?: Int;
-  votesCount_gt?: Int;
-  votesCount_gte?: Int;
-  commentsCount?: Int;
-  commentsCount_not?: Int;
-  commentsCount_in?: Int[] | Int;
-  commentsCount_not_in?: Int[] | Int;
-  commentsCount_lt?: Int;
-  commentsCount_lte?: Int;
-  commentsCount_gt?: Int;
-  commentsCount_gte?: Int;
-  topics_every?: TopicWhereInput;
-  topics_some?: TopicWhereInput;
-  topics_none?: TopicWhereInput;
-  AND?: ProductWhereInput[] | ProductWhereInput;
-  OR?: ProductWhereInput[] | ProductWhereInput;
-  NOT?: ProductWhereInput[] | ProductWhereInput;
-}
-
-export interface PostUpdateManyMutationInput {
-  title?: String;
-  published?: Boolean;
-}
-
-export interface PostWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
-  published?: Boolean;
-  published_not?: Boolean;
-  author?: UserWhereInput;
-  AND?: PostWhereInput[] | PostWhereInput;
-  OR?: PostWhereInput[] | PostWhereInput;
-  NOT?: PostWhereInput[] | PostWhereInput;
-}
-
-export interface TopicUpdateWithoutFollowedByDataInput {
-  name?: String;
-  slug?: String;
-  products?: ProductUpdateManyWithoutTopicsInput;
-}
-
-export interface PostUpdateWithoutAuthorDataInput {
-  title?: String;
-  published?: Boolean;
-}
-
-export interface ProductUpdateManyWithoutTopicsInput {
-  create?: ProductCreateWithoutTopicsInput[] | ProductCreateWithoutTopicsInput;
-  delete?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
-  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
-  set?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
-  disconnect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
-  update?:
-    | ProductUpdateWithWhereUniqueWithoutTopicsInput[]
-    | ProductUpdateWithWhereUniqueWithoutTopicsInput;
-  upsert?:
-    | ProductUpsertWithWhereUniqueWithoutTopicsInput[]
-    | ProductUpsertWithWhereUniqueWithoutTopicsInput;
-  deleteMany?: ProductScalarWhereInput[] | ProductScalarWhereInput;
-  updateMany?:
-    | ProductUpdateManyWithWhereNestedInput[]
-    | ProductUpdateManyWithWhereNestedInput;
-}
-
-export interface TopicSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: TopicWhereInput;
-  AND?: TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput;
-  OR?: TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput;
-  NOT?: TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput;
-}
-
-export interface ProductUpdateWithWhereUniqueWithoutTopicsInput {
-  where: ProductWhereUniqueInput;
-  data: ProductUpdateWithoutTopicsDataInput;
-}
-
-export interface PostSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PostWhereInput;
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-}
-
-export interface ProductUpdateWithoutTopicsDataInput {
-  name?: String;
-  slug?: String;
-  imageUrl?: String;
-  description?: String;
-  votesCount?: Int;
-  commentsCount?: Int;
-}
-
-export interface UserUpdateInput {
-  email?: String;
-  role?: Role;
-  name?: String;
-  avatar?: String;
-  auth0id?: String;
-  identity?: String;
-  privateKey?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
-  followedTopics?: TopicUpdateManyWithoutFollowedByInput;
-}
-
-export interface ProductUpsertWithWhereUniqueWithoutTopicsInput {
-  where: ProductWhereUniqueInput;
-  update: ProductUpdateWithoutTopicsDataInput;
-  create: ProductCreateWithoutTopicsInput;
-}
-
-export interface UserCreateInput {
-  email?: String;
-  role?: Role;
-  name: String;
-  avatar?: String;
-  auth0id: String;
-  identity?: String;
-  privateKey?: String;
-  posts?: PostCreateManyWithoutAuthorInput;
-  followedTopics?: TopicCreateManyWithoutFollowedByInput;
-}
-
 export interface ProductScalarWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
@@ -763,11 +1294,15 @@ export interface ProductScalarWhereInput {
   NOT?: ProductScalarWhereInput[] | ProductScalarWhereInput;
 }
 
-export interface TopicUpdateInput {
-  name?: String;
-  slug?: String;
-  products?: ProductUpdateManyWithoutTopicsInput;
-  followedBy?: UserUpdateManyWithoutFollowedTopicsInput;
+export interface ProductVoteSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ProductVoteWhereInput;
+  AND?: ProductVoteSubscriptionWhereInput[] | ProductVoteSubscriptionWhereInput;
+  OR?: ProductVoteSubscriptionWhereInput[] | ProductVoteSubscriptionWhereInput;
+  NOT?: ProductVoteSubscriptionWhereInput[] | ProductVoteSubscriptionWhereInput;
 }
 
 export interface ProductUpdateManyWithWhereNestedInput {
@@ -775,32 +1310,7 @@ export interface ProductUpdateManyWithWhereNestedInput {
   data: ProductUpdateManyDataInput;
 }
 
-export interface TopicCreateInput {
-  name: String;
-  slug: String;
-  products?: ProductCreateManyWithoutTopicsInput;
-  followedBy?: UserCreateManyWithoutFollowedTopicsInput;
-}
-
-export interface UserUpsertWithWhereUniqueWithoutFollowedTopicsInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutFollowedTopicsDataInput;
-  create: UserCreateWithoutFollowedTopicsInput;
-}
-
-export interface TopicUpsertWithWhereUniqueWithoutProductsInput {
-  where: TopicWhereUniqueInput;
-  update: TopicUpdateWithoutProductsDataInput;
-  create: TopicCreateWithoutProductsInput;
-}
-
-export interface TopicUpsertWithWhereUniqueWithoutFollowedByInput {
-  where: TopicWhereUniqueInput;
-  update: TopicUpdateWithoutFollowedByDataInput;
-  create: TopicCreateWithoutFollowedByInput;
-}
-
-export interface UserUpdateManyDataInput {
+export interface UserUpdateInput {
   email?: String;
   role?: Role;
   name?: String;
@@ -808,7 +1318,33 @@ export interface UserUpdateManyDataInput {
   auth0id?: String;
   identity?: String;
   privateKey?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  followedTopics?: TopicUpdateManyWithoutFollowedByInput;
 }
+
+export interface ProductUpdateManyDataInput {
+  name?: String;
+  slug?: String;
+  imageUrl?: String;
+  description?: String;
+  votesCount?: Int;
+  commentsCount?: Int;
+}
+
+export type ProductWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  slug?: String;
+}>;
+
+export interface TopicUpsertWithWhereUniqueWithoutFollowedByInput {
+  where: TopicWhereUniqueInput;
+  update: TopicUpdateWithoutFollowedByDataInput;
+  create: TopicCreateWithoutFollowedByInput;
+}
+
+export type ProductVoteWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
 
 export interface TopicScalarWhereInput {
   id?: ID_Input;
@@ -858,294 +1394,65 @@ export interface TopicScalarWhereInput {
   NOT?: TopicScalarWhereInput[] | TopicScalarWhereInput;
 }
 
-export interface UserScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  role?: Role;
-  role_not?: Role;
-  role_in?: Role[] | Role;
-  role_not_in?: Role[] | Role;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  avatar?: String;
-  avatar_not?: String;
-  avatar_in?: String[] | String;
-  avatar_not_in?: String[] | String;
-  avatar_lt?: String;
-  avatar_lte?: String;
-  avatar_gt?: String;
-  avatar_gte?: String;
-  avatar_contains?: String;
-  avatar_not_contains?: String;
-  avatar_starts_with?: String;
-  avatar_not_starts_with?: String;
-  avatar_ends_with?: String;
-  avatar_not_ends_with?: String;
-  auth0id?: String;
-  auth0id_not?: String;
-  auth0id_in?: String[] | String;
-  auth0id_not_in?: String[] | String;
-  auth0id_lt?: String;
-  auth0id_lte?: String;
-  auth0id_gt?: String;
-  auth0id_gte?: String;
-  auth0id_contains?: String;
-  auth0id_not_contains?: String;
-  auth0id_starts_with?: String;
-  auth0id_not_starts_with?: String;
-  auth0id_ends_with?: String;
-  auth0id_not_ends_with?: String;
-  identity?: String;
-  identity_not?: String;
-  identity_in?: String[] | String;
-  identity_not_in?: String[] | String;
-  identity_lt?: String;
-  identity_lte?: String;
-  identity_gt?: String;
-  identity_gte?: String;
-  identity_contains?: String;
-  identity_not_contains?: String;
-  identity_starts_with?: String;
-  identity_not_starts_with?: String;
-  identity_ends_with?: String;
-  identity_not_ends_with?: String;
-  privateKey?: String;
-  privateKey_not?: String;
-  privateKey_in?: String[] | String;
-  privateKey_not_in?: String[] | String;
-  privateKey_lt?: String;
-  privateKey_lte?: String;
-  privateKey_gt?: String;
-  privateKey_gte?: String;
-  privateKey_contains?: String;
-  privateKey_not_contains?: String;
-  privateKey_starts_with?: String;
-  privateKey_not_starts_with?: String;
-  privateKey_ends_with?: String;
-  privateKey_not_ends_with?: String;
-  AND?: UserScalarWhereInput[] | UserScalarWhereInput;
-  OR?: UserScalarWhereInput[] | UserScalarWhereInput;
-  NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
-}
+export type TopicWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  slug?: String;
+}>;
 
 export interface TopicUpdateManyWithWhereNestedInput {
   where: TopicScalarWhereInput;
   data: TopicUpdateManyDataInput;
 }
 
-export interface PostCreateInput {
-  title: String;
-  published?: Boolean;
-  author?: UserCreateOneWithoutPostsInput;
-}
-
-export interface TopicWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  slug?: String;
-  slug_not?: String;
-  slug_in?: String[] | String;
-  slug_not_in?: String[] | String;
-  slug_lt?: String;
-  slug_lte?: String;
-  slug_gt?: String;
-  slug_gte?: String;
-  slug_contains?: String;
-  slug_not_contains?: String;
-  slug_starts_with?: String;
-  slug_not_starts_with?: String;
-  slug_ends_with?: String;
-  slug_not_ends_with?: String;
-  products_every?: ProductWhereInput;
-  products_some?: ProductWhereInput;
-  products_none?: ProductWhereInput;
-  followedBy_every?: UserWhereInput;
-  followedBy_some?: UserWhereInput;
-  followedBy_none?: UserWhereInput;
-  AND?: TopicWhereInput[] | TopicWhereInput;
-  OR?: TopicWhereInput[] | TopicWhereInput;
-  NOT?: TopicWhereInput[] | TopicWhereInput;
-}
-
-export interface UserCreateWithoutPostsInput {
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
   email?: String;
-  role?: Role;
-  name: String;
-  avatar?: String;
-  auth0id: String;
-  identity?: String;
-  privateKey?: String;
-  followedTopics?: TopicCreateManyWithoutFollowedByInput;
+  auth0id?: String;
+}>;
+
+export interface TopicUpdateManyDataInput {
+  name?: String;
+  slug?: String;
 }
 
-export interface PostUpdateManyDataInput {
-  title?: String;
-  published?: Boolean;
-}
-
-export interface TopicCreateWithoutFollowedByInput {
-  name: String;
-  slug: String;
-  products?: ProductCreateManyWithoutTopicsInput;
-}
-
-export interface PostUpdateManyWithWhereNestedInput {
-  where: PostScalarWhereInput;
-  data: PostUpdateManyDataInput;
-}
-
-export interface ProductCreateWithoutTopicsInput {
-  name: String;
-  slug: String;
-  imageUrl: String;
-  description: String;
-  votesCount: Int;
-  commentsCount: Int;
-}
-
-export interface PostScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
-  published?: Boolean;
-  published_not?: Boolean;
-  AND?: PostScalarWhereInput[] | PostScalarWhereInput;
-  OR?: PostScalarWhereInput[] | PostScalarWhereInput;
-  NOT?: PostScalarWhereInput[] | PostScalarWhereInput;
-}
-
-export interface UserUpdateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  update?: UserUpdateWithoutPostsDataInput;
-  upsert?: UserUpsertWithoutPostsInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  update: PostUpdateWithoutAuthorDataInput;
-  create: PostCreateWithoutAuthorInput;
-}
-
-export interface TopicUpdateManyWithoutFollowedByInput {
+export interface TopicCreateManyWithoutFollowedByInput {
   create?:
     | TopicCreateWithoutFollowedByInput[]
     | TopicCreateWithoutFollowedByInput;
-  delete?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
   connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
-  set?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
-  disconnect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
-  update?:
-    | TopicUpdateWithWhereUniqueWithoutFollowedByInput[]
-    | TopicUpdateWithWhereUniqueWithoutFollowedByInput;
-  upsert?:
-    | TopicUpsertWithWhereUniqueWithoutFollowedByInput[]
-    | TopicUpsertWithWhereUniqueWithoutFollowedByInput;
-  deleteMany?: TopicScalarWhereInput[] | TopicScalarWhereInput;
-  updateMany?:
-    | TopicUpdateManyWithWhereNestedInput[]
-    | TopicUpdateManyWithWhereNestedInput;
 }
 
-export interface ProductCreateInput {
-  name: String;
-  slug: String;
-  imageUrl: String;
-  description: String;
-  votesCount: Int;
-  commentsCount: Int;
-  topics?: TopicCreateManyWithoutProductsInput;
+export interface UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput;
+  create: UserCreateWithoutPostsInput;
+}
+
+export interface ProductVoteCreateManyWithoutProductInput {
+  create?:
+    | ProductVoteCreateWithoutProductInput[]
+    | ProductVoteCreateWithoutProductInput;
+  connect?: ProductVoteWhereUniqueInput[] | ProductVoteWhereUniqueInput;
+}
+
+export interface PostUpdateManyMutationInput {
+  title?: String;
+  published?: Boolean;
+}
+
+export interface PostCreateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+}
+
+export interface UserUpdateWithoutFollowedTopicsDataInput {
+  email?: String;
+  role?: Role;
+  name?: String;
+  avatar?: String;
+  auth0id?: String;
+  identity?: String;
+  privateKey?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -1159,19 +1466,47 @@ export interface UserSubscriptionWhereInput {
   NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
 }
 
+export interface UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutFollowedTopicsDataInput;
+}
+
+export interface TopicUpdateInput {
+  name?: String;
+  slug?: String;
+  products?: ProductUpdateManyWithoutTopicsInput;
+  followedBy?: UserUpdateManyWithoutFollowedTopicsInput;
+}
+
+export interface ProductCreateInput {
+  name: String;
+  slug: String;
+  imageUrl: String;
+  description: String;
+  votesCount: Int;
+  commentsCount: Int;
+  topics?: TopicCreateManyWithoutProductsInput;
+  votes?: ProductVoteCreateManyWithoutProductInput;
+}
+
+export interface ProductCreateWithoutVotesInput {
+  name: String;
+  slug: String;
+  imageUrl: String;
+  description: String;
+  votesCount: Int;
+  commentsCount: Int;
+  topics?: TopicCreateManyWithoutProductsInput;
+}
+
 export interface TopicCreateManyWithoutProductsInput {
   create?: TopicCreateWithoutProductsInput[] | TopicCreateWithoutProductsInput;
   connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
 }
 
-export interface UserUpdateManyMutationInput {
-  email?: String;
-  role?: Role;
-  name?: String;
-  avatar?: String;
-  auth0id?: String;
-  identity?: String;
-  privateKey?: String;
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
 }
 
 export interface TopicCreateWithoutProductsInput {
@@ -1180,9 +1515,9 @@ export interface TopicCreateWithoutProductsInput {
   followedBy?: UserCreateManyWithoutFollowedTopicsInput;
 }
 
-export interface TopicUpdateManyMutationInput {
-  name?: String;
-  slug?: String;
+export interface ProductCreateManyWithoutTopicsInput {
+  create?: ProductCreateWithoutTopicsInput[] | ProductCreateWithoutTopicsInput;
+  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
 }
 
 export interface UserCreateManyWithoutFollowedTopicsInput {
@@ -1192,13 +1527,10 @@ export interface UserCreateManyWithoutFollowedTopicsInput {
   connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
 }
 
-export interface ProductUpdateManyMutationInput {
-  name?: String;
-  slug?: String;
-  imageUrl?: String;
-  description?: String;
-  votesCount?: Int;
-  commentsCount?: Int;
+export interface PostUpdateInput {
+  title?: String;
+  published?: Boolean;
+  author?: UserUpdateOneWithoutPostsInput;
 }
 
 export interface UserCreateWithoutFollowedTopicsInput {
@@ -1212,32 +1544,7 @@ export interface UserCreateWithoutFollowedTopicsInput {
   posts?: PostCreateManyWithoutAuthorInput;
 }
 
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface PostCreateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-}
-
-export interface UserCreateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface PostCreateWithoutAuthorInput {
-  title: String;
-  published?: Boolean;
-}
-
-export interface ProductCreateManyWithoutTopicsInput {
-  create?: ProductCreateWithoutTopicsInput[] | ProductCreateWithoutTopicsInput;
-  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput;
-}
-
-export interface ProductUpdateInput {
+export interface ProductUpdateWithoutVotesDataInput {
   name?: String;
   slug?: String;
   imageUrl?: String;
@@ -1247,15 +1554,15 @@ export interface ProductUpdateInput {
   topics?: TopicUpdateManyWithoutProductsInput;
 }
 
-export interface UserUpdateWithoutPostsDataInput {
-  email?: String;
-  role?: Role;
+export interface TopicUpdateWithoutProductsDataInput {
   name?: String;
-  avatar?: String;
-  auth0id?: String;
-  identity?: String;
-  privateKey?: String;
-  followedTopics?: TopicUpdateManyWithoutFollowedByInput;
+  slug?: String;
+  followedBy?: UserUpdateManyWithoutFollowedTopicsInput;
+}
+
+export interface TopicUpdateWithWhereUniqueWithoutProductsInput {
+  where: TopicWhereUniqueInput;
+  data: TopicUpdateWithoutProductsDataInput;
 }
 
 export interface TopicUpdateManyWithoutProductsInput {
@@ -1276,139 +1583,49 @@ export interface TopicUpdateManyWithoutProductsInput {
     | TopicUpdateManyWithWhereNestedInput;
 }
 
-export interface ProductSubscriptionWhereInput {
+export interface ProductUpdateInput {
+  name?: String;
+  slug?: String;
+  imageUrl?: String;
+  description?: String;
+  votesCount?: Int;
+  commentsCount?: Int;
+  topics?: TopicUpdateManyWithoutProductsInput;
+  votes?: ProductVoteUpdateManyWithoutProductInput;
+}
+
+export interface ProductUpdateManyMutationInput {
+  name?: String;
+  slug?: String;
+  imageUrl?: String;
+  description?: String;
+  votesCount?: Int;
+  commentsCount?: Int;
+}
+
+export interface PostSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: ProductWhereInput;
-  AND?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput;
-  OR?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput;
-  NOT?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput;
+  node?: PostWhereInput;
+  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
 }
 
-export interface TopicUpdateWithWhereUniqueWithoutProductsInput {
-  where: TopicWhereUniqueInput;
-  data: TopicUpdateWithoutProductsDataInput;
+export interface UserCreateOneInput {
+  create?: UserCreateInput;
+  connect?: UserWhereUniqueInput;
 }
 
-export type TopicWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  slug?: String;
-}>;
-
-export interface TopicCreateManyWithoutFollowedByInput {
-  create?:
-    | TopicCreateWithoutFollowedByInput[]
-    | TopicCreateWithoutFollowedByInput;
-  connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
-}
-
-export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  data: PostUpdateWithoutAuthorDataInput;
-}
-
-export interface TopicUpdateWithoutProductsDataInput {
-  name?: String;
-  slug?: String;
-  followedBy?: UserUpdateManyWithoutFollowedTopicsInput;
-}
-
-export interface PostUpdateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  set?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  update?:
-    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    | PostUpdateWithWhereUniqueWithoutAuthorInput;
-  upsert?:
-    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    | PostUpsertWithWhereUniqueWithoutAuthorInput;
-  deleteMany?: PostScalarWhereInput[] | PostScalarWhereInput;
-  updateMany?:
-    | PostUpdateManyWithWhereNestedInput[]
-    | PostUpdateManyWithWhereNestedInput;
-}
-
-export interface UserUpdateWithoutFollowedTopicsDataInput {
-  email?: String;
-  role?: Role;
-  name?: String;
-  avatar?: String;
-  auth0id?: String;
-  identity?: String;
-  privateKey?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
-}
-
-export interface UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutFollowedTopicsDataInput;
-}
-
-export interface UserUpdateManyWithoutFollowedTopicsInput {
-  create?:
-    | UserCreateWithoutFollowedTopicsInput[]
-    | UserCreateWithoutFollowedTopicsInput;
-  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  set?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  update?:
-    | UserUpdateWithWhereUniqueWithoutFollowedTopicsInput[]
-    | UserUpdateWithWhereUniqueWithoutFollowedTopicsInput;
-  upsert?:
-    | UserUpsertWithWhereUniqueWithoutFollowedTopicsInput[]
-    | UserUpsertWithWhereUniqueWithoutFollowedTopicsInput;
-  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput;
-  updateMany?:
-    | UserUpdateManyWithWhereNestedInput[]
-    | UserUpdateManyWithWhereNestedInput;
-}
-
-export interface PostUpdateInput {
-  title?: String;
-  published?: Boolean;
-  author?: UserUpdateOneWithoutPostsInput;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-  auth0id?: String;
-}>;
-
-export type ProductWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  slug?: String;
-}>;
-
-export interface TopicUpdateWithWhereUniqueWithoutFollowedByInput {
-  where: TopicWhereUniqueInput;
-  data: TopicUpdateWithoutFollowedByDataInput;
+export interface UserCreateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput;
+  connect?: UserWhereUniqueInput;
 }
 
 export interface NodeNode {
   id: ID_Output;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
 }
 
 export interface UserPreviousValues {
@@ -1448,18 +1665,120 @@ export interface UserPreviousValuesSubscription
   privateKey: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregatePost {
+export interface PostEdge {
+  node: Post;
+  cursor: String;
+}
+
+export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
+  node: <T = PostPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PostEdgeSubscription
+  extends Promise<AsyncIterator<PostEdge>>,
+    Fragmentable {
+  node: <T = PostSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TopicSubscriptionPayload {
+  mutation: MutationType;
+  node: Topic;
+  updatedFields: String[];
+  previousValues: TopicPreviousValues;
+}
+
+export interface TopicSubscriptionPayloadPromise
+  extends Promise<TopicSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TopicPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TopicPreviousValuesPromise>() => T;
+}
+
+export interface TopicSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TopicSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TopicSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TopicPreviousValuesSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PostConnection {
+  pageInfo: PageInfo;
+  edges: PostEdge[];
+}
+
+export interface PostConnectionPromise
+  extends Promise<PostConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PostEdge>>() => T;
+  aggregate: <T = AggregatePostPromise>() => T;
+}
+
+export interface PostConnectionSubscription
+  extends Promise<AsyncIterator<PostConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePostSubscription>() => T;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface AggregateUser {
   count: Int;
 }
 
-export interface AggregatePostPromise
-  extends Promise<AggregatePost>,
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregatePostSubscription
-  extends Promise<AsyncIterator<AggregatePost>>,
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -1528,21 +1847,334 @@ export interface TopicSubscription
   ) => T;
 }
 
-export interface PostEdge {
-  node: Post;
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface ProductVote {
+  id: ID_Output;
+}
+
+export interface ProductVotePromise extends Promise<ProductVote>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  product: <T = ProductPromise>() => T;
+  user: <T = UserPromise>() => T;
+}
+
+export interface ProductVoteSubscription
+  extends Promise<AsyncIterator<ProductVote>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  product: <T = ProductSubscription>() => T;
+  user: <T = UserSubscription>() => T;
+}
+
+export interface TopicEdge {
+  node: Topic;
   cursor: String;
 }
 
-export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
-  node: <T = PostPromise>() => T;
+export interface TopicEdgePromise extends Promise<TopicEdge>, Fragmentable {
+  node: <T = TopicPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface PostEdgeSubscription
-  extends Promise<AsyncIterator<PostEdge>>,
+export interface TopicEdgeSubscription
+  extends Promise<AsyncIterator<TopicEdge>>,
     Fragmentable {
-  node: <T = PostSubscription>() => T;
+  node: <T = TopicSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Post {
+  id: ID_Output;
+  title: String;
+  published: Boolean;
+}
+
+export interface PostPromise extends Promise<Post>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  published: () => Promise<Boolean>;
+  author: <T = UserPromise>() => T;
+}
+
+export interface PostSubscription
+  extends Promise<AsyncIterator<Post>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  published: () => Promise<AsyncIterator<Boolean>>;
+  author: <T = UserSubscription>() => T;
+}
+
+export interface AggregateProductVote {
+  count: Int;
+}
+
+export interface AggregateProductVotePromise
+  extends Promise<AggregateProductVote>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateProductVoteSubscription
+  extends Promise<AsyncIterator<AggregateProductVote>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PostSubscriptionPayload {
+  mutation: MutationType;
+  node: Post;
+  updatedFields: String[];
+  previousValues: PostPreviousValues;
+}
+
+export interface PostSubscriptionPayloadPromise
+  extends Promise<PostSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PostPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PostPreviousValuesPromise>() => T;
+}
+
+export interface PostSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PostSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PostPreviousValuesSubscription>() => T;
+}
+
+export interface ProductVoteConnection {
+  pageInfo: PageInfo;
+  edges: ProductVoteEdge[];
+}
+
+export interface ProductVoteConnectionPromise
+  extends Promise<ProductVoteConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ProductVoteEdge>>() => T;
+  aggregate: <T = AggregateProductVotePromise>() => T;
+}
+
+export interface ProductVoteConnectionSubscription
+  extends Promise<AsyncIterator<ProductVoteConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ProductVoteEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateProductVoteSubscription>() => T;
+}
+
+export interface PostPreviousValues {
+  id: ID_Output;
+  title: String;
+  published: Boolean;
+}
+
+export interface PostPreviousValuesPromise
+  extends Promise<PostPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  published: () => Promise<Boolean>;
+}
+
+export interface PostPreviousValuesSubscription
+  extends Promise<AsyncIterator<PostPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  published: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface ProductEdge {
+  node: Product;
+  cursor: String;
+}
+
+export interface ProductEdgePromise extends Promise<ProductEdge>, Fragmentable {
+  node: <T = ProductPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ProductEdgeSubscription
+  extends Promise<AsyncIterator<ProductEdge>>,
+    Fragmentable {
+  node: <T = ProductSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TopicPreviousValues {
+  id: ID_Output;
+  name: String;
+  slug: String;
+}
+
+export interface TopicPreviousValuesPromise
+  extends Promise<TopicPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  slug: () => Promise<String>;
+}
+
+export interface TopicPreviousValuesSubscription
+  extends Promise<AsyncIterator<TopicPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  slug: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePost {
+  count: Int;
+}
+
+export interface AggregatePostPromise
+  extends Promise<AggregatePost>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePostSubscription
+  extends Promise<AsyncIterator<AggregatePost>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ProductSubscriptionPayload {
+  mutation: MutationType;
+  node: Product;
+  updatedFields: String[];
+  previousValues: ProductPreviousValues;
+}
+
+export interface ProductSubscriptionPayloadPromise
+  extends Promise<ProductSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ProductPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ProductPreviousValuesPromise>() => T;
+}
+
+export interface ProductSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ProductSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ProductSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ProductPreviousValuesSubscription>() => T;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ProductPreviousValues {
+  id: ID_Output;
+  name: String;
+  slug: String;
+  imageUrl: String;
+  description: String;
+  votesCount: Int;
+  commentsCount: Int;
+}
+
+export interface ProductPreviousValuesPromise
+  extends Promise<ProductPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  slug: () => Promise<String>;
+  imageUrl: () => Promise<String>;
+  description: () => Promise<String>;
+  votesCount: () => Promise<Int>;
+  commentsCount: () => Promise<Int>;
+}
+
+export interface ProductPreviousValuesSubscription
+  extends Promise<AsyncIterator<ProductPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  slug: () => Promise<AsyncIterator<String>>;
+  imageUrl: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  votesCount: () => Promise<AsyncIterator<Int>>;
+  commentsCount: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TopicConnection {
+  pageInfo: PageInfo;
+  edges: TopicEdge[];
+}
+
+export interface TopicConnectionPromise
+  extends Promise<TopicConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TopicEdge>>() => T;
+  aggregate: <T = AggregateTopicPromise>() => T;
+}
+
+export interface TopicConnectionSubscription
+  extends Promise<AsyncIterator<TopicConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TopicEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTopicSubscription>() => T;
+}
+
+export interface AggregateProduct {
+  count: Int;
+}
+
+export interface AggregateProductPromise
+  extends Promise<AggregateProduct>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateProductSubscription
+  extends Promise<AsyncIterator<AggregateProduct>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface User {
@@ -1624,6 +2256,47 @@ export interface UserSubscription
   ) => T;
 }
 
+export interface ProductVotePreviousValues {
+  id: ID_Output;
+}
+
+export interface ProductVotePreviousValuesPromise
+  extends Promise<ProductVotePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+}
+
+export interface ProductVotePreviousValuesSubscription
+  extends Promise<AsyncIterator<ProductVotePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+}
+
+export interface ProductVoteSubscriptionPayload {
+  mutation: MutationType;
+  node: ProductVote;
+  updatedFields: String[];
+  previousValues: ProductVotePreviousValues;
+}
+
+export interface ProductVoteSubscriptionPayloadPromise
+  extends Promise<ProductVoteSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ProductVotePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ProductVotePreviousValuesPromise>() => T;
+}
+
+export interface ProductVoteSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ProductVoteSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ProductVoteSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ProductVotePreviousValuesSubscription>() => T;
+}
+
 export interface Product {
   id: ID_Output;
   name: String;
@@ -1646,6 +2319,17 @@ export interface ProductPromise extends Promise<Product>, Fragmentable {
     args?: {
       where?: TopicWhereInput;
       orderBy?: TopicOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  votes: <T = FragmentableArray<ProductVote>>(
+    args?: {
+      where?: ProductVoteWhereInput;
+      orderBy?: ProductVoteOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
@@ -1676,193 +2360,17 @@ export interface ProductSubscription
       last?: Int;
     }
   ) => T;
-}
-
-export interface TopicSubscriptionPayload {
-  mutation: MutationType;
-  node: Topic;
-  updatedFields: String[];
-  previousValues: TopicPreviousValues;
-}
-
-export interface TopicSubscriptionPayloadPromise
-  extends Promise<TopicSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TopicPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TopicPreviousValuesPromise>() => T;
-}
-
-export interface TopicSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TopicSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TopicSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TopicPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Post {
-  id: ID_Output;
-  title: String;
-  published: Boolean;
-}
-
-export interface PostPromise extends Promise<Post>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  published: () => Promise<Boolean>;
-  author: <T = UserPromise>() => T;
-}
-
-export interface PostSubscription
-  extends Promise<AsyncIterator<Post>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  published: () => Promise<AsyncIterator<Boolean>>;
-  author: <T = UserSubscription>() => T;
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface PostSubscriptionPayload {
-  mutation: MutationType;
-  node: Post;
-  updatedFields: String[];
-  previousValues: PostPreviousValues;
-}
-
-export interface PostSubscriptionPayloadPromise
-  extends Promise<PostSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PostPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PostPreviousValuesPromise>() => T;
-}
-
-export interface PostSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PostSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PostPreviousValuesSubscription>() => T;
-}
-
-export interface TopicEdge {
-  node: Topic;
-  cursor: String;
-}
-
-export interface TopicEdgePromise extends Promise<TopicEdge>, Fragmentable {
-  node: <T = TopicPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TopicEdgeSubscription
-  extends Promise<AsyncIterator<TopicEdge>>,
-    Fragmentable {
-  node: <T = TopicSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PostPreviousValues {
-  id: ID_Output;
-  title: String;
-  published: Boolean;
-}
-
-export interface PostPreviousValuesPromise
-  extends Promise<PostPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  published: () => Promise<Boolean>;
-}
-
-export interface PostPreviousValuesSubscription
-  extends Promise<AsyncIterator<PostPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  published: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface AggregateProduct {
-  count: Int;
-}
-
-export interface AggregateProductPromise
-  extends Promise<AggregateProduct>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateProductSubscription
-  extends Promise<AsyncIterator<AggregateProduct>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  votes: <T = Promise<AsyncIterator<ProductVoteSubscription>>>(
+    args?: {
+      where?: ProductVoteWhereInput;
+      orderBy?: ProductVoteOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
 }
 
 export interface ProductConnection {
@@ -1886,106 +2394,39 @@ export interface ProductConnectionSubscription
   aggregate: <T = AggregateProductSubscription>() => T;
 }
 
-export interface TopicPreviousValues {
-  id: ID_Output;
-  name: String;
-  slug: String;
+export interface ProductVoteEdge {
+  node: ProductVote;
+  cursor: String;
 }
 
-export interface TopicPreviousValuesPromise
-  extends Promise<TopicPreviousValues>,
+export interface ProductVoteEdgePromise
+  extends Promise<ProductVoteEdge>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  slug: () => Promise<String>;
+  node: <T = ProductVotePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface TopicPreviousValuesSubscription
-  extends Promise<AsyncIterator<TopicPreviousValues>>,
+export interface ProductVoteEdgeSubscription
+  extends Promise<AsyncIterator<ProductVoteEdge>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  slug: () => Promise<AsyncIterator<String>>;
+  node: <T = ProductVoteSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface ProductPreviousValues {
-  id: ID_Output;
-  name: String;
-  slug: String;
-  imageUrl: String;
-  description: String;
-  votesCount: Int;
-  commentsCount: Int;
+export interface AggregateTopic {
+  count: Int;
 }
 
-export interface ProductPreviousValuesPromise
-  extends Promise<ProductPreviousValues>,
+export interface AggregateTopicPromise
+  extends Promise<AggregateTopic>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  slug: () => Promise<String>;
-  imageUrl: () => Promise<String>;
-  description: () => Promise<String>;
-  votesCount: () => Promise<Int>;
-  commentsCount: () => Promise<Int>;
+  count: () => Promise<Int>;
 }
 
-export interface ProductPreviousValuesSubscription
-  extends Promise<AsyncIterator<ProductPreviousValues>>,
+export interface AggregateTopicSubscription
+  extends Promise<AsyncIterator<AggregateTopic>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  slug: () => Promise<AsyncIterator<String>>;
-  imageUrl: () => Promise<AsyncIterator<String>>;
-  description: () => Promise<AsyncIterator<String>>;
-  votesCount: () => Promise<AsyncIterator<Int>>;
-  commentsCount: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ProductSubscriptionPayload {
-  mutation: MutationType;
-  node: Product;
-  updatedFields: String[];
-  previousValues: ProductPreviousValues;
-}
-
-export interface ProductSubscriptionPayloadPromise
-  extends Promise<ProductSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ProductPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ProductPreviousValuesPromise>() => T;
-}
-
-export interface ProductSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ProductSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ProductSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ProductPreviousValuesSubscription>() => T;
-}
-
-export interface PostConnection {
-  pageInfo: PageInfo;
-  edges: PostEdge[];
-}
-
-export interface PostConnectionPromise
-  extends Promise<PostConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PostEdge>>() => T;
-  aggregate: <T = AggregatePostPromise>() => T;
-}
-
-export interface PostConnectionSubscription
-  extends Promise<AsyncIterator<PostConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePostSubscription>() => T;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -2013,76 +2454,10 @@ export interface UserSubscriptionPayloadSubscription
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface ProductEdge {
-  node: Product;
-  cursor: String;
-}
-
-export interface ProductEdgePromise extends Promise<ProductEdge>, Fragmentable {
-  node: <T = ProductPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ProductEdgeSubscription
-  extends Promise<AsyncIterator<ProductEdge>>,
-    Fragmentable {
-  node: <T = ProductSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TopicConnection {
-  pageInfo: PageInfo;
-  edges: TopicEdge[];
-}
-
-export interface TopicConnectionPromise
-  extends Promise<TopicConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TopicEdge>>() => T;
-  aggregate: <T = AggregateTopicPromise>() => T;
-}
-
-export interface TopicConnectionSubscription
-  extends Promise<AsyncIterator<TopicConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TopicEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTopicSubscription>() => T;
-}
-
-export interface AggregateTopic {
-  count: Int;
-}
-
-export interface AggregateTopicPromise
-  extends Promise<AggregateTopic>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTopicSubscription
-  extends Promise<AsyncIterator<AggregateTopic>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
 
 export type Long = string;
 
@@ -2093,19 +2468,14 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
-
-/*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
 export type String = string;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
 
 /**
  * Model Metadata
@@ -2126,6 +2496,10 @@ export const models: Model[] = [
   },
   {
     name: "Topic",
+    embedded: false
+  },
+  {
+    name: "ProductVote",
     embedded: false
   },
   {

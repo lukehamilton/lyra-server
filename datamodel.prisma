@@ -32,6 +32,7 @@ type Product {
   votesCount: Int!
   commentsCount: Int!
   topics: [Topic!]! @relation(name: "ProductTopics")
+  votes: [ProductVote!]!
 }
 
 type Topic {
@@ -40,6 +41,12 @@ type Topic {
   slug: String! @unique
   products: [Product!]! @relation(name: "ProductTopics")
   followedBy: [User!]! @relation(name: "FollowedTopics")
+}
+
+type ProductVote {
+  id: ID! @unique
+  product: Product!
+  user: User!
 }
 
 # type Product {
