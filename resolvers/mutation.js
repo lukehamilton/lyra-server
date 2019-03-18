@@ -51,44 +51,44 @@ const Mutations = {
       data: { followedTopics: { [action]: { id: topicId } } }
     });
     return context.prisma.topic({ id: topicId });
-  },
-
-  createDraft(root, args, context) {
-    return context.prisma.createPost({
-      title: args.title,
-      author: {
-        connect: { id: args.userId }
-      }
-    });
-  },
-  createTopic(root, args, context) {
-    return context.prisma.createTopic({
-      name: args.name,
-      slug: args.slug
-    });
-  },
-  createProduct(root, args, context) {
-    return context.prisma.createProduct({
-      name: args.name,
-      slug: args.slug,
-      imageUrl: args.imageUrl,
-      description: args.description,
-      votesCount: args.votesCount,
-      commentsCount: args.commentsCount,
-      topics: {
-        connect: { id: args.topicId }
-      }
-    });
-  },
-  publish(root, args, context) {
-    return context.prisma.updatePost({
-      where: { id: args.postId },
-      data: { published: true }
-    });
-  },
-  createUser(root, args, context) {
-    return context.prisma.createUser({ name: args.name });
   }
+
+  // createDraft(root, args, context) {
+  //   return context.prisma.createPost({
+  //     title: args.title,
+  //     author: {
+  //       connect: { id: args.userId }
+  //     }
+  //   });
+  // },
+  // createTopic(root, args, context) {
+  //   return context.prisma.createTopic({
+  //     name: args.name,
+  //     slug: args.slug
+  //   });
+  // },
+  // createProduct(root, args, context) {
+  //   return context.prisma.createProduct({
+  //     name: args.name,
+  //     slug: args.slug,
+  //     imageUrl: args.imageUrl,
+  //     description: args.description,
+  //     votesCount: args.votesCount,
+  //     commentsCount: args.commentsCount,
+  //     topics: {
+  //       connect: { id: args.topicId }
+  //     }
+  //   });
+  // },
+  // publish(root, args, context) {
+  //   return context.prisma.updatePost({
+  //     where: { id: args.postId },
+  //     data: { published: true }
+  //   });
+  // },
+  // createUser(root, args, context) {
+  //   return context.prisma.createUser({ name: args.name });
+  // }
 };
 
 module.exports = Mutations;

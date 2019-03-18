@@ -3,6 +3,11 @@ enum Role {
   USER
 }
 
+enum PostType {
+  PRODUCT
+  LINK
+}
+
 type User {
   id: ID! @unique
   email: String @unique
@@ -12,42 +17,56 @@ type User {
   auth0id: String! @unique
   identity: String
   privateKey: String
-  posts: [Post!]!
   followedTopics: [Topic!]! @relation(name: "FollowedTopics")
-}
-
-type Post {
-  id: ID! @unique
-  title: String!
-  published: Boolean! @default(value: "false")
-  author: User
-}
-
-type Product {
-  id: ID! @unique
-  name: String!
-  slug: String! @unique
-  imageUrl: String!
-  description: String!
-  votesCount: Int!
-  commentsCount: Int!
-  topics: [Topic!]! @relation(name: "ProductTopics")
-  votes: [ProductVote!]!
 }
 
 type Topic {
   id: ID! @unique
   name: String!
   slug: String! @unique
-  products: [Product!]! @relation(name: "ProductTopics")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  description: String
+  image: String
+  followersCount: Int
+  postsCount: Int
+  trending: Boolean
+  posts: [Post!]! @relation(name: "PostTopics")
   followedBy: [User!]! @relation(name: "FollowedTopics")
 }
 
-type ProductVote {
+type Post {
   id: ID! @unique
-  product: Product!
-  user: User!
+  type: PostType @default(value: PRODUCT)
+  name: String!
+  slug: String! @unique
+  thumbnail: String!
+  description: String!
+  votesCount: Int!
+  commentsCount: Int!
+  day: String
+  featured: Boolean
+  topics: [Topic!]! @relation(name: "PostTopics")
+  votes: [Vote!]!
 }
+
+type Vote {
+  id: ID! @unique
+  user: User!
+  post: Post!
+}
+
+type Section {
+  id: ID! @unique
+  date: String! @unique
+  posts: [Post!]!
+}
+
+# type Vote {
+#   id: ID! @unique
+#   post: Post!
+#   user: User!
+# }
 
 # type Product {
 #   id: ID! @unique

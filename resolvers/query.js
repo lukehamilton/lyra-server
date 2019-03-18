@@ -1,20 +1,20 @@
 const ctxUser = ctx => ctx.request.user;
 
 const Query = {
-  publishedPosts(root, args, context) {
-    return context.prisma.posts({ where: { published: true } });
-  },
-  post(root, args, context) {
-    return context.prisma.post({ id: args.postId });
-  },
+  // publishedPosts(root, args, context) {
+  //   return context.prisma.posts({ where: { published: true } });
+  // },
+  // post(root, args, context) {
+  //   return context.prisma.post({ id: args.postId });
+  // },
   // products(root, args, context, info) {
   //   return context.prisma.products({ first: args.first });
   // },
-  products(root, args, context, info) {
-    console.log('products query');
+  posts(root, args, context, info) {
+    console.log('posts query');
     // console.log('context.request.user', context.request.user)
     return context.prisma
-      .products({ first: args.first, skip: args.skip })
+      .posts({ first: args.first, skip: args.skip })
       .$fragment(
         `{ id name slug description imageUrl topics { id  name slug } }`
       );
@@ -29,14 +29,14 @@ const Query = {
   },
   topics(root, args, context, info) {
     return context.prisma.topics();
-  },
-  postsByUser(root, args, context) {
-    return context.prisma
-      .user({
-        id: args.userId
-      })
-      .posts();
   }
+  // postsByUser(root, args, context) {
+  //   return context.prisma
+  //     .user({
+  //       id: args.userId
+  //     })
+  //     .posts();
+  // }
 };
 
 module.exports = Query;
