@@ -8,7 +8,7 @@ type Query {
   # postsByUser(userId: ID!): [Post!]!
   posts(first: Int, skip: Int): [Post!]!
   topics: [Topic!]!
-  sections: [Section!]!
+  sections(first: Int, skip: Int, after: String): [Section!]!
   me: User
 }
 
