@@ -6,4 +6,5 @@ generate:
   - generator: graphql-schema
     output: ./generated
 seed:
-  import: seed.graphql
+  run: node ./sample-data/seed.js
+  # import: seed.graphql

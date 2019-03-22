@@ -1,51 +1,34 @@
 # import Role from "./generated/prisma.graphql"
-# import ProductVote from "./generated/prisma.graphql"
+# import Post from "./generated/prisma.graphql"
+# import Topic from "./generated/prisma.graphql"
 
 type Query {
-  publishedPosts: [Post!]!
-  post(postId: ID!): Post
-  postsByUser(userId: ID!): [Post!]!
-  products(first: Int, skip: Int): [Product!]!
+  # publishedPosts: [Post!]!
+  # post(postId: ID!): Post
+  # postsByUser(userId: ID!): [Post!]!
+  posts(first: Int, skip: Int): [Post!]!
   topics: [Topic!]!
+  sections(first: Int, skip: Int, after: String): [Section!]!
   me: User
 }
 
 type Mutation {
   authenticate(idToken: String!): User
   createTopic(name: String!, slug: String!): Topic
-  createProduct(
+  createPost(
     name: String!
     slug: String!
     imageUrl: String!
     description: String!
     votesCount: Int
     commentsCount: Int
-  ): Product
+  ): Post
   # createProductTopic(productSlug: String!, topicSlug: String!): ProductTopic
-  createUser(name: String!): User
-  createDraft(title: String!, userId: ID!): Post
-  publish(postId: ID!): Post
+  # createUser(name: String!): User
+  # createDraft(title: String!, userId: ID!): Post
+  # publish(postId: ID!): Post
   updateFollowedTopic(userId: ID!, topicId: ID!, following: Boolean): Topic
-  upvoteProduct(productId: ID!): ProductVote
-}
-
-type Product {
-  id: ID!
-  name: String!
-  slug: String!
-  imageUrl: String!
-  description: String!
-  votesCount: Int!
-  commentsCount: Int!
-  topics: [Topic!]!
-}
-
-type Topic {
-  id: ID!
-  name: String!
-  slug: String!
-  products: [Product!]!
-  followedBy: [User!]!
+  # upvoteProduct(productId: ID!): ProductVote
 }
 
 type User {
@@ -56,16 +39,28 @@ type User {
   avatar: String
   identity: String
   privateKey: String
-  posts: [Post!]!
   followedTopics: [Topic!]!
 }
 
-type Post {
-  id: ID!
-  title: String!
-  published: Boolean!
-  author: User
-}
+# type Topic {
+#   id: ID!
+#   name: String!
+#   slug: String!
+#   posts: [Product!]!
+#   followedBy: [User!]!
+# }
+
+# type Product implements Post {
+#   id: ID!
+#   name: String!
+#   slug: String!
+#   imageUrl: String!
+#   description: String!
+#   votesCount: Int!
+#   commentsCount: Int!
+#   topics: [Topic!]!
+#   votes: [Vote!]!
+# }
 
 # type Product {
 #   id: ID!

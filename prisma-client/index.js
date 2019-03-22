@@ -9,23 +9,27 @@ var models = [
     embedded: false
   },
   {
-    name: "Post",
-    embedded: false
-  },
-  {
-    name: "Product",
-    embedded: false
-  },
-  {
     name: "Topic",
     embedded: false
   },
   {
-    name: "ProductVote",
+    name: "Post",
+    embedded: false
+  },
+  {
+    name: "Vote",
+    embedded: false
+  },
+  {
+    name: "Section",
     embedded: false
   },
   {
     name: "Role",
+    embedded: false
+  },
+  {
+    name: "PostType",
     embedded: false
   }
 ];

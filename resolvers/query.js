@@ -1,20 +1,16 @@
 const ctxUser = ctx => ctx.request.user;
 
 const Query = {
-  publishedPosts(root, args, context) {
-    return context.prisma.posts({ where: { published: true } });
-  },
-  post(root, args, context) {
-    return context.prisma.post({ id: args.postId });
-  },
-  // products(root, args, context, info) {
-  //   return context.prisma.products({ first: args.first });
-  // },
-  products(root, args, context, info) {
-    console.log('products query');
-    // console.log('context.request.user', context.request.user)
+  sections(root, args, context, info) {
     return context.prisma
-      .products({ first: args.first, skip: args.skip })
+      .sections({ first: args.first, skip: args.skip, after: args.after })
+      .$fragment(
+        `{ id date posts { id name slug description thumbnail topics { id  name slug } }}`
+      );
+  },
+  posts(root, args, context, info) {
+    return context.prisma
+      .posts({ first: args.first, skip: args.skip })
       .$fragment(
         `{ id name slug description imageUrl topics { id  name slug } }`
       );
@@ -25,17 +21,9 @@ const Query = {
         .user({ id: ctxUser(context).id })
         .$fragment(`{ id email name avatar followedTopics { id name } }`);
     }
-    // return { data: { me: null } };
   },
   topics(root, args, context, info) {
     return context.prisma.topics();
-  },
-  postsByUser(root, args, context) {
-    return context.prisma
-      .user({
-        id: args.userId
-      })
-      .posts();
   }
 };
 
