@@ -5,7 +5,7 @@ const Query = {
     return context.prisma
       .sections({ first: args.first, skip: args.skip, after: args.after })
       .$fragment(
-        `{ id date posts { id name slug description thumbnail topics { id  name slug } }}`
+        `{ id date posts { id name slug description thumbnail votesCount topics { id  name slug } }}`
       );
   },
   posts(root, args, context, info) {

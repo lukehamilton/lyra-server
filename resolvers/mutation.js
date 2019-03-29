@@ -29,8 +29,6 @@ const Mutations = {
     }
     const auth0id = userToken.sub.split('|')[1];
     let user = await context.prisma.user({ auth0id });
-    console.log('user', user);
-    // console.log('PR', user.privateKey);
     if (!user) {
       user = createPrismaUser(context, userToken);
     }
@@ -44,6 +42,16 @@ const Mutations = {
     return user;
   },
 
+  async vote(root, { postId }, context) {
+    console.log('---------context.request.user-----------');
+    console.log(context.request.user);
+    console.log('--------------------------------------');
+    console.log('---------postId-----------');
+    console.log(postId);
+    console.log('--------------------------------------');
+    return { name: 'cool bro' };
+  },
+
   async updateFollowedTopic(root, { userId, topicId, following }, context) {
     const action = following ? 'connect' : 'disconnect';
     await context.prisma.updateUser({
@@ -52,43 +60,6 @@ const Mutations = {
     });
     return context.prisma.topic({ id: topicId });
   }
-
-  // createDraft(root, args, context) {
-  //   return context.prisma.createPost({
-  //     title: args.title,
-  //     author: {
-  //       connect: { id: args.userId }
-  //     }
-  //   });
-  // },
-  // createTopic(root, args, context) {
-  //   return context.prisma.createTopic({
-  //     name: args.name,
-  //     slug: args.slug
-  //   });
-  // },
-  // createProduct(root, args, context) {
-  //   return context.prisma.createProduct({
-  //     name: args.name,
-  //     slug: args.slug,
-  //     imageUrl: args.imageUrl,
-  //     description: args.description,
-  //     votesCount: args.votesCount,
-  //     commentsCount: args.commentsCount,
-  //     topics: {
-  //       connect: { id: args.topicId }
-  //     }
-  //   });
-  // },
-  // publish(root, args, context) {
-  //   return context.prisma.updatePost({
-  //     where: { id: args.postId },
-  //     data: { published: true }
-  //   });
-  // },
-  // createUser(root, args, context) {
-  //   return context.prisma.createUser({ name: args.name });
-  // }
 };
 
 module.exports = Mutations;
