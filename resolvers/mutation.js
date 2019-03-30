@@ -1,4 +1,5 @@
 const validateAndParseIdToken = require('../helpers/validateAndParseIdToken');
+const ctxUser = require('../helpers/ctxUser');
 const { CryptoUtils } = require('loom-js');
 
 async function createPrismaUser(context, idToken) {
@@ -43,13 +44,22 @@ const Mutations = {
   },
 
   async vote(root, { postId }, context) {
-    console.log('---------context.request.user-----------');
-    console.log(context.request.user);
-    console.log('--------------------------------------');
-    console.log('---------postId-----------');
-    console.log(postId);
-    console.log('--------------------------------------');
-    return { name: 'cool bro' };
+    const userId = ctxUser(context).id;
+    const voteExists = await context.prisma.$exists.vote({
+      user: { id: userId },
+      post: { id: postId }
+    });
+    if (voteExists) {
+      console.log('voteexists', voteExists);
+      const votes = await context.prisma.user({ id: userId }).votes();
+      console.log('votes', votes);
+      // context.prisma.user({ id: ctxUser(context).id });
+    }
+
+    return context.prisma.createVote({
+      user: { connect: { id: userId } },
+      post: { connect: { id: postId } }
+    });
   },
 
   async updateFollowedTopic(root, { userId, topicId, following }, context) {

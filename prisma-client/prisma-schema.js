@@ -752,6 +752,7 @@ type Topic {
   trending: Boolean
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
   followedBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
 }
 
 type TopicConnection {
@@ -770,6 +771,7 @@ input TopicCreateInput {
   trending: Boolean
   posts: PostCreateManyWithoutTopicsInput
   followedBy: UserCreateManyWithoutFollowedTopicsInput
+  votes: VoteCreateManyInput
 }
 
 input TopicCreateManyWithoutFollowedByInput {
@@ -791,6 +793,7 @@ input TopicCreateWithoutFollowedByInput {
   postsCount: Int
   trending: Boolean
   posts: PostCreateManyWithoutTopicsInput
+  votes: VoteCreateManyInput
 }
 
 input TopicCreateWithoutPostsInput {
@@ -802,6 +805,7 @@ input TopicCreateWithoutPostsInput {
   postsCount: Int
   trending: Boolean
   followedBy: UserCreateManyWithoutFollowedTopicsInput
+  votes: VoteCreateManyInput
 }
 
 type TopicEdge {
@@ -983,6 +987,7 @@ input TopicUpdateInput {
   trending: Boolean
   posts: PostUpdateManyWithoutTopicsInput
   followedBy: UserUpdateManyWithoutFollowedTopicsInput
+  votes: VoteUpdateManyInput
 }
 
 input TopicUpdateManyDataInput {
@@ -1043,6 +1048,7 @@ input TopicUpdateWithoutFollowedByDataInput {
   postsCount: Int
   trending: Boolean
   posts: PostUpdateManyWithoutTopicsInput
+  votes: VoteUpdateManyInput
 }
 
 input TopicUpdateWithoutPostsDataInput {
@@ -1054,6 +1060,7 @@ input TopicUpdateWithoutPostsDataInput {
   postsCount: Int
   trending: Boolean
   followedBy: UserUpdateManyWithoutFollowedTopicsInput
+  votes: VoteUpdateManyInput
 }
 
 input TopicUpdateWithWhereUniqueWithoutFollowedByInput {
@@ -1189,6 +1196,9 @@ input TopicWhereInput {
   followedBy_every: UserWhereInput
   followedBy_some: UserWhereInput
   followedBy_none: UserWhereInput
+  votes_every: VoteWhereInput
+  votes_some: VoteWhereInput
+  votes_none: VoteWhereInput
   AND: [TopicWhereInput!]
   OR: [TopicWhereInput!]
   NOT: [TopicWhereInput!]
@@ -1209,6 +1219,7 @@ type User {
   identity: String
   privateKey: String
   followedTopics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic!]
+  votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
 }
 
 type UserConnection {
@@ -1226,6 +1237,7 @@ input UserCreateInput {
   identity: String
   privateKey: String
   followedTopics: TopicCreateManyWithoutFollowedByInput
+  votes: VoteCreateManyWithoutUserInput
 }
 
 input UserCreateManyWithoutFollowedTopicsInput {
@@ -1233,8 +1245,8 @@ input UserCreateManyWithoutFollowedTopicsInput {
   connect: [UserWhereUniqueInput!]
 }
 
-input UserCreateOneInput {
-  create: UserCreateInput
+input UserCreateOneWithoutVotesInput {
+  create: UserCreateWithoutVotesInput
   connect: UserWhereUniqueInput
 }
 
@@ -1246,6 +1258,18 @@ input UserCreateWithoutFollowedTopicsInput {
   auth0id: String!
   identity: String
   privateKey: String
+  votes: VoteCreateManyWithoutUserInput
+}
+
+input UserCreateWithoutVotesInput {
+  email: String
+  role: Role
+  name: String!
+  avatar: String
+  auth0id: String!
+  identity: String
+  privateKey: String
+  followedTopics: TopicCreateManyWithoutFollowedByInput
 }
 
 type UserEdge {
@@ -1413,17 +1437,6 @@ input UserSubscriptionWhereInput {
   NOT: [UserSubscriptionWhereInput!]
 }
 
-input UserUpdateDataInput {
-  email: String
-  role: Role
-  name: String
-  avatar: String
-  auth0id: String
-  identity: String
-  privateKey: String
-  followedTopics: TopicUpdateManyWithoutFollowedByInput
-}
-
 input UserUpdateInput {
   email: String
   role: Role
@@ -1433,6 +1446,7 @@ input UserUpdateInput {
   identity: String
   privateKey: String
   followedTopics: TopicUpdateManyWithoutFollowedByInput
+  votes: VoteUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyDataInput {
@@ -1472,10 +1486,10 @@ input UserUpdateManyWithWhereNestedInput {
   data: UserUpdateManyDataInput!
 }
 
-input UserUpdateOneRequiredInput {
-  create: UserCreateInput
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
+input UserUpdateOneRequiredWithoutVotesInput {
+  create: UserCreateWithoutVotesInput
+  update: UserUpdateWithoutVotesDataInput
+  upsert: UserUpsertWithoutVotesInput
   connect: UserWhereUniqueInput
 }
 
@@ -1487,6 +1501,18 @@ input UserUpdateWithoutFollowedTopicsDataInput {
   auth0id: String
   identity: String
   privateKey: String
+  votes: VoteUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutVotesDataInput {
+  email: String
+  role: Role
+  name: String
+  avatar: String
+  auth0id: String
+  identity: String
+  privateKey: String
+  followedTopics: TopicUpdateManyWithoutFollowedByInput
 }
 
 input UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
@@ -1494,9 +1520,9 @@ input UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
   data: UserUpdateWithoutFollowedTopicsDataInput!
 }
 
-input UserUpsertNestedInput {
-  update: UserUpdateDataInput!
-  create: UserCreateInput!
+input UserUpsertWithoutVotesInput {
+  update: UserUpdateWithoutVotesDataInput!
+  create: UserCreateWithoutVotesInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutFollowedTopicsInput {
@@ -1611,6 +1637,9 @@ input UserWhereInput {
   followedTopics_every: TopicWhereInput
   followedTopics_some: TopicWhereInput
   followedTopics_none: TopicWhereInput
+  votes_every: VoteWhereInput
+  votes_some: VoteWhereInput
+  votes_none: VoteWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -1635,8 +1664,13 @@ type VoteConnection {
 }
 
 input VoteCreateInput {
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutVotesInput!
   post: PostCreateOneWithoutVotesInput!
+}
+
+input VoteCreateManyInput {
+  create: [VoteCreateInput!]
+  connect: [VoteWhereUniqueInput!]
 }
 
 input VoteCreateManyWithoutPostInput {
@@ -1644,8 +1678,17 @@ input VoteCreateManyWithoutPostInput {
   connect: [VoteWhereUniqueInput!]
 }
 
+input VoteCreateManyWithoutUserInput {
+  create: [VoteCreateWithoutUserInput!]
+  connect: [VoteWhereUniqueInput!]
+}
+
 input VoteCreateWithoutPostInput {
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutVotesInput!
+}
+
+input VoteCreateWithoutUserInput {
+  post: PostCreateOneWithoutVotesInput!
 }
 
 type VoteEdge {
@@ -1704,9 +1747,25 @@ input VoteSubscriptionWhereInput {
   NOT: [VoteSubscriptionWhereInput!]
 }
 
-input VoteUpdateInput {
-  user: UserUpdateOneRequiredInput
+input VoteUpdateDataInput {
+  user: UserUpdateOneRequiredWithoutVotesInput
   post: PostUpdateOneRequiredWithoutVotesInput
+}
+
+input VoteUpdateInput {
+  user: UserUpdateOneRequiredWithoutVotesInput
+  post: PostUpdateOneRequiredWithoutVotesInput
+}
+
+input VoteUpdateManyInput {
+  create: [VoteCreateInput!]
+  update: [VoteUpdateWithWhereUniqueNestedInput!]
+  upsert: [VoteUpsertWithWhereUniqueNestedInput!]
+  delete: [VoteWhereUniqueInput!]
+  connect: [VoteWhereUniqueInput!]
+  set: [VoteWhereUniqueInput!]
+  disconnect: [VoteWhereUniqueInput!]
+  deleteMany: [VoteScalarWhereInput!]
 }
 
 input VoteUpdateManyWithoutPostInput {
@@ -1720,8 +1779,28 @@ input VoteUpdateManyWithoutPostInput {
   deleteMany: [VoteScalarWhereInput!]
 }
 
+input VoteUpdateManyWithoutUserInput {
+  create: [VoteCreateWithoutUserInput!]
+  delete: [VoteWhereUniqueInput!]
+  connect: [VoteWhereUniqueInput!]
+  set: [VoteWhereUniqueInput!]
+  disconnect: [VoteWhereUniqueInput!]
+  update: [VoteUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [VoteUpsertWithWhereUniqueWithoutUserInput!]
+  deleteMany: [VoteScalarWhereInput!]
+}
+
 input VoteUpdateWithoutPostDataInput {
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneRequiredWithoutVotesInput
+}
+
+input VoteUpdateWithoutUserDataInput {
+  post: PostUpdateOneRequiredWithoutVotesInput
+}
+
+input VoteUpdateWithWhereUniqueNestedInput {
+  where: VoteWhereUniqueInput!
+  data: VoteUpdateDataInput!
 }
 
 input VoteUpdateWithWhereUniqueWithoutPostInput {
@@ -1729,10 +1808,27 @@ input VoteUpdateWithWhereUniqueWithoutPostInput {
   data: VoteUpdateWithoutPostDataInput!
 }
 
+input VoteUpdateWithWhereUniqueWithoutUserInput {
+  where: VoteWhereUniqueInput!
+  data: VoteUpdateWithoutUserDataInput!
+}
+
+input VoteUpsertWithWhereUniqueNestedInput {
+  where: VoteWhereUniqueInput!
+  update: VoteUpdateDataInput!
+  create: VoteCreateInput!
+}
+
 input VoteUpsertWithWhereUniqueWithoutPostInput {
   where: VoteWhereUniqueInput!
   update: VoteUpdateWithoutPostDataInput!
   create: VoteCreateWithoutPostInput!
+}
+
+input VoteUpsertWithWhereUniqueWithoutUserInput {
+  where: VoteWhereUniqueInput!
+  update: VoteUpdateWithoutUserDataInput!
+  create: VoteCreateWithoutUserInput!
 }
 
 input VoteWhereInput {

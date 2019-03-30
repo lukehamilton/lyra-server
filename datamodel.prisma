@@ -18,6 +18,7 @@ type User {
   identity: String
   privateKey: String
   followedTopics: [Topic!]! @relation(name: "FollowedTopics")
+  votes: [Vote!]!
 }
 
 type Topic {

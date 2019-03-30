@@ -1,11 +1,11 @@
-const ctxUser = ctx => ctx.request.user;
+const ctxUser = require('../helpers/ctxUser');
 
 const Query = {
   sections(root, args, context, info) {
     return context.prisma
       .sections({ first: args.first, skip: args.skip, after: args.after })
       .$fragment(
-        `{ id date posts { id name slug description thumbnail votesCount topics { id  name slug } }}`
+        `{ id date posts { id name slug description thumbnail votesCount votes { id } topics { id  name slug } }}`
       );
   },
   posts(root, args, context, info) {

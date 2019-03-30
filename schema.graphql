@@ -1,7 +1,7 @@
 # import Role from "./generated/prisma.graphql"
-# import Post from "./generated/prisma.graphql"
 # import Topic from "./generated/prisma.graphql"
 # import Vote from "./generated/prisma.graphql"
+# import PostType from "./generated/prisma.graphql"
 
 type Query {
   posts(first: Int, skip: Int): [Post!]!
@@ -34,4 +34,21 @@ type User {
   identity: String
   privateKey: String
   followedTopics: [Topic!]!
+  votes: [Vote!]!
+}
+
+type Post {
+  id: ID!
+  type: PostType
+  name: String!
+  slug: String!
+  thumbnail: String!
+  description: String!
+  votesCount: Int!
+  commentsCount: Int!
+  day: String
+  featured: Boolean
+  upvoted: Boolean
+  topics: [Topic!]!
+  votes: [Vote!]!
 }
