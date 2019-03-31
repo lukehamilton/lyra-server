@@ -45,21 +45,34 @@ const Mutations = {
 
   async vote(root, { postId }, context) {
     const userId = ctxUser(context).id;
-    const voteExists = await context.prisma.$exists.vote({
-      user: { id: userId },
-      post: { id: postId }
-    });
-    if (voteExists) {
-      console.log('voteexists', voteExists);
-      const votes = await context.prisma.user({ id: userId }).votes();
-      console.log('votes', votes);
-      // context.prisma.user({ id: ctxUser(context).id });
+    const votes = await context.prisma
+      .user({ id: userId })
+      .votes()
+      .$fragment(`{ id post { id } }`);
+    const vote = votes.find(v => v.post.id === postId);
+    if (vote) {
+      return context.prisma.deleteVote({
+        id: vote.id
+      });
     }
-
     return context.prisma.createVote({
       user: { connect: { id: userId } },
       post: { connect: { id: postId } }
     });
+
+    // console.log('vote', vote);
+    // const vote = votes
+    // console.log('votes', votes);
+    // const voteExists = await context.prisma.$exists.vote({
+    //   user: { id: userId },
+    //   post: { id: postId }
+    // });
+    // if (voteExists) {
+    //   console.log('voteexists', voteExists);
+    //   const votes = await context.prisma.user({ id: userId }).votes();
+    //   console.log('votes', votes);
+    //   // context.prisma.user({ id: ctxUser(context).id });
+    // }
   },
 
   async updateFollowedTopic(root, { userId, topicId, following }, context) {

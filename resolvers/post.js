@@ -8,7 +8,6 @@ const Post = {
         user: { id: currentUser.id },
         post: { id: root.id }
       });
-      console.log('voteExists', voteExists);
       if (voteExists) {
         return true;
       }
