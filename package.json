@@ -8,7 +8,10 @@
     "playground": "graphql playground --dotenv dotenv/config",
     "dev": "npm-run-all --parallel debug",
     "lint": "eslint .",
-    "genkey": "./lib/loom genkey -k priv_key -a pub_key"
+    "gen:extdev-key": "./lib/bin/loom genkey -k extdev_private_key -a extdev_public_key",
+    "gen:rinkeby-key": "node ./lib/scripts/gen-eth-key.js rinkeby",
+    "deploy:extdev": "truffle deploy --network extdev_plasma_us1",
+    "deploy:reset:extdev": "truffle deploy --reset --network extdev_plasma_us1"
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",

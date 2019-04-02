@@ -1,5 +1,9 @@
 node_modules
 .env
-priv_key
+extdev_private_key
+extdev_public_key
+build
 pub_key
 lib/loom
+scratch.txt
+.DS_Store
