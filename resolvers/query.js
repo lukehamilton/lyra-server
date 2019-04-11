@@ -1,4 +1,7 @@
 const ctxUser = require('../helpers/ctxUser');
+const LyraClient = require('../lib/client');
+
+const client = new LyraClient();
 
 const Query = {
   sections(root, args, context, info) {
@@ -7,6 +10,9 @@ const Query = {
       .$fragment(
         `{ id date posts { id name slug description thumbnail votesCount votes { id } topics { id  name slug } }}`
       );
+  },
+  tokenInfo(root, args, context, info) {
+    return { totalSupply: client.tokenSupply() };
   },
   posts(root, args, context, info) {
     return context.prisma
