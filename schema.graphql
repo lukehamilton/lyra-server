@@ -24,6 +24,11 @@ type Mutation {
   ): Post
   vote(postId: ID!): Vote!
   updateFollowedTopic(userId: ID!, topicId: ID!, following: Boolean): Topic
+  mintTokens(amount: Int, address: String): Transaction
+}
+
+type Transaction {
+  hash: String
 }
 
 type TokenInfo {

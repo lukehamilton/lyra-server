@@ -17,6 +17,7 @@ type User {
   auth0id: String! @unique
   identity: String
   privateKey: String
+  address: String
   followedTopics: [Topic!]! @relation(name: "FollowedTopics")
   votes: [Vote!]!
 }

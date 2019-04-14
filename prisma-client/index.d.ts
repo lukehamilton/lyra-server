@@ -339,6 +339,8 @@ export type UserOrderByInput =
   | "identity_DESC"
   | "privateKey_ASC"
   | "privateKey_DESC"
+  | "address_ASC"
+  | "address_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -652,6 +654,7 @@ export interface UserUpdateInput {
   auth0id?: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
   followedTopics?: TopicUpdateManyWithoutFollowedByInput;
   votes?: VoteUpdateManyWithoutUserInput;
 }
@@ -676,6 +679,7 @@ export interface UserCreateInput {
   auth0id: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
   followedTopics?: TopicCreateManyWithoutFollowedByInput;
   votes?: VoteCreateManyWithoutUserInput;
 }
@@ -736,6 +740,7 @@ export interface UserUpdateWithoutFollowedTopicsDataInput {
   auth0id?: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
   votes?: VoteUpdateManyWithoutUserInput;
 }
 
@@ -943,6 +948,20 @@ export interface UserWhereInput {
   privateKey_not_starts_with?: String;
   privateKey_ends_with?: String;
   privateKey_not_ends_with?: String;
+  address?: String;
+  address_not?: String;
+  address_in?: String[] | String;
+  address_not_in?: String[] | String;
+  address_lt?: String;
+  address_lte?: String;
+  address_gt?: String;
+  address_gte?: String;
+  address_contains?: String;
+  address_not_contains?: String;
+  address_starts_with?: String;
+  address_not_starts_with?: String;
+  address_ends_with?: String;
+  address_not_ends_with?: String;
   followedTopics_every?: TopicWhereInput;
   followedTopics_some?: TopicWhereInput;
   followedTopics_none?: TopicWhereInput;
@@ -1198,6 +1217,20 @@ export interface UserScalarWhereInput {
   privateKey_not_starts_with?: String;
   privateKey_ends_with?: String;
   privateKey_not_ends_with?: String;
+  address?: String;
+  address_not?: String;
+  address_in?: String[] | String;
+  address_not_in?: String[] | String;
+  address_lt?: String;
+  address_lte?: String;
+  address_gt?: String;
+  address_gte?: String;
+  address_contains?: String;
+  address_not_contains?: String;
+  address_starts_with?: String;
+  address_not_starts_with?: String;
+  address_ends_with?: String;
+  address_not_ends_with?: String;
   AND?: UserScalarWhereInput[] | UserScalarWhereInput;
   OR?: UserScalarWhereInput[] | UserScalarWhereInput;
   NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
@@ -1226,6 +1259,7 @@ export interface UserUpdateManyDataInput {
   auth0id?: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
 }
 
 export interface TopicCreateManyWithoutFollowedByInput {
@@ -1284,6 +1318,7 @@ export interface UserUpdateManyMutationInput {
   auth0id?: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
 }
 
 export interface UserUpdateOneRequiredWithoutVotesInput {
@@ -1338,6 +1373,7 @@ export interface UserUpdateWithoutVotesDataInput {
   auth0id?: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
   followedTopics?: TopicUpdateManyWithoutFollowedByInput;
 }
 
@@ -1846,6 +1882,7 @@ export interface UserCreateWithoutVotesInput {
   auth0id: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
   followedTopics?: TopicCreateManyWithoutFollowedByInput;
 }
 
@@ -1857,6 +1894,7 @@ export interface UserCreateWithoutFollowedTopicsInput {
   auth0id: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
   votes?: VoteCreateManyWithoutUserInput;
 }
 
@@ -2137,6 +2175,7 @@ export interface UserPreviousValues {
   auth0id: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
 }
 
 export interface UserPreviousValuesPromise
@@ -2150,6 +2189,7 @@ export interface UserPreviousValuesPromise
   auth0id: () => Promise<String>;
   identity: () => Promise<String>;
   privateKey: () => Promise<String>;
+  address: () => Promise<String>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -2163,6 +2203,7 @@ export interface UserPreviousValuesSubscription
   auth0id: () => Promise<AsyncIterator<String>>;
   identity: () => Promise<AsyncIterator<String>>;
   privateKey: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
 }
 
 export interface User {
@@ -2174,6 +2215,7 @@ export interface User {
   auth0id: String;
   identity?: String;
   privateKey?: String;
+  address?: String;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -2185,6 +2227,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   auth0id: () => Promise<String>;
   identity: () => Promise<String>;
   privateKey: () => Promise<String>;
+  address: () => Promise<String>;
   followedTopics: <T = FragmentableArray<Topic>>(
     args?: {
       where?: TopicWhereInput;
@@ -2220,6 +2263,7 @@ export interface UserSubscription
   auth0id: () => Promise<AsyncIterator<String>>;
   identity: () => Promise<AsyncIterator<String>>;
   privateKey: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
   followedTopics: <T = Promise<AsyncIterator<TopicSubscription>>>(
     args?: {
       where?: TopicWhereInput;

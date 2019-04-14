@@ -6,6 +6,7 @@ const { prisma } = require('./prisma-client');
 const createServer = require('./create-server');
 const { checkJwt } = require('./middleware/jwt');
 const { getUser } = require('./middleware/getUser');
+const { getLyraClient } = require('./middleware/getLyraClient');
 const Mutation = require('./resolvers/mutation');
 const Query = require('./resolvers/query');
 
@@ -53,6 +54,19 @@ server.express.post(server.options.endpoint, (req, res, next) => {
   // console.log("At get User", req.user);
   // If there is a user on the request (get that)
   getUser(req, res, next, prisma);
+  // getLyraClient(req, res, next, prisma);
+
+  // next();
+  // Otherwise check if there is a cookie to get the user
+});
+
+server.express.post(server.options.endpoint, (req, res, next) => {
+  // console.log('req', req)
+  // console.log("At get User", req.user);
+  // If there is a user on the request (get that)
+  // getUser(req, res, next, prisma);
+  getLyraClient(req, res, next, prisma);
+
   // next();
   // Otherwise check if there is a cookie to get the user
 });

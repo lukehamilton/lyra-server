@@ -1218,6 +1218,7 @@ type User {
   auth0id: String!
   identity: String
   privateKey: String
+  address: String
   followedTopics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic!]
   votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
 }
@@ -1236,6 +1237,7 @@ input UserCreateInput {
   auth0id: String!
   identity: String
   privateKey: String
+  address: String
   followedTopics: TopicCreateManyWithoutFollowedByInput
   votes: VoteCreateManyWithoutUserInput
 }
@@ -1258,6 +1260,7 @@ input UserCreateWithoutFollowedTopicsInput {
   auth0id: String!
   identity: String
   privateKey: String
+  address: String
   votes: VoteCreateManyWithoutUserInput
 }
 
@@ -1269,6 +1272,7 @@ input UserCreateWithoutVotesInput {
   auth0id: String!
   identity: String
   privateKey: String
+  address: String
   followedTopics: TopicCreateManyWithoutFollowedByInput
 }
 
@@ -1294,6 +1298,8 @@ enum UserOrderByInput {
   identity_DESC
   privateKey_ASC
   privateKey_DESC
+  address_ASC
+  address_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1309,6 +1315,7 @@ type UserPreviousValues {
   auth0id: String!
   identity: String
   privateKey: String
+  address: String
 }
 
 input UserScalarWhereInput {
@@ -1414,6 +1421,20 @@ input UserScalarWhereInput {
   privateKey_not_starts_with: String
   privateKey_ends_with: String
   privateKey_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
   AND: [UserScalarWhereInput!]
   OR: [UserScalarWhereInput!]
   NOT: [UserScalarWhereInput!]
@@ -1445,6 +1466,7 @@ input UserUpdateInput {
   auth0id: String
   identity: String
   privateKey: String
+  address: String
   followedTopics: TopicUpdateManyWithoutFollowedByInput
   votes: VoteUpdateManyWithoutUserInput
 }
@@ -1457,6 +1479,7 @@ input UserUpdateManyDataInput {
   auth0id: String
   identity: String
   privateKey: String
+  address: String
 }
 
 input UserUpdateManyMutationInput {
@@ -1467,6 +1490,7 @@ input UserUpdateManyMutationInput {
   auth0id: String
   identity: String
   privateKey: String
+  address: String
 }
 
 input UserUpdateManyWithoutFollowedTopicsInput {
@@ -1501,6 +1525,7 @@ input UserUpdateWithoutFollowedTopicsDataInput {
   auth0id: String
   identity: String
   privateKey: String
+  address: String
   votes: VoteUpdateManyWithoutUserInput
 }
 
@@ -1512,6 +1537,7 @@ input UserUpdateWithoutVotesDataInput {
   auth0id: String
   identity: String
   privateKey: String
+  address: String
   followedTopics: TopicUpdateManyWithoutFollowedByInput
 }
 
@@ -1634,6 +1660,20 @@ input UserWhereInput {
   privateKey_not_starts_with: String
   privateKey_ends_with: String
   privateKey_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
   followedTopics_every: TopicWhereInput
   followedTopics_some: TopicWhereInput
   followedTopics_none: TopicWhereInput

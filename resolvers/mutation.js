@@ -1,6 +1,6 @@
 const validateAndParseIdToken = require('../helpers/validateAndParseIdToken');
 const ctxUser = require('../helpers/ctxUser');
-const { CryptoUtils } = require('loom-js');
+const { LocalAddress, CryptoUtils } = require('loom-js');
 
 async function createPrismaUser(context, idToken) {
   const bytes = CryptoUtils.generatePrivateKey();
@@ -8,14 +8,18 @@ async function createPrismaUser(context, idToken) {
     bytes.buffer,
     bytes.byteOffset,
     bytes.byteLength
-  ).toString('base64');
+  );
+  const privateKeyStr = privateKey.toString('base64');
+  const publicKey = CryptoUtils.publicKeyFromPrivateKey(privateKey);
+  const address = LocalAddress.fromPublicKey(publicKey).toString();
   const user = await context.prisma.createUser({
     identity: idToken.sub.split(`|`)[0],
     auth0id: idToken.sub.split(`|`)[1],
     name: idToken.name,
     email: idToken.email,
     avatar: idToken.picture,
-    privateKey
+    privateKey: privateKeyStr,
+    address
   });
   return user;
 }
@@ -41,6 +45,16 @@ const Mutations = {
     //   maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
     // });
     return user;
+  },
+
+  async mintTokens(root, { amount }, context, info) {
+    const userAddress = ctxUser(context).address;
+    const client = context.request.lyraClient;
+    const tx = await client.mint(userAddress, amount);
+    console.log('tx', tx);
+    // console.log('user', user);
+    // console.log('amount to mint', amount);
+    return { id: 66667 };
   },
 
   async vote(root, { postId }, context) {
