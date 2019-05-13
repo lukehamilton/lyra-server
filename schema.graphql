@@ -2,6 +2,7 @@
 # import Topic from "./generated/prisma.graphql"
 # import Vote from "./generated/prisma.graphql"
 # import PostType from "./generated/prisma.graphql"
+# import SignedUpload from "./generated/prisma.graphql"
 
 type Query {
   posts(first: Int, skip: Int): [Post!]!
@@ -25,6 +26,7 @@ type Mutation {
   vote(postId: ID!): Vote!
   updateFollowedTopic(userId: ID!, topicId: ID!, following: Boolean): Topic
   mintTokens(amount: Int, address: String): Transaction
+  signUpload(fileName: String, fileType: String): SignedUpload
 }
 
 type Transaction {

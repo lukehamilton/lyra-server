@@ -64,3 +64,8 @@ type Section {
   date: String! @unique
   posts: [Post!]!
 }
+
+type SignedUpload {
+  signedRequest: String
+  url: String
+}

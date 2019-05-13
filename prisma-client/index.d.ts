@@ -16,6 +16,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export interface Exists {
   post: (where?: PostWhereInput) => Promise<boolean>;
   section: (where?: SectionWhereInput) => Promise<boolean>;
+  signedUpload: (where?: SignedUploadWhereInput) => Promise<boolean>;
   topic: (where?: TopicWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
   vote: (where?: VoteWhereInput) => Promise<boolean>;
@@ -86,6 +87,28 @@ export interface Prisma {
       last?: Int;
     }
   ) => SectionConnectionPromise;
+  signedUploads: (
+    args?: {
+      where?: SignedUploadWhereInput;
+      orderBy?: SignedUploadOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<SignedUpload>;
+  signedUploadsConnection: (
+    args?: {
+      where?: SignedUploadWhereInput;
+      orderBy?: SignedUploadOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => SignedUploadConnectionPromise;
   topic: (where: TopicWhereUniqueInput) => TopicPromise;
   topics: (
     args?: {
@@ -193,6 +216,16 @@ export interface Prisma {
   ) => SectionPromise;
   deleteSection: (where: SectionWhereUniqueInput) => SectionPromise;
   deleteManySections: (where?: SectionWhereInput) => BatchPayloadPromise;
+  createSignedUpload: (data: SignedUploadCreateInput) => SignedUploadPromise;
+  updateManySignedUploads: (
+    args: {
+      data: SignedUploadUpdateManyMutationInput;
+      where?: SignedUploadWhereInput;
+    }
+  ) => BatchPayloadPromise;
+  deleteManySignedUploads: (
+    where?: SignedUploadWhereInput
+  ) => BatchPayloadPromise;
   createTopic: (data: TopicCreateInput) => TopicPromise;
   updateTopic: (
     args: { data: TopicUpdateInput; where: TopicWhereUniqueInput }
@@ -253,6 +286,9 @@ export interface Subscription {
   section: (
     where?: SectionSubscriptionWhereInput
   ) => SectionSubscriptionPayloadSubscription;
+  signedUpload: (
+    where?: SignedUploadSubscriptionWhereInput
+  ) => SignedUploadSubscriptionPayloadSubscription;
   topic: (
     where?: TopicSubscriptionWhereInput
   ) => TopicSubscriptionPayloadSubscription;
@@ -354,8 +390,6 @@ export type VoteOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type PostType = "PRODUCT" | "LINK";
-
 export type SectionOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -366,11 +400,35 @@ export type SectionOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
+export type PostType = "PRODUCT" | "LINK";
+
+export type SignedUploadOrderByInput =
+  | "signedRequest_ASC"
+  | "signedRequest_DESC"
+  | "url_ASC"
+  | "url_DESC"
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface VoteUpdateWithWhereUniqueWithoutUserInput {
-  where: VoteWhereUniqueInput;
-  data: VoteUpdateWithoutUserDataInput;
+export interface VoteUpdateManyWithoutUserInput {
+  create?: VoteCreateWithoutUserInput[] | VoteCreateWithoutUserInput;
+  delete?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
+  connect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
+  set?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
+  disconnect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
+  update?:
+    | VoteUpdateWithWhereUniqueWithoutUserInput[]
+    | VoteUpdateWithWhereUniqueWithoutUserInput;
+  upsert?:
+    | VoteUpsertWithWhereUniqueWithoutUserInput[]
+    | VoteUpsertWithWhereUniqueWithoutUserInput;
+  deleteMany?: VoteScalarWhereInput[] | VoteScalarWhereInput;
 }
 
 export type PostWhereUniqueInput = AtLeastOne<{
@@ -384,7 +442,7 @@ export interface VoteUpsertWithWhereUniqueWithoutUserInput {
   create: VoteCreateWithoutUserInput;
 }
 
-export interface VoteWhereInput {
+export interface UserWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -399,11 +457,117 @@ export interface VoteWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  user?: UserWhereInput;
-  post?: PostWhereInput;
-  AND?: VoteWhereInput[] | VoteWhereInput;
-  OR?: VoteWhereInput[] | VoteWhereInput;
-  NOT?: VoteWhereInput[] | VoteWhereInput;
+  email?: String;
+  email_not?: String;
+  email_in?: String[] | String;
+  email_not_in?: String[] | String;
+  email_lt?: String;
+  email_lte?: String;
+  email_gt?: String;
+  email_gte?: String;
+  email_contains?: String;
+  email_not_contains?: String;
+  email_starts_with?: String;
+  email_not_starts_with?: String;
+  email_ends_with?: String;
+  email_not_ends_with?: String;
+  role?: Role;
+  role_not?: Role;
+  role_in?: Role[] | Role;
+  role_not_in?: Role[] | Role;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  avatar?: String;
+  avatar_not?: String;
+  avatar_in?: String[] | String;
+  avatar_not_in?: String[] | String;
+  avatar_lt?: String;
+  avatar_lte?: String;
+  avatar_gt?: String;
+  avatar_gte?: String;
+  avatar_contains?: String;
+  avatar_not_contains?: String;
+  avatar_starts_with?: String;
+  avatar_not_starts_with?: String;
+  avatar_ends_with?: String;
+  avatar_not_ends_with?: String;
+  auth0id?: String;
+  auth0id_not?: String;
+  auth0id_in?: String[] | String;
+  auth0id_not_in?: String[] | String;
+  auth0id_lt?: String;
+  auth0id_lte?: String;
+  auth0id_gt?: String;
+  auth0id_gte?: String;
+  auth0id_contains?: String;
+  auth0id_not_contains?: String;
+  auth0id_starts_with?: String;
+  auth0id_not_starts_with?: String;
+  auth0id_ends_with?: String;
+  auth0id_not_ends_with?: String;
+  identity?: String;
+  identity_not?: String;
+  identity_in?: String[] | String;
+  identity_not_in?: String[] | String;
+  identity_lt?: String;
+  identity_lte?: String;
+  identity_gt?: String;
+  identity_gte?: String;
+  identity_contains?: String;
+  identity_not_contains?: String;
+  identity_starts_with?: String;
+  identity_not_starts_with?: String;
+  identity_ends_with?: String;
+  identity_not_ends_with?: String;
+  privateKey?: String;
+  privateKey_not?: String;
+  privateKey_in?: String[] | String;
+  privateKey_not_in?: String[] | String;
+  privateKey_lt?: String;
+  privateKey_lte?: String;
+  privateKey_gt?: String;
+  privateKey_gte?: String;
+  privateKey_contains?: String;
+  privateKey_not_contains?: String;
+  privateKey_starts_with?: String;
+  privateKey_not_starts_with?: String;
+  privateKey_ends_with?: String;
+  privateKey_not_ends_with?: String;
+  address?: String;
+  address_not?: String;
+  address_in?: String[] | String;
+  address_not_in?: String[] | String;
+  address_lt?: String;
+  address_lte?: String;
+  address_gt?: String;
+  address_gte?: String;
+  address_contains?: String;
+  address_not_contains?: String;
+  address_starts_with?: String;
+  address_not_starts_with?: String;
+  address_ends_with?: String;
+  address_not_ends_with?: String;
+  followedTopics_every?: TopicWhereInput;
+  followedTopics_some?: TopicWhereInput;
+  followedTopics_none?: TopicWhereInput;
+  votes_every?: VoteWhereInput;
+  votes_some?: VoteWhereInput;
+  votes_none?: VoteWhereInput;
+  AND?: UserWhereInput[] | UserWhereInput;
+  OR?: UserWhereInput[] | UserWhereInput;
+  NOT?: UserWhereInput[] | UserWhereInput;
 }
 
 export interface VoteScalarWhereInput {
@@ -544,6 +708,52 @@ export interface PostWhereInput {
   NOT?: PostWhereInput[] | PostWhereInput;
 }
 
+export interface TopicCreateManyWithoutFollowedByInput {
+  create?:
+    | TopicCreateWithoutFollowedByInput[]
+    | TopicCreateWithoutFollowedByInput;
+  connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
+}
+
+export interface TopicUpdateManyWithWhereNestedInput {
+  where: TopicScalarWhereInput;
+  data: TopicUpdateManyDataInput;
+}
+
+export interface TopicCreateWithoutFollowedByInput {
+  name: String;
+  slug: String;
+  description?: String;
+  image?: String;
+  followersCount?: Int;
+  postsCount?: Int;
+  trending?: Boolean;
+  posts?: PostCreateManyWithoutTopicsInput;
+  votes?: VoteCreateManyInput;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutFollowedTopicsInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutFollowedTopicsDataInput;
+  create: UserCreateWithoutFollowedTopicsInput;
+}
+
+export interface PostCreateManyWithoutTopicsInput {
+  create?: PostCreateWithoutTopicsInput[] | PostCreateWithoutTopicsInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+}
+
 export interface PostCreateWithoutTopicsInput {
   type?: PostType;
   name: String;
@@ -557,14 +767,21 @@ export interface PostCreateWithoutTopicsInput {
   votes?: VoteCreateManyWithoutPostInput;
 }
 
-export interface TopicUpdateManyDataInput {
-  name?: String;
-  slug?: String;
-  description?: String;
-  image?: String;
-  followersCount?: Int;
-  postsCount?: Int;
-  trending?: Boolean;
+export interface SignedUploadSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: SignedUploadWhereInput;
+  AND?:
+    | SignedUploadSubscriptionWhereInput[]
+    | SignedUploadSubscriptionWhereInput;
+  OR?:
+    | SignedUploadSubscriptionWhereInput[]
+    | SignedUploadSubscriptionWhereInput;
+  NOT?:
+    | SignedUploadSubscriptionWhereInput[]
+    | SignedUploadSubscriptionWhereInput;
 }
 
 export interface VoteCreateManyWithoutPostInput {
@@ -572,26 +789,25 @@ export interface VoteCreateManyWithoutPostInput {
   connect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
 }
 
-export interface UserUpsertWithWhereUniqueWithoutFollowedTopicsInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutFollowedTopicsDataInput;
-  create: UserCreateWithoutFollowedTopicsInput;
+export interface PostSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: PostWhereInput;
+  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
 }
 
 export interface VoteCreateWithoutPostInput {
   user: UserCreateOneWithoutVotesInput;
 }
 
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-}
+export type SectionWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  date?: String;
+}>;
 
 export interface PostUpdateInput {
   type?: PostType;
@@ -607,15 +823,41 @@ export interface PostUpdateInput {
   votes?: VoteUpdateManyWithoutPostInput;
 }
 
-export interface SectionSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: SectionWhereInput;
-  AND?: SectionSubscriptionWhereInput[] | SectionSubscriptionWhereInput;
-  OR?: SectionSubscriptionWhereInput[] | SectionSubscriptionWhereInput;
-  NOT?: SectionSubscriptionWhereInput[] | SectionSubscriptionWhereInput;
+export interface SectionWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  date?: String;
+  date_not?: String;
+  date_in?: String[] | String;
+  date_not_in?: String[] | String;
+  date_lt?: String;
+  date_lte?: String;
+  date_gt?: String;
+  date_gte?: String;
+  date_contains?: String;
+  date_not_contains?: String;
+  date_starts_with?: String;
+  date_not_starts_with?: String;
+  date_ends_with?: String;
+  date_not_ends_with?: String;
+  posts_every?: PostWhereInput;
+  posts_some?: PostWhereInput;
+  posts_none?: PostWhereInput;
+  AND?: SectionWhereInput[] | SectionWhereInput;
+  OR?: SectionWhereInput[] | SectionWhereInput;
+  NOT?: SectionWhereInput[] | SectionWhereInput;
 }
 
 export interface TopicUpdateManyWithoutPostsInput {
@@ -636,9 +878,17 @@ export interface TopicUpdateManyWithoutPostsInput {
     | TopicUpdateManyWithWhereNestedInput;
 }
 
-export interface VoteUpdateInput {
-  user?: UserUpdateOneRequiredWithoutVotesInput;
-  post?: PostUpdateOneRequiredWithoutVotesInput;
+export interface UserCreateInput {
+  email?: String;
+  role?: Role;
+  name: String;
+  avatar?: String;
+  auth0id: String;
+  identity?: String;
+  privateKey?: String;
+  address?: String;
+  followedTopics?: TopicCreateManyWithoutFollowedByInput;
+  votes?: VoteCreateManyWithoutUserInput;
 }
 
 export interface TopicUpdateWithWhereUniqueWithoutPostsInput {
@@ -646,17 +896,17 @@ export interface TopicUpdateWithWhereUniqueWithoutPostsInput {
   data: TopicUpdateWithoutPostsDataInput;
 }
 
-export interface UserUpdateInput {
-  email?: String;
-  role?: Role;
+export interface TopicUpdateInput {
   name?: String;
-  avatar?: String;
-  auth0id?: String;
-  identity?: String;
-  privateKey?: String;
-  address?: String;
-  followedTopics?: TopicUpdateManyWithoutFollowedByInput;
-  votes?: VoteUpdateManyWithoutUserInput;
+  slug?: String;
+  description?: String;
+  image?: String;
+  followersCount?: Int;
+  postsCount?: Int;
+  trending?: Boolean;
+  posts?: PostUpdateManyWithoutTopicsInput;
+  followedBy?: UserUpdateManyWithoutFollowedTopicsInput;
+  votes?: VoteUpdateManyInput;
 }
 
 export interface TopicUpdateWithoutPostsDataInput {
@@ -671,17 +921,17 @@ export interface TopicUpdateWithoutPostsDataInput {
   votes?: VoteUpdateManyInput;
 }
 
-export interface UserCreateInput {
-  email?: String;
-  role?: Role;
+export interface TopicCreateInput {
   name: String;
-  avatar?: String;
-  auth0id: String;
-  identity?: String;
-  privateKey?: String;
-  address?: String;
-  followedTopics?: TopicCreateManyWithoutFollowedByInput;
-  votes?: VoteCreateManyWithoutUserInput;
+  slug: String;
+  description?: String;
+  image?: String;
+  followersCount?: Int;
+  postsCount?: Int;
+  trending?: Boolean;
+  posts?: PostCreateManyWithoutTopicsInput;
+  followedBy?: UserCreateManyWithoutFollowedTopicsInput;
+  votes?: VoteCreateManyInput;
 }
 
 export interface UserUpdateManyWithoutFollowedTopicsInput {
@@ -704,14 +954,9 @@ export interface UserUpdateManyWithoutFollowedTopicsInput {
     | UserUpdateManyWithWhereNestedInput;
 }
 
-export interface TopicUpdateManyMutationInput {
-  name?: String;
-  slug?: String;
-  description?: String;
-  image?: String;
-  followersCount?: Int;
-  postsCount?: Int;
-  trending?: Boolean;
+export interface SignedUploadCreateInput {
+  signedRequest?: String;
+  url?: String;
 }
 
 export interface UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
@@ -719,17 +964,10 @@ export interface UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
   data: UserUpdateWithoutFollowedTopicsDataInput;
 }
 
-export interface TopicCreateInput {
-  name: String;
-  slug: String;
-  description?: String;
-  image?: String;
-  followersCount?: Int;
-  postsCount?: Int;
-  trending?: Boolean;
-  posts?: PostCreateManyWithoutTopicsInput;
-  followedBy?: UserCreateManyWithoutFollowedTopicsInput;
-  votes?: VoteCreateManyInput;
+export interface PostUpsertWithWhereUniqueNestedInput {
+  where: PostWhereUniqueInput;
+  update: PostUpdateDataInput;
+  create: PostCreateInput;
 }
 
 export interface UserUpdateWithoutFollowedTopicsDataInput {
@@ -742,26 +980,6 @@ export interface UserUpdateWithoutFollowedTopicsDataInput {
   privateKey?: String;
   address?: String;
   votes?: VoteUpdateManyWithoutUserInput;
-}
-
-export type TopicWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  slug?: String;
-}>;
-
-export interface VoteUpdateManyWithoutUserInput {
-  create?: VoteCreateWithoutUserInput[] | VoteCreateWithoutUserInput;
-  delete?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
-  connect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
-  set?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
-  disconnect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
-  update?:
-    | VoteUpdateWithWhereUniqueWithoutUserInput[]
-    | VoteUpdateWithWhereUniqueWithoutUserInput;
-  upsert?:
-    | VoteUpsertWithWhereUniqueWithoutUserInput[]
-    | VoteUpsertWithWhereUniqueWithoutUserInput;
-  deleteMany?: VoteScalarWhereInput[] | VoteScalarWhereInput;
 }
 
 export interface PostUpdateDataInput {
@@ -778,20 +996,32 @@ export interface PostUpdateDataInput {
   votes?: VoteUpdateManyWithoutPostInput;
 }
 
-export interface VoteUpsertWithWhereUniqueNestedInput {
-  where: VoteWhereUniqueInput;
-  update: VoteUpdateDataInput;
-  create: VoteCreateInput;
+export interface UserUpsertWithoutVotesInput {
+  update: UserUpdateWithoutVotesDataInput;
+  create: UserCreateWithoutVotesInput;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-  auth0id?: String;
-}>;
+export interface PostUpdateManyInput {
+  create?: PostCreateInput[] | PostCreateInput;
+  update?:
+    | PostUpdateWithWhereUniqueNestedInput[]
+    | PostUpdateWithWhereUniqueNestedInput;
+  upsert?:
+    | PostUpsertWithWhereUniqueNestedInput[]
+    | PostUpsertWithWhereUniqueNestedInput;
+  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  set?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  deleteMany?: PostScalarWhereInput[] | PostScalarWhereInput;
+  updateMany?:
+    | PostUpdateManyWithWhereNestedInput[]
+    | PostUpdateManyWithWhereNestedInput;
+}
 
-export interface VoteUpdateWithoutUserDataInput {
-  post?: PostUpdateOneRequiredWithoutVotesInput;
+export interface VoteUpdateWithWhereUniqueWithoutUserInput {
+  where: VoteWhereUniqueInput;
+  data: VoteUpdateWithoutUserDataInput;
 }
 
 export interface SectionUpdateInput {
@@ -799,28 +1029,20 @@ export interface SectionUpdateInput {
   posts?: PostUpdateManyInput;
 }
 
+export interface VoteUpdateWithoutUserDataInput {
+  post?: PostUpdateOneRequiredWithoutVotesInput;
+}
+
+export interface SectionCreateInput {
+  date: String;
+  posts?: PostCreateManyInput;
+}
+
 export interface PostUpdateOneRequiredWithoutVotesInput {
   create?: PostCreateWithoutVotesInput;
   update?: PostUpdateWithoutVotesDataInput;
   upsert?: PostUpsertWithoutVotesInput;
   connect?: PostWhereUniqueInput;
-}
-
-export type VoteWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface PostUpdateWithoutVotesDataInput {
-  type?: PostType;
-  name?: String;
-  slug?: String;
-  thumbnail?: String;
-  description?: String;
-  votesCount?: Int;
-  commentsCount?: Int;
-  day?: String;
-  featured?: Boolean;
-  topics?: TopicUpdateManyWithoutPostsInput;
 }
 
 export interface PostUpdateManyMutationInput {
@@ -835,17 +1057,45 @@ export interface PostUpdateManyMutationInput {
   featured?: Boolean;
 }
 
+export interface PostUpdateWithoutVotesDataInput {
+  type?: PostType;
+  name?: String;
+  slug?: String;
+  thumbnail?: String;
+  description?: String;
+  votesCount?: Int;
+  commentsCount?: Int;
+  day?: String;
+  featured?: Boolean;
+  topics?: TopicUpdateManyWithoutPostsInput;
+}
+
+export interface VoteUpsertWithWhereUniqueNestedInput {
+  where: VoteWhereUniqueInput;
+  update: VoteUpdateDataInput;
+  create: VoteCreateInput;
+}
+
 export interface PostUpsertWithoutVotesInput {
   update: PostUpdateWithoutVotesDataInput;
   create: PostCreateWithoutVotesInput;
 }
 
-export interface TopicCreateManyWithoutPostsInput {
-  create?: TopicCreateWithoutPostsInput[] | TopicCreateWithoutPostsInput;
-  connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
+export interface PostCreateInput {
+  type?: PostType;
+  name: String;
+  slug: String;
+  thumbnail: String;
+  description: String;
+  votesCount: Int;
+  commentsCount: Int;
+  day?: String;
+  featured?: Boolean;
+  topics?: TopicCreateManyWithoutPostsInput;
+  votes?: VoteCreateManyWithoutPostInput;
 }
 
-export interface UserWhereInput {
+export interface VoteWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -860,134 +1110,45 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  role?: Role;
-  role_not?: Role;
-  role_in?: Role[] | Role;
-  role_not_in?: Role[] | Role;
+  user?: UserWhereInput;
+  post?: PostWhereInput;
+  AND?: VoteWhereInput[] | VoteWhereInput;
+  OR?: VoteWhereInput[] | VoteWhereInput;
+  NOT?: VoteWhereInput[] | VoteWhereInput;
+}
+
+export interface TopicCreateWithoutPostsInput {
+  name: String;
+  slug: String;
+  description?: String;
+  image?: String;
+  followersCount?: Int;
+  postsCount?: Int;
+  trending?: Boolean;
+  followedBy?: UserCreateManyWithoutFollowedTopicsInput;
+  votes?: VoteCreateManyInput;
+}
+
+export interface TopicUpdateManyDataInput {
   name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
+  slug?: String;
+  description?: String;
+  image?: String;
+  followersCount?: Int;
+  postsCount?: Int;
+  trending?: Boolean;
+}
+
+export interface UserCreateWithoutFollowedTopicsInput {
+  email?: String;
+  role?: Role;
+  name: String;
   avatar?: String;
-  avatar_not?: String;
-  avatar_in?: String[] | String;
-  avatar_not_in?: String[] | String;
-  avatar_lt?: String;
-  avatar_lte?: String;
-  avatar_gt?: String;
-  avatar_gte?: String;
-  avatar_contains?: String;
-  avatar_not_contains?: String;
-  avatar_starts_with?: String;
-  avatar_not_starts_with?: String;
-  avatar_ends_with?: String;
-  avatar_not_ends_with?: String;
-  auth0id?: String;
-  auth0id_not?: String;
-  auth0id_in?: String[] | String;
-  auth0id_not_in?: String[] | String;
-  auth0id_lt?: String;
-  auth0id_lte?: String;
-  auth0id_gt?: String;
-  auth0id_gte?: String;
-  auth0id_contains?: String;
-  auth0id_not_contains?: String;
-  auth0id_starts_with?: String;
-  auth0id_not_starts_with?: String;
-  auth0id_ends_with?: String;
-  auth0id_not_ends_with?: String;
+  auth0id: String;
   identity?: String;
-  identity_not?: String;
-  identity_in?: String[] | String;
-  identity_not_in?: String[] | String;
-  identity_lt?: String;
-  identity_lte?: String;
-  identity_gt?: String;
-  identity_gte?: String;
-  identity_contains?: String;
-  identity_not_contains?: String;
-  identity_starts_with?: String;
-  identity_not_starts_with?: String;
-  identity_ends_with?: String;
-  identity_not_ends_with?: String;
   privateKey?: String;
-  privateKey_not?: String;
-  privateKey_in?: String[] | String;
-  privateKey_not_in?: String[] | String;
-  privateKey_lt?: String;
-  privateKey_lte?: String;
-  privateKey_gt?: String;
-  privateKey_gte?: String;
-  privateKey_contains?: String;
-  privateKey_not_contains?: String;
-  privateKey_starts_with?: String;
-  privateKey_not_starts_with?: String;
-  privateKey_ends_with?: String;
-  privateKey_not_ends_with?: String;
   address?: String;
-  address_not?: String;
-  address_in?: String[] | String;
-  address_not_in?: String[] | String;
-  address_lt?: String;
-  address_lte?: String;
-  address_gt?: String;
-  address_gte?: String;
-  address_contains?: String;
-  address_not_contains?: String;
-  address_starts_with?: String;
-  address_not_starts_with?: String;
-  address_ends_with?: String;
-  address_not_ends_with?: String;
-  followedTopics_every?: TopicWhereInput;
-  followedTopics_some?: TopicWhereInput;
-  followedTopics_none?: TopicWhereInput;
-  votes_every?: VoteWhereInput;
-  votes_some?: VoteWhereInput;
-  votes_none?: VoteWhereInput;
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
-}
-
-export interface UserCreateManyWithoutFollowedTopicsInput {
-  create?:
-    | UserCreateWithoutFollowedTopicsInput[]
-    | UserCreateWithoutFollowedTopicsInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-}
-
-export interface UserUpsertWithoutVotesInput {
-  update: UserUpdateWithoutVotesDataInput;
-  create: UserCreateWithoutVotesInput;
-}
-
-export interface VoteCreateManyWithoutUserInput {
-  create?: VoteCreateWithoutUserInput[] | VoteCreateWithoutUserInput;
-  connect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
+  votes?: VoteCreateManyWithoutUserInput;
 }
 
 export interface TopicWhereInput {
@@ -1109,9 +1270,8 @@ export interface TopicWhereInput {
   NOT?: TopicWhereInput[] | TopicWhereInput;
 }
 
-export interface PostCreateOneWithoutVotesInput {
-  create?: PostCreateWithoutVotesInput;
-  connect?: PostWhereUniqueInput;
+export interface VoteCreateWithoutUserInput {
+  post: PostCreateOneWithoutVotesInput;
 }
 
 export interface UserScalarWhereInput {
@@ -1236,9 +1396,17 @@ export interface UserScalarWhereInput {
   NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
 }
 
-export interface VoteCreateManyInput {
-  create?: VoteCreateInput[] | VoteCreateInput;
-  connect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
+export interface PostCreateWithoutVotesInput {
+  type?: PostType;
+  name: String;
+  slug: String;
+  thumbnail: String;
+  description: String;
+  votesCount: Int;
+  commentsCount: Int;
+  day?: String;
+  featured?: Boolean;
+  topics?: TopicCreateManyWithoutPostsInput;
 }
 
 export interface UserUpdateManyWithWhereNestedInput {
@@ -1246,9 +1414,9 @@ export interface UserUpdateManyWithWhereNestedInput {
   data: UserUpdateManyDataInput;
 }
 
-export interface UserCreateOneWithoutVotesInput {
-  create?: UserCreateWithoutVotesInput;
-  connect?: UserWhereUniqueInput;
+export interface VoteCreateInput {
+  user: UserCreateOneWithoutVotesInput;
+  post: PostCreateOneWithoutVotesInput;
 }
 
 export interface UserUpdateManyDataInput {
@@ -1262,11 +1430,16 @@ export interface UserUpdateManyDataInput {
   address?: String;
 }
 
-export interface TopicCreateManyWithoutFollowedByInput {
-  create?:
-    | TopicCreateWithoutFollowedByInput[]
-    | TopicCreateWithoutFollowedByInput;
-  connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
+export interface UserCreateWithoutVotesInput {
+  email?: String;
+  role?: Role;
+  name: String;
+  avatar?: String;
+  auth0id: String;
+  identity?: String;
+  privateKey?: String;
+  address?: String;
+  followedTopics?: TopicCreateManyWithoutFollowedByInput;
 }
 
 export interface VoteUpdateManyInput {
@@ -1284,16 +1457,6 @@ export interface VoteUpdateManyInput {
   deleteMany?: VoteScalarWhereInput[] | VoteScalarWhereInput;
 }
 
-export interface PostCreateManyWithoutTopicsInput {
-  create?: PostCreateWithoutTopicsInput[] | PostCreateWithoutTopicsInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-}
-
-export interface VoteUpdateWithWhereUniqueNestedInput {
-  where: VoteWhereUniqueInput;
-  data: VoteUpdateDataInput;
-}
-
 export interface TopicSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
@@ -1305,12 +1468,22 @@ export interface TopicSubscriptionWhereInput {
   NOT?: TopicSubscriptionWhereInput[] | TopicSubscriptionWhereInput;
 }
 
+export interface VoteUpdateWithWhereUniqueNestedInput {
+  where: VoteWhereUniqueInput;
+  data: VoteUpdateDataInput;
+}
+
+export interface VoteUpdateInput {
+  user?: UserUpdateOneRequiredWithoutVotesInput;
+  post?: PostUpdateOneRequiredWithoutVotesInput;
+}
+
 export interface VoteUpdateDataInput {
   user?: UserUpdateOneRequiredWithoutVotesInput;
   post?: PostUpdateOneRequiredWithoutVotesInput;
 }
 
-export interface UserUpdateManyMutationInput {
+export interface UserUpdateInput {
   email?: String;
   role?: Role;
   name?: String;
@@ -1319,6 +1492,8 @@ export interface UserUpdateManyMutationInput {
   identity?: String;
   privateKey?: String;
   address?: String;
+  followedTopics?: TopicUpdateManyWithoutFollowedByInput;
+  votes?: VoteUpdateManyWithoutUserInput;
 }
 
 export interface UserUpdateOneRequiredWithoutVotesInput {
@@ -1328,41 +1503,38 @@ export interface UserUpdateOneRequiredWithoutVotesInput {
   connect?: UserWhereUniqueInput;
 }
 
-export interface SectionWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  date?: String;
-  date_not?: String;
-  date_in?: String[] | String;
-  date_not_in?: String[] | String;
-  date_lt?: String;
-  date_lte?: String;
-  date_gt?: String;
-  date_gte?: String;
-  date_contains?: String;
-  date_not_contains?: String;
-  date_starts_with?: String;
-  date_not_starts_with?: String;
-  date_ends_with?: String;
-  date_not_ends_with?: String;
-  posts_every?: PostWhereInput;
-  posts_some?: PostWhereInput;
-  posts_none?: PostWhereInput;
-  AND?: SectionWhereInput[] | SectionWhereInput;
-  OR?: SectionWhereInput[] | SectionWhereInput;
-  NOT?: SectionWhereInput[] | SectionWhereInput;
+export interface SignedUploadWhereInput {
+  signedRequest?: String;
+  signedRequest_not?: String;
+  signedRequest_in?: String[] | String;
+  signedRequest_not_in?: String[] | String;
+  signedRequest_lt?: String;
+  signedRequest_lte?: String;
+  signedRequest_gt?: String;
+  signedRequest_gte?: String;
+  signedRequest_contains?: String;
+  signedRequest_not_contains?: String;
+  signedRequest_starts_with?: String;
+  signedRequest_not_starts_with?: String;
+  signedRequest_ends_with?: String;
+  signedRequest_not_ends_with?: String;
+  url?: String;
+  url_not?: String;
+  url_in?: String[] | String;
+  url_not_in?: String[] | String;
+  url_lt?: String;
+  url_lte?: String;
+  url_gt?: String;
+  url_gte?: String;
+  url_contains?: String;
+  url_not_contains?: String;
+  url_starts_with?: String;
+  url_not_starts_with?: String;
+  url_ends_with?: String;
+  url_not_ends_with?: String;
+  AND?: SignedUploadWhereInput[] | SignedUploadWhereInput;
+  OR?: SignedUploadWhereInput[] | SignedUploadWhereInput;
+  NOT?: SignedUploadWhereInput[] | SignedUploadWhereInput;
 }
 
 export interface UserUpdateWithoutVotesDataInput {
@@ -1452,16 +1624,9 @@ export interface PostUpdateManyWithoutTopicsInput {
     | PostUpdateManyWithWhereNestedInput;
 }
 
-export interface TopicCreateWithoutPostsInput {
-  name: String;
-  slug: String;
-  description?: String;
-  image?: String;
-  followersCount?: Int;
-  postsCount?: Int;
-  trending?: Boolean;
-  followedBy?: UserCreateManyWithoutFollowedTopicsInput;
-  votes?: VoteCreateManyInput;
+export interface TopicCreateManyWithoutPostsInput {
+  create?: TopicCreateWithoutPostsInput[] | TopicCreateWithoutPostsInput;
+  connect?: TopicWhereUniqueInput[] | TopicWhereUniqueInput;
 }
 
 export interface PostUpdateWithWhereUniqueWithoutTopicsInput {
@@ -1469,8 +1634,9 @@ export interface PostUpdateWithWhereUniqueWithoutTopicsInput {
   data: PostUpdateWithoutTopicsDataInput;
 }
 
-export interface VoteCreateWithoutUserInput {
-  post: PostCreateOneWithoutVotesInput;
+export interface VoteCreateManyWithoutUserInput {
+  create?: VoteCreateWithoutUserInput[] | VoteCreateWithoutUserInput;
+  connect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
 }
 
 export interface PostUpdateWithoutTopicsDataInput {
@@ -1486,9 +1652,9 @@ export interface PostUpdateWithoutTopicsDataInput {
   votes?: VoteUpdateManyWithoutPostInput;
 }
 
-export interface VoteCreateInput {
-  user: UserCreateOneWithoutVotesInput;
-  post: PostCreateOneWithoutVotesInput;
+export interface VoteCreateManyInput {
+  create?: VoteCreateInput[] | VoteCreateInput;
+  connect?: VoteWhereUniqueInput[] | VoteWhereUniqueInput;
 }
 
 export interface VoteUpdateManyWithoutPostInput {
@@ -1506,16 +1672,15 @@ export interface VoteUpdateManyWithoutPostInput {
   deleteMany?: VoteScalarWhereInput[] | VoteScalarWhereInput;
 }
 
-export interface TopicCreateWithoutFollowedByInput {
-  name: String;
-  slug: String;
-  description?: String;
-  image?: String;
-  followersCount?: Int;
-  postsCount?: Int;
-  trending?: Boolean;
-  posts?: PostCreateManyWithoutTopicsInput;
-  votes?: VoteCreateManyInput;
+export interface VoteSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: VoteWhereInput;
+  AND?: VoteSubscriptionWhereInput[] | VoteSubscriptionWhereInput;
+  OR?: VoteSubscriptionWhereInput[] | VoteSubscriptionWhereInput;
+  NOT?: VoteSubscriptionWhereInput[] | VoteSubscriptionWhereInput;
 }
 
 export interface VoteUpdateWithWhereUniqueWithoutPostInput {
@@ -1523,32 +1688,24 @@ export interface VoteUpdateWithWhereUniqueWithoutPostInput {
   data: VoteUpdateWithoutPostDataInput;
 }
 
-export interface PostSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PostWhereInput;
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+export interface UserUpdateManyMutationInput {
+  email?: String;
+  role?: Role;
+  name?: String;
+  avatar?: String;
+  auth0id?: String;
+  identity?: String;
+  privateKey?: String;
+  address?: String;
 }
 
 export interface VoteUpdateWithoutPostDataInput {
   user?: UserUpdateOneRequiredWithoutVotesInput;
 }
 
-export interface TopicUpdateInput {
-  name?: String;
-  slug?: String;
-  description?: String;
-  image?: String;
-  followersCount?: Int;
-  postsCount?: Int;
-  trending?: Boolean;
-  posts?: PostUpdateManyWithoutTopicsInput;
-  followedBy?: UserUpdateManyWithoutFollowedTopicsInput;
-  votes?: VoteUpdateManyInput;
+export interface SignedUploadUpdateManyMutationInput {
+  signedRequest?: String;
+  url?: String;
 }
 
 export interface VoteUpsertWithWhereUniqueWithoutPostInput {
@@ -1557,23 +1714,11 @@ export interface VoteUpsertWithWhereUniqueWithoutPostInput {
   create: VoteCreateWithoutPostInput;
 }
 
-export interface PostUpdateManyInput {
-  create?: PostCreateInput[] | PostCreateInput;
-  update?:
-    | PostUpdateWithWhereUniqueNestedInput[]
-    | PostUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | PostUpsertWithWhereUniqueNestedInput[]
-    | PostUpsertWithWhereUniqueNestedInput;
-  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  set?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  deleteMany?: PostScalarWhereInput[] | PostScalarWhereInput;
-  updateMany?:
-    | PostUpdateManyWithWhereNestedInput[]
-    | PostUpdateManyWithWhereNestedInput;
-}
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
+  auth0id?: String;
+}>;
 
 export interface PostUpsertWithWhereUniqueWithoutTopicsInput {
   where: PostWhereUniqueInput;
@@ -1581,18 +1726,9 @@ export interface PostUpsertWithWhereUniqueWithoutTopicsInput {
   create: PostCreateWithoutTopicsInput;
 }
 
-export interface PostCreateInput {
-  type?: PostType;
-  name: String;
-  slug: String;
-  thumbnail: String;
-  description: String;
-  votesCount: Int;
-  commentsCount: Int;
-  day?: String;
-  featured?: Boolean;
-  topics?: TopicCreateManyWithoutPostsInput;
-  votes?: VoteCreateManyWithoutPostInput;
+export interface PostCreateOneWithoutVotesInput {
+  create?: PostCreateWithoutVotesInput;
+  connect?: PostWhereUniqueInput;
 }
 
 export interface PostScalarWhereInput {
@@ -1707,38 +1843,15 @@ export interface PostScalarWhereInput {
   NOT?: PostScalarWhereInput[] | PostScalarWhereInput;
 }
 
-export interface PostCreateWithoutVotesInput {
-  type?: PostType;
-  name: String;
-  slug: String;
-  thumbnail: String;
-  description: String;
-  votesCount: Int;
-  commentsCount: Int;
-  day?: String;
-  featured?: Boolean;
-  topics?: TopicCreateManyWithoutPostsInput;
-}
-
-export interface PostUpdateManyWithWhereNestedInput {
-  where: PostScalarWhereInput;
-  data: PostUpdateManyDataInput;
-}
-
-export interface VoteSubscriptionWhereInput {
+export interface SectionSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: VoteWhereInput;
-  AND?: VoteSubscriptionWhereInput[] | VoteSubscriptionWhereInput;
-  OR?: VoteSubscriptionWhereInput[] | VoteSubscriptionWhereInput;
-  NOT?: VoteSubscriptionWhereInput[] | VoteSubscriptionWhereInput;
-}
-
-export interface TopicUpdateManyWithWhereNestedInput {
-  where: TopicScalarWhereInput;
-  data: TopicUpdateManyDataInput;
+  node?: SectionWhereInput;
+  AND?: SectionSubscriptionWhereInput[] | SectionSubscriptionWhereInput;
+  OR?: SectionSubscriptionWhereInput[] | SectionSubscriptionWhereInput;
+  NOT?: SectionSubscriptionWhereInput[] | SectionSubscriptionWhereInput;
 }
 
 export interface TopicScalarWhereInput {
@@ -1869,45 +1982,41 @@ export interface PostUpdateManyDataInput {
   featured?: Boolean;
 }
 
-export type SectionWhereUniqueInput = AtLeastOne<{
+export interface PostUpdateManyWithWhereNestedInput {
+  where: PostScalarWhereInput;
+  data: PostUpdateManyDataInput;
+}
+
+export interface TopicUpdateManyMutationInput {
+  name?: String;
+  slug?: String;
+  description?: String;
+  image?: String;
+  followersCount?: Int;
+  postsCount?: Int;
+  trending?: Boolean;
+}
+
+export interface UserCreateOneWithoutVotesInput {
+  create?: UserCreateWithoutVotesInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserCreateManyWithoutFollowedTopicsInput {
+  create?:
+    | UserCreateWithoutFollowedTopicsInput[]
+    | UserCreateWithoutFollowedTopicsInput;
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+}
+
+export type VoteWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
-  date?: String;
 }>;
 
-export interface UserCreateWithoutVotesInput {
-  email?: String;
-  role?: Role;
-  name: String;
-  avatar?: String;
-  auth0id: String;
-  identity?: String;
-  privateKey?: String;
-  address?: String;
-  followedTopics?: TopicCreateManyWithoutFollowedByInput;
-}
-
-export interface UserCreateWithoutFollowedTopicsInput {
-  email?: String;
-  role?: Role;
-  name: String;
-  avatar?: String;
-  auth0id: String;
-  identity?: String;
-  privateKey?: String;
-  address?: String;
-  votes?: VoteCreateManyWithoutUserInput;
-}
-
-export interface SectionCreateInput {
-  date: String;
-  posts?: PostCreateManyInput;
-}
-
-export interface PostUpsertWithWhereUniqueNestedInput {
-  where: PostWhereUniqueInput;
-  update: PostUpdateDataInput;
-  create: PostCreateInput;
-}
+export type TopicWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  slug?: String;
+}>;
 
 export interface NodeNode {
   id: ID_Output;
@@ -1929,20 +2038,67 @@ export interface VotePreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
 }
 
-export interface AggregatePost {
-  count: Int;
+export interface SectionEdge {
+  node: Section;
+  cursor: String;
 }
 
-export interface AggregatePostPromise
-  extends Promise<AggregatePost>,
-    Fragmentable {
-  count: () => Promise<Int>;
+export interface SectionEdgePromise extends Promise<SectionEdge>, Fragmentable {
+  node: <T = SectionPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface AggregatePostSubscription
-  extends Promise<AsyncIterator<AggregatePost>>,
+export interface SectionEdgeSubscription
+  extends Promise<AsyncIterator<SectionEdge>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = SectionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
+}
+
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
+}
+
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
+
+export interface SectionConnection {
+  pageInfo: PageInfo;
+  edges: SectionEdge[];
+}
+
+export interface SectionConnectionPromise
+  extends Promise<SectionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<SectionEdge>>() => T;
+  aggregate: <T = AggregateSectionPromise>() => T;
+}
+
+export interface SectionConnectionSubscription
+  extends Promise<AsyncIterator<SectionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SectionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSectionSubscription>() => T;
 }
 
 export interface Topic {
@@ -2052,160 +2208,6 @@ export interface TopicSubscription
   ) => T;
 }
 
-export interface PostEdge {
-  node: Post;
-  cursor: String;
-}
-
-export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
-  node: <T = PostPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PostEdgeSubscription
-  extends Promise<AsyncIterator<PostEdge>>,
-    Fragmentable {
-  node: <T = PostSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateVote {
-  count: Int;
-}
-
-export interface AggregateVotePromise
-  extends Promise<AggregateVote>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateVoteSubscription
-  extends Promise<AsyncIterator<AggregateVote>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface PostConnection {
-  pageInfo: PageInfo;
-  edges: PostEdge[];
-}
-
-export interface PostConnectionPromise
-  extends Promise<PostConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PostEdge>>() => T;
-  aggregate: <T = AggregatePostPromise>() => T;
-}
-
-export interface PostConnectionSubscription
-  extends Promise<AsyncIterator<PostConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePostSubscription>() => T;
-}
-
-export interface VoteConnection {
-  pageInfo: PageInfo;
-  edges: VoteEdge[];
-}
-
-export interface VoteConnectionPromise
-  extends Promise<VoteConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<VoteEdge>>() => T;
-  aggregate: <T = AggregateVotePromise>() => T;
-}
-
-export interface VoteConnectionSubscription
-  extends Promise<AsyncIterator<VoteConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<VoteEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateVoteSubscription>() => T;
-}
-
-export interface UserPreviousValues {
-  id: ID_Output;
-  email?: String;
-  role?: Role;
-  name: String;
-  avatar?: String;
-  auth0id: String;
-  identity?: String;
-  privateKey?: String;
-  address?: String;
-}
-
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  role: () => Promise<Role>;
-  name: () => Promise<String>;
-  avatar: () => Promise<String>;
-  auth0id: () => Promise<String>;
-  identity: () => Promise<String>;
-  privateKey: () => Promise<String>;
-  address: () => Promise<String>;
-}
-
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  role: () => Promise<AsyncIterator<Role>>;
-  name: () => Promise<AsyncIterator<String>>;
-  avatar: () => Promise<AsyncIterator<String>>;
-  auth0id: () => Promise<AsyncIterator<String>>;
-  identity: () => Promise<AsyncIterator<String>>;
-  privateKey: () => Promise<AsyncIterator<String>>;
-  address: () => Promise<AsyncIterator<String>>;
-}
-
 export interface User {
   id: ID_Output;
   email?: String;
@@ -2288,6 +2290,94 @@ export interface UserSubscription
   ) => T;
 }
 
+export interface VoteEdge {
+  node: Vote;
+  cursor: String;
+}
+
+export interface VoteEdgePromise extends Promise<VoteEdge>, Fragmentable {
+  node: <T = VotePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface VoteEdgeSubscription
+  extends Promise<AsyncIterator<VoteEdge>>,
+    Fragmentable {
+  node: <T = VoteSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Section {
+  id: ID_Output;
+  date: String;
+}
+
+export interface SectionPromise extends Promise<Section>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  date: () => Promise<String>;
+  posts: <T = FragmentableArray<Post>>(
+    args?: {
+      where?: PostWhereInput;
+      orderBy?: PostOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface SectionSubscription
+  extends Promise<AsyncIterator<Section>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  date: () => Promise<AsyncIterator<String>>;
+  posts: <T = Promise<AsyncIterator<PostSubscription>>>(
+    args?: {
+      where?: PostWhereInput;
+      orderBy?: PostOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface AggregatePost {
+  count: Int;
+}
+
+export interface AggregatePostPromise
+  extends Promise<AggregatePost>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePostSubscription
+  extends Promise<AsyncIterator<AggregatePost>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface AggregateUser {
   count: Int;
 }
@@ -2304,20 +2394,20 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface UserEdge {
-  node: User;
+export interface PostEdge {
+  node: Post;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
+  node: <T = PostPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface PostEdgeSubscription
+  extends Promise<AsyncIterator<PostEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = PostSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
@@ -2340,6 +2430,46 @@ export interface UserConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
   aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface UserPreviousValues {
+  id: ID_Output;
+  email?: String;
+  role?: Role;
+  name: String;
+  avatar?: String;
+  auth0id: String;
+  identity?: String;
+  privateKey?: String;
+  address?: String;
+}
+
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  role: () => Promise<Role>;
+  name: () => Promise<String>;
+  avatar: () => Promise<String>;
+  auth0id: () => Promise<String>;
+  identity: () => Promise<String>;
+  privateKey: () => Promise<String>;
+  address: () => Promise<String>;
+}
+
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  role: () => Promise<AsyncIterator<Role>>;
+  name: () => Promise<AsyncIterator<String>>;
+  avatar: () => Promise<AsyncIterator<String>>;
+  auth0id: () => Promise<AsyncIterator<String>>;
+  identity: () => Promise<AsyncIterator<String>>;
+  privateKey: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
 }
 
 export interface TopicEdge {
@@ -2384,18 +2514,18 @@ export interface PostSubscriptionPayloadSubscription
   previousValues: <T = PostPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateSection {
+export interface AggregateSignedUpload {
   count: Int;
 }
 
-export interface AggregateSectionPromise
-  extends Promise<AggregateSection>,
+export interface AggregateSignedUploadPromise
+  extends Promise<AggregateSignedUpload>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateSectionSubscription
-  extends Promise<AsyncIterator<AggregateSection>>,
+export interface AggregateSignedUploadSubscription
+  extends Promise<AsyncIterator<AggregateSignedUpload>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -2443,315 +2573,48 @@ export interface PostPreviousValuesSubscription
   featured: () => Promise<AsyncIterator<Boolean>>;
 }
 
-export interface SectionConnection {
+export interface SignedUploadConnection {
   pageInfo: PageInfo;
-  edges: SectionEdge[];
+  edges: SignedUploadEdge[];
 }
 
-export interface SectionConnectionPromise
-  extends Promise<SectionConnection>,
+export interface SignedUploadConnectionPromise
+  extends Promise<SignedUploadConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<SectionEdge>>() => T;
-  aggregate: <T = AggregateSectionPromise>() => T;
+  edges: <T = FragmentableArray<SignedUploadEdge>>() => T;
+  aggregate: <T = AggregateSignedUploadPromise>() => T;
 }
 
-export interface SectionConnectionSubscription
-  extends Promise<AsyncIterator<SectionConnection>>,
+export interface SignedUploadConnectionSubscription
+  extends Promise<AsyncIterator<SignedUploadConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<SectionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateSectionSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SignedUploadEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSignedUploadSubscription>() => T;
 }
 
-export interface Vote {
-  id: ID_Output;
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
 }
 
-export interface VotePromise extends Promise<Vote>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  user: <T = UserPromise>() => T;
-  post: <T = PostPromise>() => T;
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
 }
 
-export interface VoteSubscription
-  extends Promise<AsyncIterator<Vote>>,
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  user: <T = UserSubscription>() => T;
-  post: <T = PostSubscription>() => T;
-}
-
-export interface Section {
-  id: ID_Output;
-  date: String;
-}
-
-export interface SectionPromise extends Promise<Section>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  date: () => Promise<String>;
-  posts: <T = FragmentableArray<Post>>(
-    args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface SectionSubscription
-  extends Promise<AsyncIterator<Section>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  date: () => Promise<AsyncIterator<String>>;
-  posts: <T = Promise<AsyncIterator<PostSubscription>>>(
-    args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface SectionSubscriptionPayload {
-  mutation: MutationType;
-  node: Section;
-  updatedFields: String[];
-  previousValues: SectionPreviousValues;
-}
-
-export interface SectionSubscriptionPayloadPromise
-  extends Promise<SectionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = SectionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = SectionPreviousValuesPromise>() => T;
-}
-
-export interface SectionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<SectionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = SectionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = SectionPreviousValuesSubscription>() => T;
-}
-
-export interface VoteEdge {
-  node: Vote;
-  cursor: String;
-}
-
-export interface VoteEdgePromise extends Promise<VoteEdge>, Fragmentable {
-  node: <T = VotePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface VoteEdgeSubscription
-  extends Promise<AsyncIterator<VoteEdge>>,
-    Fragmentable {
-  node: <T = VoteSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TopicConnection {
-  pageInfo: PageInfo;
-  edges: TopicEdge[];
-}
-
-export interface TopicConnectionPromise
-  extends Promise<TopicConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TopicEdge>>() => T;
-  aggregate: <T = AggregateTopicPromise>() => T;
-}
-
-export interface TopicConnectionSubscription
-  extends Promise<AsyncIterator<TopicConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TopicEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTopicSubscription>() => T;
-}
-
-export interface TopicPreviousValues {
-  id: ID_Output;
-  name: String;
-  slug: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  description?: String;
-  image?: String;
-  followersCount?: Int;
-  postsCount?: Int;
-  trending?: Boolean;
-}
-
-export interface TopicPreviousValuesPromise
-  extends Promise<TopicPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  slug: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  description: () => Promise<String>;
-  image: () => Promise<String>;
-  followersCount: () => Promise<Int>;
-  postsCount: () => Promise<Int>;
-  trending: () => Promise<Boolean>;
-}
-
-export interface TopicPreviousValuesSubscription
-  extends Promise<AsyncIterator<TopicPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  slug: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  description: () => Promise<AsyncIterator<String>>;
-  image: () => Promise<AsyncIterator<String>>;
-  followersCount: () => Promise<AsyncIterator<Int>>;
-  postsCount: () => Promise<AsyncIterator<Int>>;
-  trending: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface TopicSubscriptionPayload {
-  mutation: MutationType;
-  node: Topic;
-  updatedFields: String[];
-  previousValues: TopicPreviousValues;
-}
-
-export interface TopicSubscriptionPayloadPromise
-  extends Promise<TopicSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TopicPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TopicPreviousValuesPromise>() => T;
-}
-
-export interface TopicSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TopicSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TopicSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TopicPreviousValuesSubscription>() => T;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface SectionPreviousValues {
-  id: ID_Output;
-  date: String;
-}
-
-export interface SectionPreviousValuesPromise
-  extends Promise<SectionPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  date: () => Promise<String>;
-}
-
-export interface SectionPreviousValuesSubscription
-  extends Promise<AsyncIterator<SectionPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  date: () => Promise<AsyncIterator<String>>;
-}
-
-export interface SectionEdge {
-  node: Section;
-  cursor: String;
-}
-
-export interface SectionEdgePromise extends Promise<SectionEdge>, Fragmentable {
-  node: <T = SectionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface SectionEdgeSubscription
-  extends Promise<AsyncIterator<SectionEdge>>,
-    Fragmentable {
-  node: <T = SectionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateTopic {
-  count: Int;
-}
-
-export interface AggregateTopicPromise
-  extends Promise<AggregateTopic>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTopicSubscription
-  extends Promise<AsyncIterator<AggregateTopic>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface VoteSubscriptionPayload {
-  mutation: MutationType;
-  node: Vote;
-  updatedFields: String[];
-  previousValues: VotePreviousValues;
-}
-
-export interface VoteSubscriptionPayloadPromise
-  extends Promise<VoteSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = VotePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = VotePreviousValuesPromise>() => T;
-}
-
-export interface VoteSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<VoteSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = VoteSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = VotePreviousValuesSubscription>() => T;
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Post {
@@ -2839,10 +2702,375 @@ export interface PostSubscription
   ) => T;
 }
 
+export interface SectionSubscriptionPayload {
+  mutation: MutationType;
+  node: Section;
+  updatedFields: String[];
+  previousValues: SectionPreviousValues;
+}
+
+export interface SectionSubscriptionPayloadPromise
+  extends Promise<SectionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SectionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SectionPreviousValuesPromise>() => T;
+}
+
+export interface SectionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SectionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SectionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SectionPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateVote {
+  count: Int;
+}
+
+export interface AggregateVotePromise
+  extends Promise<AggregateVote>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateVoteSubscription
+  extends Promise<AsyncIterator<AggregateVote>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface SectionPreviousValues {
+  id: ID_Output;
+  date: String;
+}
+
+export interface SectionPreviousValuesPromise
+  extends Promise<SectionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  date: () => Promise<String>;
+}
+
+export interface SectionPreviousValuesSubscription
+  extends Promise<AsyncIterator<SectionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  date: () => Promise<AsyncIterator<String>>;
+}
+
+export interface VoteSubscriptionPayload {
+  mutation: MutationType;
+  node: Vote;
+  updatedFields: String[];
+  previousValues: VotePreviousValues;
+}
+
+export interface VoteSubscriptionPayloadPromise
+  extends Promise<VoteSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = VotePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = VotePreviousValuesPromise>() => T;
+}
+
+export interface VoteSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<VoteSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = VoteSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = VotePreviousValuesSubscription>() => T;
+}
+
+export interface PostConnection {
+  pageInfo: PageInfo;
+  edges: PostEdge[];
+}
+
+export interface PostConnectionPromise
+  extends Promise<PostConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PostEdge>>() => T;
+  aggregate: <T = AggregatePostPromise>() => T;
+}
+
+export interface PostConnectionSubscription
+  extends Promise<AsyncIterator<PostConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePostSubscription>() => T;
+}
+
+export interface AggregateTopic {
+  count: Int;
+}
+
+export interface AggregateTopicPromise
+  extends Promise<AggregateTopic>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTopicSubscription
+  extends Promise<AsyncIterator<AggregateTopic>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface SignedUploadSubscriptionPayload {
+  mutation: MutationType;
+  node: SignedUpload;
+  updatedFields: String[];
+  previousValues: SignedUploadPreviousValues;
+}
+
+export interface SignedUploadSubscriptionPayloadPromise
+  extends Promise<SignedUploadSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SignedUploadPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SignedUploadPreviousValuesPromise>() => T;
+}
+
+export interface SignedUploadSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SignedUploadSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SignedUploadSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SignedUploadPreviousValuesSubscription>() => T;
+}
+
+export interface SignedUploadEdge {
+  node: SignedUpload;
+  cursor: String;
+}
+
+export interface SignedUploadEdgePromise
+  extends Promise<SignedUploadEdge>,
+    Fragmentable {
+  node: <T = SignedUploadPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SignedUploadEdgeSubscription
+  extends Promise<AsyncIterator<SignedUploadEdge>>,
+    Fragmentable {
+  node: <T = SignedUploadSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateSection {
+  count: Int;
+}
+
+export interface AggregateSectionPromise
+  extends Promise<AggregateSection>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSectionSubscription
+  extends Promise<AsyncIterator<AggregateSection>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TopicPreviousValues {
+  id: ID_Output;
+  name: String;
+  slug: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  description?: String;
+  image?: String;
+  followersCount?: Int;
+  postsCount?: Int;
+  trending?: Boolean;
+}
+
+export interface TopicPreviousValuesPromise
+  extends Promise<TopicPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  slug: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  description: () => Promise<String>;
+  image: () => Promise<String>;
+  followersCount: () => Promise<Int>;
+  postsCount: () => Promise<Int>;
+  trending: () => Promise<Boolean>;
+}
+
+export interface TopicPreviousValuesSubscription
+  extends Promise<AsyncIterator<TopicPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  slug: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  description: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
+  followersCount: () => Promise<AsyncIterator<Int>>;
+  postsCount: () => Promise<AsyncIterator<Int>>;
+  trending: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface TopicSubscriptionPayload {
+  mutation: MutationType;
+  node: Topic;
+  updatedFields: String[];
+  previousValues: TopicPreviousValues;
+}
+
+export interface TopicSubscriptionPayloadPromise
+  extends Promise<TopicSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TopicPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TopicPreviousValuesPromise>() => T;
+}
+
+export interface TopicSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TopicSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TopicSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TopicPreviousValuesSubscription>() => T;
+}
+
+export interface Vote {
+  id: ID_Output;
+}
+
+export interface VotePromise extends Promise<Vote>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  user: <T = UserPromise>() => T;
+  post: <T = PostPromise>() => T;
+}
+
+export interface VoteSubscription
+  extends Promise<AsyncIterator<Vote>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
+  post: <T = PostSubscription>() => T;
+}
+
+export interface SignedUploadPreviousValues {
+  signedRequest?: String;
+  url?: String;
+}
+
+export interface SignedUploadPreviousValuesPromise
+  extends Promise<SignedUploadPreviousValues>,
+    Fragmentable {
+  signedRequest: () => Promise<String>;
+  url: () => Promise<String>;
+}
+
+export interface SignedUploadPreviousValuesSubscription
+  extends Promise<AsyncIterator<SignedUploadPreviousValues>>,
+    Fragmentable {
+  signedRequest: () => Promise<AsyncIterator<String>>;
+  url: () => Promise<AsyncIterator<String>>;
+}
+
+export interface VoteConnection {
+  pageInfo: PageInfo;
+  edges: VoteEdge[];
+}
+
+export interface VoteConnectionPromise
+  extends Promise<VoteConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<VoteEdge>>() => T;
+  aggregate: <T = AggregateVotePromise>() => T;
+}
+
+export interface VoteConnectionSubscription
+  extends Promise<AsyncIterator<VoteConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<VoteEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateVoteSubscription>() => T;
+}
+
+export interface SignedUpload {
+  signedRequest?: String;
+  url?: String;
+}
+
+export interface SignedUploadPromise
+  extends Promise<SignedUpload>,
+    Fragmentable {
+  signedRequest: () => Promise<String>;
+  url: () => Promise<String>;
+}
+
+export interface SignedUploadSubscription
+  extends Promise<AsyncIterator<SignedUpload>>,
+    Fragmentable {
+  signedRequest: () => Promise<AsyncIterator<String>>;
+  url: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TopicConnection {
+  pageInfo: PageInfo;
+  edges: TopicEdge[];
+}
+
+export interface TopicConnectionPromise
+  extends Promise<TopicConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TopicEdge>>() => T;
+  aggregate: <T = AggregateTopicPromise>() => T;
+}
+
+export interface TopicConnectionSubscription
+  extends Promise<AsyncIterator<TopicConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TopicEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTopicSubscription>() => T;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
-export type String = string;
+export type Int = number;
 
 /*
 DateTime scalar input type, allowing Date
@@ -2854,6 +3082,8 @@ DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
 
+export type Long = string;
+
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 */
@@ -2861,16 +3091,14 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
+
+/*
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
-
-export type Long = string;
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
 
 /**
  * Model Metadata
@@ -2895,6 +3123,10 @@ export const models: Model[] = [
   },
   {
     name: "Section",
+    embedded: false
+  },
+  {
+    name: "SignedUpload",
     embedded: false
   },
   {

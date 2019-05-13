@@ -57,6 +57,17 @@ const Mutations = {
     return { id: 66667 };
   },
 
+  async signUpload(root, { amount }, context, info) {
+    console.log('sighing upload!! COOL BRO');
+    // const userAddress = ctxUser(context).address;
+    // const client = context.request.lyraClient;
+    // const tx = await client.mint(userAddress, amount);
+    // console.log('tx', tx);
+    // // console.log('user', user);
+    // // console.log('amount to mint', amount);
+    // return { id: 66667 };
+  },
+
   async vote(root, { postId }, context) {
     const userId = ctxUser(context).id;
     const votes = await context.prisma

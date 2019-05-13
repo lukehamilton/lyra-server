@@ -71,6 +71,13 @@ server.express.post(server.options.endpoint, (req, res, next) => {
   // Otherwise check if there is a cookie to get the user
 });
 
+// server.express.post('/sign_s3', (req, res) => {
+//   res.status(200).send({
+//     success: 'true',
+//     message: 'Sign S3 Called'
+//   });
+// });
+
 server.start(
   {
     cors: {

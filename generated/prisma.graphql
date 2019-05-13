@@ -6,6 +6,10 @@ type AggregateSection {
   count: Int!
 }
 
+type AggregateSignedUpload {
+  count: Int!
+}
+
 type AggregateTopic {
   count: Int!
 }
@@ -39,6 +43,9 @@ type Mutation {
   upsertSection(where: SectionWhereUniqueInput!, create: SectionCreateInput!, update: SectionUpdateInput!): Section!
   deleteSection(where: SectionWhereUniqueInput!): Section
   deleteManySections(where: SectionWhereInput): BatchPayload!
+  createSignedUpload(data: SignedUploadCreateInput!): SignedUpload!
+  updateManySignedUploads(data: SignedUploadUpdateManyMutationInput!, where: SignedUploadWhereInput): BatchPayload!
+  deleteManySignedUploads(where: SignedUploadWhereInput): BatchPayload!
   createTopic(data: TopicCreateInput!): Topic!
   updateTopic(data: TopicUpdateInput!, where: TopicWhereUniqueInput!): Topic
   updateManyTopics(data: TopicUpdateManyMutationInput!, where: TopicWhereInput): BatchPayload!
@@ -602,6 +609,8 @@ type Query {
   section(where: SectionWhereUniqueInput!): Section
   sections(where: SectionWhereInput, orderBy: SectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Section]!
   sectionsConnection(where: SectionWhereInput, orderBy: SectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SectionConnection!
+  signedUploads(where: SignedUploadWhereInput, orderBy: SignedUploadOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SignedUpload]!
+  signedUploadsConnection(where: SignedUploadWhereInput, orderBy: SignedUploadOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SignedUploadConnection!
   topic(where: TopicWhereUniqueInput!): Topic
   topics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic]!
   topicsConnection(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TopicConnection!
@@ -726,9 +735,106 @@ input SectionWhereUniqueInput {
   date: String
 }
 
+type SignedUpload {
+  signedRequest: String
+  url: String
+}
+
+type SignedUploadConnection {
+  pageInfo: PageInfo!
+  edges: [SignedUploadEdge]!
+  aggregate: AggregateSignedUpload!
+}
+
+input SignedUploadCreateInput {
+  signedRequest: String
+  url: String
+}
+
+type SignedUploadEdge {
+  node: SignedUpload!
+  cursor: String!
+}
+
+enum SignedUploadOrderByInput {
+  signedRequest_ASC
+  signedRequest_DESC
+  url_ASC
+  url_DESC
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type SignedUploadPreviousValues {
+  signedRequest: String
+  url: String
+}
+
+type SignedUploadSubscriptionPayload {
+  mutation: MutationType!
+  node: SignedUpload
+  updatedFields: [String!]
+  previousValues: SignedUploadPreviousValues
+}
+
+input SignedUploadSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SignedUploadWhereInput
+  AND: [SignedUploadSubscriptionWhereInput!]
+  OR: [SignedUploadSubscriptionWhereInput!]
+  NOT: [SignedUploadSubscriptionWhereInput!]
+}
+
+input SignedUploadUpdateManyMutationInput {
+  signedRequest: String
+  url: String
+}
+
+input SignedUploadWhereInput {
+  signedRequest: String
+  signedRequest_not: String
+  signedRequest_in: [String!]
+  signedRequest_not_in: [String!]
+  signedRequest_lt: String
+  signedRequest_lte: String
+  signedRequest_gt: String
+  signedRequest_gte: String
+  signedRequest_contains: String
+  signedRequest_not_contains: String
+  signedRequest_starts_with: String
+  signedRequest_not_starts_with: String
+  signedRequest_ends_with: String
+  signedRequest_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  AND: [SignedUploadWhereInput!]
+  OR: [SignedUploadWhereInput!]
+  NOT: [SignedUploadWhereInput!]
+}
+
 type Subscription {
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   section(where: SectionSubscriptionWhereInput): SectionSubscriptionPayload
+  signedUpload(where: SignedUploadSubscriptionWhereInput): SignedUploadSubscriptionPayload
   topic(where: TopicSubscriptionWhereInput): TopicSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   vote(where: VoteSubscriptionWhereInput): VoteSubscriptionPayload
