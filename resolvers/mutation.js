@@ -1,6 +1,16 @@
 const validateAndParseIdToken = require('../helpers/validateAndParseIdToken');
 const ctxUser = require('../helpers/ctxUser');
 const { LocalAddress, CryptoUtils } = require('loom-js');
+const aws = require('aws-sdk');
+require('dotenv').config();
+
+aws.config.update({
+  region: 'us-east-1', // Put your aws region here
+  accessKeyId: process.env.AWSAccessKeyId,
+  secretAccessKey: process.env.AWSSecretKey
+});
+
+const S3_BUCKET = process.env.Bucket;
 
 async function createPrismaUser(context, idToken) {
   const bytes = CryptoUtils.generatePrivateKey();
@@ -57,15 +67,20 @@ const Mutations = {
     return { id: 66667 };
   },
 
-  async signUpload(root, { amount }, context, info) {
-    console.log('sighing upload!! COOL BRO');
-    // const userAddress = ctxUser(context).address;
-    // const client = context.request.lyraClient;
-    // const tx = await client.mint(userAddress, amount);
-    // console.log('tx', tx);
-    // // console.log('user', user);
-    // // console.log('amount to mint', amount);
-    // return { id: 66667 };
+  async signUpload(root, { fileName, fileType }, context, info) {
+    const s3 = new aws.S3();
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: fileName,
+      Expires: 500,
+      ContentType: fileType,
+      ACL: 'public-read'
+    };
+    const request = s3.getSignedUrl('putObject', s3Params);
+    return {
+      signedRequest: request,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
   },
 
   async vote(root, { postId }, context) {
