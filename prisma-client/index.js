@@ -5,6 +5,14 @@ var typeDefs = require("./prisma-schema").typeDefs;
 
 var models = [
   {
+    name: "Role",
+    embedded: false
+  },
+  {
+    name: "PostType",
+    embedded: false
+  },
+  {
     name: "User",
     embedded: false
   },
@@ -26,14 +34,6 @@ var models = [
   },
   {
     name: "SignedUpload",
-    embedded: false
-  },
-  {
-    name: "Role",
-    embedded: false
-  },
-  {
-    name: "PostType",
     embedded: false
   }
 ];

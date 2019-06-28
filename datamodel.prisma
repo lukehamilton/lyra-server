@@ -9,7 +9,9 @@ enum PostType {
 }
 
 type User {
-  id: ID! @unique
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   email: String @unique
   role: Role @default(value: USER)
   name: String!
@@ -23,11 +25,11 @@ type User {
 }
 
 type Topic {
-  id: ID! @unique
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   name: String!
   slug: String! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
   description: String
   image: String
   followersCount: Int
@@ -39,7 +41,9 @@ type Topic {
 }
 
 type Post {
-  id: ID! @unique
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   type: PostType @default(value: PRODUCT)
   name: String!
   slug: String! @unique
@@ -54,18 +58,25 @@ type Post {
 }
 
 type Vote {
-  id: ID! @unique
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   user: User!
   post: Post!
 }
 
 type Section {
-  id: ID! @unique
+  id: ID! @unique @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   date: String! @unique
   posts: [Post!]!
 }
 
 type SignedUpload {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
   signedRequest: String
   url: String
 }

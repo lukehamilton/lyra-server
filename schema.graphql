@@ -15,6 +15,7 @@ type Query {
 type Mutation {
   authenticate(idToken: String!): User
   createTopic(name: String!, slug: String!): Topic
+  # createPost(name: String!): Post
   createPost(
     name: String!
     slug: String!
@@ -27,6 +28,10 @@ type Mutation {
   updateFollowedTopic(userId: ID!, topicId: ID!, following: Boolean): Topic
   mintTokens(amount: Int, address: String): Transaction
   signUpload(fileName: String, fileType: String): SignedUpload
+}
+
+type Cool {
+  name: String
 }
 
 type Transaction {
