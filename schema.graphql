@@ -16,13 +16,20 @@ type Mutation {
   authenticate(idToken: String!): User
   createTopic(name: String!, slug: String!): Topic
   # createPost(name: String!): Post
+  # createPost(
+  #   name: String!
+  #   slug: String!
+  #   imageUrl: String!
+  #   description: String!
+  #   votesCount: Int
+  #   commentsCount: Int
+  # ): Post
   createPost(
-    name: String!
-    slug: String!
-    imageUrl: String!
-    description: String!
-    votesCount: Int
-    commentsCount: Int
+    link: String
+    name: String
+    tagline: String
+    description: String
+    thumbnail: String
   ): Post
   vote(postId: ID!): Vote!
   updateFollowedTopic(userId: ID!, topicId: ID!, following: Boolean): Topic

@@ -47,8 +47,10 @@ type Post {
   type: PostType @default(value: PRODUCT)
   name: String!
   slug: String! @unique
+  link: String
   thumbnail: String!
   description: String!
+  tagline: String
   votesCount: Int!
   commentsCount: Int!
   day: String

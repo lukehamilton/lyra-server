@@ -97,8 +97,10 @@ type Post {
   type: PostType
   name: String!
   slug: String!
+  link: String
   thumbnail: String!
   description: String!
+  tagline: String
   votesCount: Int!
   commentsCount: Int!
   day: String
@@ -118,8 +120,10 @@ input PostCreateInput {
   type: PostType
   name: String!
   slug: String!
+  link: String
   thumbnail: String!
   description: String!
+  tagline: String
   votesCount: Int!
   commentsCount: Int!
   day: String
@@ -148,8 +152,10 @@ input PostCreateWithoutTopicsInput {
   type: PostType
   name: String!
   slug: String!
+  link: String
   thumbnail: String!
   description: String!
+  tagline: String
   votesCount: Int!
   commentsCount: Int!
   day: String
@@ -162,8 +168,10 @@ input PostCreateWithoutVotesInput {
   type: PostType
   name: String!
   slug: String!
+  link: String
   thumbnail: String!
   description: String!
+  tagline: String
   votesCount: Int!
   commentsCount: Int!
   day: String
@@ -189,10 +197,14 @@ enum PostOrderByInput {
   name_DESC
   slug_ASC
   slug_DESC
+  link_ASC
+  link_DESC
   thumbnail_ASC
   thumbnail_DESC
   description_ASC
   description_DESC
+  tagline_ASC
+  tagline_DESC
   votesCount_ASC
   votesCount_DESC
   commentsCount_ASC
@@ -210,8 +222,10 @@ type PostPreviousValues {
   type: PostType
   name: String!
   slug: String!
+  link: String
   thumbnail: String!
   description: String!
+  tagline: String
   votesCount: Int!
   commentsCount: Int!
   day: String
@@ -281,6 +295,20 @@ input PostScalarWhereInput {
   slug_not_starts_with: String
   slug_ends_with: String
   slug_not_ends_with: String
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
   thumbnail: String
   thumbnail_not: String
   thumbnail_in: [String!]
@@ -309,6 +337,20 @@ input PostScalarWhereInput {
   description_not_starts_with: String
   description_ends_with: String
   description_not_ends_with: String
+  tagline: String
+  tagline_not: String
+  tagline_in: [String!]
+  tagline_not_in: [String!]
+  tagline_lt: String
+  tagline_lte: String
+  tagline_gt: String
+  tagline_gte: String
+  tagline_contains: String
+  tagline_not_contains: String
+  tagline_starts_with: String
+  tagline_not_starts_with: String
+  tagline_ends_with: String
+  tagline_not_ends_with: String
   votesCount: Int
   votesCount_not: Int
   votesCount_in: [Int!]
@@ -373,8 +415,10 @@ input PostUpdateDataInput {
   type: PostType
   name: String
   slug: String
+  link: String
   thumbnail: String
   description: String
+  tagline: String
   votesCount: Int
   commentsCount: Int
   day: String
@@ -387,8 +431,10 @@ input PostUpdateInput {
   type: PostType
   name: String
   slug: String
+  link: String
   thumbnail: String
   description: String
+  tagline: String
   votesCount: Int
   commentsCount: Int
   day: String
@@ -401,8 +447,10 @@ input PostUpdateManyDataInput {
   type: PostType
   name: String
   slug: String
+  link: String
   thumbnail: String
   description: String
+  tagline: String
   votesCount: Int
   commentsCount: Int
   day: String
@@ -425,8 +473,10 @@ input PostUpdateManyMutationInput {
   type: PostType
   name: String
   slug: String
+  link: String
   thumbnail: String
   description: String
+  tagline: String
   votesCount: Int
   commentsCount: Int
   day: String
@@ -461,8 +511,10 @@ input PostUpdateWithoutTopicsDataInput {
   type: PostType
   name: String
   slug: String
+  link: String
   thumbnail: String
   description: String
+  tagline: String
   votesCount: Int
   commentsCount: Int
   day: String
@@ -474,8 +526,10 @@ input PostUpdateWithoutVotesDataInput {
   type: PostType
   name: String
   slug: String
+  link: String
   thumbnail: String
   description: String
+  tagline: String
   votesCount: Int
   commentsCount: Int
   day: String
@@ -573,6 +627,20 @@ input PostWhereInput {
   slug_not_starts_with: String
   slug_ends_with: String
   slug_not_ends_with: String
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
   thumbnail: String
   thumbnail_not: String
   thumbnail_in: [String!]
@@ -601,6 +669,20 @@ input PostWhereInput {
   description_not_starts_with: String
   description_ends_with: String
   description_not_ends_with: String
+  tagline: String
+  tagline_not: String
+  tagline_in: [String!]
+  tagline_not_in: [String!]
+  tagline_lt: String
+  tagline_lte: String
+  tagline_gt: String
+  tagline_gte: String
+  tagline_contains: String
+  tagline_not_contains: String
+  tagline_starts_with: String
+  tagline_not_starts_with: String
+  tagline_ends_with: String
+  tagline_not_ends_with: String
   votesCount: Int
   votesCount_not: Int
   votesCount_in: [Int!]

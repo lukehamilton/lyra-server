@@ -335,10 +335,14 @@ export type PostOrderByInput =
   | "name_DESC"
   | "slug_ASC"
   | "slug_DESC"
+  | "link_ASC"
+  | "link_DESC"
   | "thumbnail_ASC"
   | "thumbnail_DESC"
   | "description_ASC"
   | "description_DESC"
+  | "tagline_ASC"
+  | "tagline_DESC"
   | "votesCount_ASC"
   | "votesCount_DESC"
   | "commentsCount_ASC"
@@ -677,6 +681,20 @@ export interface PostWhereInput {
   slug_not_starts_with?: Maybe<String>;
   slug_ends_with?: Maybe<String>;
   slug_not_ends_with?: Maybe<String>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
   thumbnail?: Maybe<String>;
   thumbnail_not?: Maybe<String>;
   thumbnail_in?: Maybe<String[] | String>;
@@ -705,6 +723,20 @@ export interface PostWhereInput {
   description_not_starts_with?: Maybe<String>;
   description_ends_with?: Maybe<String>;
   description_not_ends_with?: Maybe<String>;
+  tagline?: Maybe<String>;
+  tagline_not?: Maybe<String>;
+  tagline_in?: Maybe<String[] | String>;
+  tagline_not_in?: Maybe<String[] | String>;
+  tagline_lt?: Maybe<String>;
+  tagline_lte?: Maybe<String>;
+  tagline_gt?: Maybe<String>;
+  tagline_gte?: Maybe<String>;
+  tagline_contains?: Maybe<String>;
+  tagline_not_contains?: Maybe<String>;
+  tagline_starts_with?: Maybe<String>;
+  tagline_not_starts_with?: Maybe<String>;
+  tagline_ends_with?: Maybe<String>;
+  tagline_not_ends_with?: Maybe<String>;
   votesCount?: Maybe<Int>;
   votesCount_not?: Maybe<Int>;
   votesCount_in?: Maybe<Int[] | Int>;
@@ -1044,8 +1076,10 @@ export interface PostCreateWithoutTopicsInput {
   type?: Maybe<PostType>;
   name: String;
   slug: String;
+  link?: Maybe<String>;
   thumbnail: String;
   description: String;
+  tagline?: Maybe<String>;
   votesCount: Int;
   commentsCount: Int;
   day?: Maybe<String>;
@@ -1100,8 +1134,10 @@ export interface PostUpdateInput {
   type?: Maybe<PostType>;
   name?: Maybe<String>;
   slug?: Maybe<String>;
+  link?: Maybe<String>;
   thumbnail?: Maybe<String>;
   description?: Maybe<String>;
+  tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
@@ -1302,8 +1338,10 @@ export interface PostUpdateManyMutationInput {
   type?: Maybe<PostType>;
   name?: Maybe<String>;
   slug?: Maybe<String>;
+  link?: Maybe<String>;
   thumbnail?: Maybe<String>;
   description?: Maybe<String>;
+  tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
@@ -1349,8 +1387,10 @@ export interface PostUpdateWithoutVotesDataInput {
   type?: Maybe<PostType>;
   name?: Maybe<String>;
   slug?: Maybe<String>;
+  link?: Maybe<String>;
   thumbnail?: Maybe<String>;
   description?: Maybe<String>;
+  tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
@@ -1747,8 +1787,10 @@ export interface PostUpdateWithoutTopicsDataInput {
   type?: Maybe<PostType>;
   name?: Maybe<String>;
   slug?: Maybe<String>;
+  link?: Maybe<String>;
   thumbnail?: Maybe<String>;
   description?: Maybe<String>;
+  tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
@@ -1828,8 +1870,10 @@ export interface PostUpdateDataInput {
   type?: Maybe<PostType>;
   name?: Maybe<String>;
   slug?: Maybe<String>;
+  link?: Maybe<String>;
   thumbnail?: Maybe<String>;
   description?: Maybe<String>;
+  tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
@@ -1849,8 +1893,10 @@ export interface PostCreateInput {
   type?: Maybe<PostType>;
   name: String;
   slug: String;
+  link?: Maybe<String>;
   thumbnail: String;
   description: String;
+  tagline?: Maybe<String>;
   votesCount: Int;
   commentsCount: Int;
   day?: Maybe<String>;
@@ -1922,6 +1968,20 @@ export interface PostScalarWhereInput {
   slug_not_starts_with?: Maybe<String>;
   slug_ends_with?: Maybe<String>;
   slug_not_ends_with?: Maybe<String>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
   thumbnail?: Maybe<String>;
   thumbnail_not?: Maybe<String>;
   thumbnail_in?: Maybe<String[] | String>;
@@ -1950,6 +2010,20 @@ export interface PostScalarWhereInput {
   description_not_starts_with?: Maybe<String>;
   description_ends_with?: Maybe<String>;
   description_not_ends_with?: Maybe<String>;
+  tagline?: Maybe<String>;
+  tagline_not?: Maybe<String>;
+  tagline_in?: Maybe<String[] | String>;
+  tagline_not_in?: Maybe<String[] | String>;
+  tagline_lt?: Maybe<String>;
+  tagline_lte?: Maybe<String>;
+  tagline_gt?: Maybe<String>;
+  tagline_gte?: Maybe<String>;
+  tagline_contains?: Maybe<String>;
+  tagline_not_contains?: Maybe<String>;
+  tagline_starts_with?: Maybe<String>;
+  tagline_not_starts_with?: Maybe<String>;
+  tagline_ends_with?: Maybe<String>;
+  tagline_not_ends_with?: Maybe<String>;
   votesCount?: Maybe<Int>;
   votesCount_not?: Maybe<Int>;
   votesCount_in?: Maybe<Int[] | Int>;
@@ -1992,8 +2066,10 @@ export interface PostCreateWithoutVotesInput {
   type?: Maybe<PostType>;
   name: String;
   slug: String;
+  link?: Maybe<String>;
   thumbnail: String;
   description: String;
+  tagline?: Maybe<String>;
   votesCount: Int;
   commentsCount: Int;
   day?: Maybe<String>;
@@ -2142,8 +2218,10 @@ export interface PostUpdateManyDataInput {
   type?: Maybe<PostType>;
   name?: Maybe<String>;
   slug?: Maybe<String>;
+  link?: Maybe<String>;
   thumbnail?: Maybe<String>;
   description?: Maybe<String>;
+  tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
@@ -2835,8 +2913,10 @@ export interface PostPreviousValues {
   type?: PostType;
   name: String;
   slug: String;
+  link?: String;
   thumbnail: String;
   description: String;
+  tagline?: String;
   votesCount: Int;
   commentsCount: Int;
   day?: String;
@@ -2852,8 +2932,10 @@ export interface PostPreviousValuesPromise
   type: () => Promise<PostType>;
   name: () => Promise<String>;
   slug: () => Promise<String>;
+  link: () => Promise<String>;
   thumbnail: () => Promise<String>;
   description: () => Promise<String>;
+  tagline: () => Promise<String>;
   votesCount: () => Promise<Int>;
   commentsCount: () => Promise<Int>;
   day: () => Promise<String>;
@@ -2869,8 +2951,10 @@ export interface PostPreviousValuesSubscription
   type: () => Promise<AsyncIterator<PostType>>;
   name: () => Promise<AsyncIterator<String>>;
   slug: () => Promise<AsyncIterator<String>>;
+  link: () => Promise<AsyncIterator<String>>;
   thumbnail: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
+  tagline: () => Promise<AsyncIterator<String>>;
   votesCount: () => Promise<AsyncIterator<Int>>;
   commentsCount: () => Promise<AsyncIterator<Int>>;
   day: () => Promise<AsyncIterator<String>>;
@@ -3121,8 +3205,10 @@ export interface Post {
   type?: PostType;
   name: String;
   slug: String;
+  link?: String;
   thumbnail: String;
   description: String;
+  tagline?: String;
   votesCount: Int;
   commentsCount: Int;
   day?: String;
@@ -3136,8 +3222,10 @@ export interface PostPromise extends Promise<Post>, Fragmentable {
   type: () => Promise<PostType>;
   name: () => Promise<String>;
   slug: () => Promise<String>;
+  link: () => Promise<String>;
   thumbnail: () => Promise<String>;
   description: () => Promise<String>;
+  tagline: () => Promise<String>;
   votesCount: () => Promise<Int>;
   commentsCount: () => Promise<Int>;
   day: () => Promise<String>;
@@ -3171,8 +3259,10 @@ export interface PostSubscription
   type: () => Promise<AsyncIterator<PostType>>;
   name: () => Promise<AsyncIterator<String>>;
   slug: () => Promise<AsyncIterator<String>>;
+  link: () => Promise<AsyncIterator<String>>;
   thumbnail: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
+  tagline: () => Promise<AsyncIterator<String>>;
   votesCount: () => Promise<AsyncIterator<Int>>;
   commentsCount: () => Promise<AsyncIterator<Int>>;
   day: () => Promise<AsyncIterator<String>>;
@@ -3206,8 +3296,10 @@ export interface PostNullablePromise
   type: () => Promise<PostType>;
   name: () => Promise<String>;
   slug: () => Promise<String>;
+  link: () => Promise<String>;
   thumbnail: () => Promise<String>;
   description: () => Promise<String>;
+  tagline: () => Promise<String>;
   votesCount: () => Promise<Int>;
   commentsCount: () => Promise<Int>;
   day: () => Promise<String>;

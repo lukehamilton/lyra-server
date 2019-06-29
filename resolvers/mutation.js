@@ -115,6 +115,18 @@ const Mutations = {
     // }
   },
 
+  async createPost(root, payload, context) {
+    console.log('-------- handling create Post mutation -----------------');
+    console.log('payload', payload);
+    console.log('-------- -----------------------------------------------');
+    // const action = following ? 'connect' : 'disconnect';
+    // await context.prisma.updateUser({
+    //   where: { id: userId },
+    //   data: { followedTopics: { [action]: { id: topicId } } }
+    // });
+    return 'cool!';
+  },
+
   async updateFollowedTopic(root, { userId, topicId, following }, context) {
     const action = following ? 'connect' : 'disconnect';
     await context.prisma.updateUser({
