@@ -50,13 +50,14 @@ type Post {
   link: String
   thumbnail: String!
   description: String!
+  galleryThumbs: [String!] @scalarList(strategy: RELATION)
   tagline: String
-  votesCount: Int!
-  commentsCount: Int!
+  votesCount: Int
+  commentsCount: Int
   day: String
   featured: Boolean
   topics: [Topic!]! @relation(name: "PostTopics")
-  votes: [Vote!]!
+  votes: [Vote!]
 }
 
 type Vote {

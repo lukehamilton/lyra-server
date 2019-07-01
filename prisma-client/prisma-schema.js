@@ -100,9 +100,10 @@ type Post {
   link: String
   thumbnail: String!
   description: String!
+  galleryThumbs: [String!]!
   tagline: String
-  votesCount: Int!
-  commentsCount: Int!
+  votesCount: Int
+  commentsCount: Int
   day: String
   featured: Boolean
   topics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic!]
@@ -115,6 +116,10 @@ type PostConnection {
   aggregate: AggregatePost!
 }
 
+input PostCreategalleryThumbsInput {
+  set: [String!]
+}
+
 input PostCreateInput {
   id: ID
   type: PostType
@@ -123,9 +128,10 @@ input PostCreateInput {
   link: String
   thumbnail: String!
   description: String!
+  galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  votesCount: Int!
-  commentsCount: Int!
+  votesCount: Int
+  commentsCount: Int
   day: String
   featured: Boolean
   topics: TopicCreateManyWithoutPostsInput
@@ -155,9 +161,10 @@ input PostCreateWithoutTopicsInput {
   link: String
   thumbnail: String!
   description: String!
+  galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  votesCount: Int!
-  commentsCount: Int!
+  votesCount: Int
+  commentsCount: Int
   day: String
   featured: Boolean
   votes: VoteCreateManyWithoutPostInput
@@ -171,9 +178,10 @@ input PostCreateWithoutVotesInput {
   link: String
   thumbnail: String!
   description: String!
+  galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  votesCount: Int!
-  commentsCount: Int!
+  votesCount: Int
+  commentsCount: Int
   day: String
   featured: Boolean
   topics: TopicCreateManyWithoutPostsInput
@@ -225,9 +233,10 @@ type PostPreviousValues {
   link: String
   thumbnail: String!
   description: String!
+  galleryThumbs: [String!]!
   tagline: String
-  votesCount: Int!
-  commentsCount: Int!
+  votesCount: Int
+  commentsCount: Int
   day: String
   featured: Boolean
 }
@@ -418,6 +427,7 @@ input PostUpdateDataInput {
   link: String
   thumbnail: String
   description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
   votesCount: Int
   commentsCount: Int
@@ -427,6 +437,10 @@ input PostUpdateDataInput {
   votes: VoteUpdateManyWithoutPostInput
 }
 
+input PostUpdategalleryThumbsInput {
+  set: [String!]
+}
+
 input PostUpdateInput {
   type: PostType
   name: String
@@ -434,6 +448,7 @@ input PostUpdateInput {
   link: String
   thumbnail: String
   description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
   votesCount: Int
   commentsCount: Int
@@ -450,6 +465,7 @@ input PostUpdateManyDataInput {
   link: String
   thumbnail: String
   description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
   votesCount: Int
   commentsCount: Int
@@ -476,6 +492,7 @@ input PostUpdateManyMutationInput {
   link: String
   thumbnail: String
   description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
   votesCount: Int
   commentsCount: Int
@@ -514,6 +531,7 @@ input PostUpdateWithoutTopicsDataInput {
   link: String
   thumbnail: String
   description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
   votesCount: Int
   commentsCount: Int
@@ -529,6 +547,7 @@ input PostUpdateWithoutVotesDataInput {
   link: String
   thumbnail: String
   description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
   votesCount: Int
   commentsCount: Int

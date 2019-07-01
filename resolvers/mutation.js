@@ -1,5 +1,6 @@
 const validateAndParseIdToken = require('../helpers/validateAndParseIdToken');
 const ctxUser = require('../helpers/ctxUser');
+const slugify = require('../helpers/slugify');
 const { LocalAddress, CryptoUtils } = require('loom-js');
 const aws = require('aws-sdk');
 require('dotenv').config();
@@ -116,15 +117,37 @@ const Mutations = {
   },
 
   async createPost(root, payload, context) {
+    const {
+      link,
+      name,
+      tagline,
+      description,
+      thumbnail,
+      topics,
+      galleryThumbs
+    } = payload;
     console.log('-------- handling create Post mutation -----------------');
     console.log('payload', payload);
     console.log('-------- -----------------------------------------------');
+    return context.prisma.createPost({
+      slug: slugify(name),
+      link,
+      name,
+      tagline,
+      description,
+      thumbnail,
+      galleryThumbs: { set: galleryThumbs },
+      topics: {
+        connect: topics.map(topic => ({
+          slug: topic
+        }))
+      }
+    });
     // const action = following ? 'connect' : 'disconnect';
     // await context.prisma.updateUser({
     //   where: { id: userId },
     //   data: { followedTopics: { [action]: { id: topicId } } }
     // });
-    return 'cool!';
   },
 
   async updateFollowedTopic(root, { userId, topicId, following }, context) {
