@@ -7,8 +7,8 @@ const jwks = jwksClient({
   jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
 });
 
-const validateAndParseIdToken = idToken =>
-  new Promise((resolve, reject) => {
+const validateAndParseIdToken = idToken => {
+  return new Promise((resolve, reject) => {
     const { header, payload } = jwt.decode(idToken, { complete: true });
     if (!header || !header.kid || !payload) reject(new Error('Invalid Token'));
     jwks.getSigningKey(header.kid, (err, key) => {
@@ -24,5 +24,6 @@ const validateAndParseIdToken = idToken =>
       );
     });
   });
+};
 
 module.exports = validateAndParseIdToken;
