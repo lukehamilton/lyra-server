@@ -45,18 +45,18 @@ type Post {
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
   type: PostType @default(value: PRODUCT)
-  name: String!
+  name: String
   slug: String! @unique
   link: String
-  thumbnail: String!
-  description: String!
+  thumbnail: String
+  description: String
   galleryThumbs: [String!] @scalarList(strategy: RELATION)
   tagline: String
   votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
-  topics: [Topic!]! @relation(name: "PostTopics")
+  topics: [Topic!] @relation(name: "PostTopics")
   votes: [Vote!]
 }
 

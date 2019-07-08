@@ -8,7 +8,7 @@ const Query = {
     return context.prisma
       .sections({ first: args.first, skip: args.skip, after: args.after })
       .$fragment(
-        `{ id date posts { id name slug description thumbnail votesCount votes { id } topics { id  name slug } }}`
+        `{ id date posts { id name slug description tagline thumbnail votesCount votes { id } topics { id  name slug } }}`
       );
   },
   tokenInfo(root, args, context, info) {
@@ -18,8 +18,11 @@ const Query = {
     return context.prisma
       .posts({ first: args.first, skip: args.skip })
       .$fragment(
-        `{ id name slug description imageUrl topics { id  name slug } }`
+        `{ id name slug description tagline imageUrl topics { id  name slug } }`
       );
+  },
+  post(root, args, context, info) {
+    return context.prisma.post({ slug: args.slug });
   },
   me(root, args, context, info) {
     if (context.request.user) {

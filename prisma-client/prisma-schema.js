@@ -95,11 +95,11 @@ type Post {
   updatedAt: DateTime!
   createdAt: DateTime!
   type: PostType
-  name: String!
+  name: String
   slug: String!
   link: String
-  thumbnail: String!
-  description: String!
+  thumbnail: String
+  description: String
   galleryThumbs: [String!]!
   tagline: String
   votesCount: Int
@@ -123,11 +123,11 @@ input PostCreategalleryThumbsInput {
 input PostCreateInput {
   id: ID
   type: PostType
-  name: String!
+  name: String
   slug: String!
   link: String
-  thumbnail: String!
-  description: String!
+  thumbnail: String
+  description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
   votesCount: Int
@@ -156,11 +156,11 @@ input PostCreateOneWithoutVotesInput {
 input PostCreateWithoutTopicsInput {
   id: ID
   type: PostType
-  name: String!
+  name: String
   slug: String!
   link: String
-  thumbnail: String!
-  description: String!
+  thumbnail: String
+  description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
   votesCount: Int
@@ -173,11 +173,11 @@ input PostCreateWithoutTopicsInput {
 input PostCreateWithoutVotesInput {
   id: ID
   type: PostType
-  name: String!
+  name: String
   slug: String!
   link: String
-  thumbnail: String!
-  description: String!
+  thumbnail: String
+  description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
   votesCount: Int
@@ -228,11 +228,11 @@ type PostPreviousValues {
   updatedAt: DateTime!
   createdAt: DateTime!
   type: PostType
-  name: String!
+  name: String
   slug: String!
   link: String
-  thumbnail: String!
-  description: String!
+  thumbnail: String
+  description: String
   galleryThumbs: [String!]!
   tagline: String
   votesCount: Int

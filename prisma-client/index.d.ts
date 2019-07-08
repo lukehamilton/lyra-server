@@ -936,11 +936,11 @@ export interface UserUpsertWithWhereUniqueWithoutFollowedTopicsInput {
 export interface PostCreateWithoutTopicsInput {
   id?: Maybe<ID_Input>;
   type?: Maybe<PostType>;
-  name: String;
+  name?: Maybe<String>;
   slug: String;
   link?: Maybe<String>;
-  thumbnail: String;
-  description: String;
+  thumbnail?: Maybe<String>;
+  description?: Maybe<String>;
   galleryThumbs?: Maybe<PostCreategalleryThumbsInput>;
   tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
@@ -1371,11 +1371,11 @@ export interface UserUpsertWithoutVotesInput {
 export interface PostCreateWithoutVotesInput {
   id?: Maybe<ID_Input>;
   type?: Maybe<PostType>;
-  name: String;
+  name?: Maybe<String>;
   slug: String;
   link?: Maybe<String>;
-  thumbnail: String;
-  description: String;
+  thumbnail?: Maybe<String>;
+  description?: Maybe<String>;
   galleryThumbs?: Maybe<PostCreategalleryThumbsInput>;
   tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
@@ -1719,11 +1719,11 @@ export interface TopicUpdateWithoutFollowedByDataInput {
 export interface PostCreateInput {
   id?: Maybe<ID_Input>;
   type?: Maybe<PostType>;
-  name: String;
+  name?: Maybe<String>;
   slug: String;
   link?: Maybe<String>;
-  thumbnail: String;
-  description: String;
+  thumbnail?: Maybe<String>;
+  description?: Maybe<String>;
   galleryThumbs?: Maybe<PostCreategalleryThumbsInput>;
   tagline?: Maybe<String>;
   votesCount?: Maybe<Int>;
@@ -2928,11 +2928,11 @@ export interface PostPreviousValues {
   updatedAt: DateTimeOutput;
   createdAt: DateTimeOutput;
   type?: PostType;
-  name: String;
+  name?: String;
   slug: String;
   link?: String;
-  thumbnail: String;
-  description: String;
+  thumbnail?: String;
+  description?: String;
   galleryThumbs: String[];
   tagline?: String;
   votesCount?: Int;
@@ -3223,11 +3223,11 @@ export interface Post {
   updatedAt: DateTimeOutput;
   createdAt: DateTimeOutput;
   type?: PostType;
-  name: String;
+  name?: String;
   slug: String;
   link?: String;
-  thumbnail: String;
-  description: String;
+  thumbnail?: String;
+  description?: String;
   galleryThumbs: String[];
   tagline?: String;
   votesCount?: Int;

@@ -6,6 +6,7 @@
 
 type Query {
   posts(first: Int, skip: Int): [Post!]!
+  post(slug: String!): Post!
   topics: [Topic!]!
   sections(first: Int, skip: Int, after: String): [Section!]!
   tokenInfo: TokenInfo
@@ -66,15 +67,18 @@ type User {
 type Post {
   id: ID!
   type: PostType
-  name: String!
+  name: String
   slug: String!
-  thumbnail: String!
-  description: String!
-  votesCount: Int!
-  commentsCount: Int!
+  thumbnail: String
+  tagline: String
+  link: String
+  description: String
+  galleryThumbs: [String!]
+  votesCount: Int
+  commentsCount: Int
   day: String
   featured: Boolean
   upvoted: Boolean
-  topics: [Topic!]!
-  votes: [Vote!]!
+  topics: [Topic!]
+  votes: [Vote!]
 }

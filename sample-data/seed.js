@@ -14,13 +14,26 @@ const config = {
   }
 };
 
+const galleryThumbs = [
+  'https://lyra-labs-development.s3.amazonaws.com/images/gallery-stock-1.jpeg',
+  'https://lyra-labs-development.s3.amazonaws.com/images/gallery-stock-2.jpeg',
+  'https://lyra-labs-development.s3.amazonaws.com/images/gallery-stock-3.jpeg',
+  'https://lyra-labs-development.s3.amazonaws.com/images/gallery-stock-4.jpeg'
+];
+
 const setup = async () => {
   for (let i = 0; i < topics.length; i += 1) {
     await prisma.createTopic(topics[i]);
   }
 
   for (let i = 0; i < posts.length; i += 1) {
-    await prisma.createPost(posts[i]);
+    await prisma.createPost({
+      ...posts[i],
+      link: 'https://loomx.io/',
+      galleryThumbs: { set: galleryThumbs },
+      description:
+        'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.'
+    });
   }
 
   for (let i = 0; i < config.sections.count; i += 1) {
