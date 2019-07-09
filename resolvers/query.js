@@ -22,7 +22,11 @@ const Query = {
       );
   },
   post(root, args, context, info) {
-    return context.prisma.post({ slug: args.slug });
+    return context.prisma
+      .post({ slug: args.slug })
+      .$fragment(
+        `{ id slug name tagline link thumbnail topics { id name slug} }`
+      );
   },
   me(root, args, context, info) {
     if (context.request.user) {
