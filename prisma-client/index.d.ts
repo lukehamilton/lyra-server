@@ -365,6 +365,12 @@ export type UserOrderByInput =
   | "role_DESC"
   | "name_ASC"
   | "name_DESC"
+  | "firstName_ASC"
+  | "firstName_DESC"
+  | "lastName_ASC"
+  | "lastName_DESC"
+  | "username_ASC"
+  | "username_DESC"
   | "avatar_ASC"
   | "avatar_DESC"
   | "auth0id_ASC"
@@ -414,6 +420,9 @@ export interface UserUpdateWithoutFollowedTopicsDataInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username?: Maybe<String>;
   avatar?: Maybe<String>;
   auth0id?: Maybe<String>;
   identity?: Maybe<String>;
@@ -495,6 +504,48 @@ export interface UserWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  username?: Maybe<String>;
+  username_not?: Maybe<String>;
+  username_in?: Maybe<String[] | String>;
+  username_not_in?: Maybe<String[] | String>;
+  username_lt?: Maybe<String>;
+  username_lte?: Maybe<String>;
+  username_gt?: Maybe<String>;
+  username_gte?: Maybe<String>;
+  username_contains?: Maybe<String>;
+  username_not_contains?: Maybe<String>;
+  username_starts_with?: Maybe<String>;
+  username_not_starts_with?: Maybe<String>;
+  username_ends_with?: Maybe<String>;
+  username_not_ends_with?: Maybe<String>;
   avatar?: Maybe<String>;
   avatar_not?: Maybe<String>;
   avatar_in?: Maybe<String[] | String>;
@@ -1071,6 +1122,9 @@ export interface UserUpdateManyMutationInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username?: Maybe<String>;
   avatar?: Maybe<String>;
   auth0id?: Maybe<String>;
   identity?: Maybe<String>;
@@ -1103,6 +1157,9 @@ export interface UserCreateInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name: String;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username: String;
   avatar?: Maybe<String>;
   auth0id: String;
   identity?: Maybe<String>;
@@ -1344,6 +1401,9 @@ export interface UserCreateWithoutFollowedTopicsInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name: String;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username: String;
   avatar?: Maybe<String>;
   auth0id: String;
   identity?: Maybe<String>;
@@ -1448,6 +1508,48 @@ export interface UserScalarWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  username?: Maybe<String>;
+  username_not?: Maybe<String>;
+  username_in?: Maybe<String[] | String>;
+  username_not_in?: Maybe<String[] | String>;
+  username_lt?: Maybe<String>;
+  username_lte?: Maybe<String>;
+  username_gt?: Maybe<String>;
+  username_gte?: Maybe<String>;
+  username_contains?: Maybe<String>;
+  username_not_contains?: Maybe<String>;
+  username_starts_with?: Maybe<String>;
+  username_not_starts_with?: Maybe<String>;
+  username_ends_with?: Maybe<String>;
+  username_not_ends_with?: Maybe<String>;
   avatar?: Maybe<String>;
   avatar_not?: Maybe<String>;
   avatar_in?: Maybe<String[] | String>;
@@ -1539,6 +1641,9 @@ export interface UserCreateWithoutVotesInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name: String;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username: String;
   avatar?: Maybe<String>;
   auth0id: String;
   identity?: Maybe<String>;
@@ -1551,6 +1656,9 @@ export interface UserUpdateManyDataInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username?: Maybe<String>;
   avatar?: Maybe<String>;
   auth0id?: Maybe<String>;
   identity?: Maybe<String>;
@@ -1641,6 +1749,9 @@ export interface UserUpdateWithoutVotesDataInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username?: Maybe<String>;
   avatar?: Maybe<String>;
   auth0id?: Maybe<String>;
   identity?: Maybe<String>;
@@ -1830,6 +1941,9 @@ export interface UserUpdateInput {
   email?: Maybe<String>;
   role?: Maybe<Role>;
   name?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  username?: Maybe<String>;
   avatar?: Maybe<String>;
   auth0id?: Maybe<String>;
   identity?: Maybe<String>;
@@ -2336,6 +2450,9 @@ export interface User {
   email?: String;
   role?: Role;
   name: String;
+  firstName?: String;
+  lastName?: String;
+  username: String;
   avatar?: String;
   auth0id: String;
   identity?: String;
@@ -2350,6 +2467,9 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   email: () => Promise<String>;
   role: () => Promise<Role>;
   name: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  username: () => Promise<String>;
   avatar: () => Promise<String>;
   auth0id: () => Promise<String>;
   identity: () => Promise<String>;
@@ -2384,6 +2504,9 @@ export interface UserSubscription
   email: () => Promise<AsyncIterator<String>>;
   role: () => Promise<AsyncIterator<Role>>;
   name: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  username: () => Promise<AsyncIterator<String>>;
   avatar: () => Promise<AsyncIterator<String>>;
   auth0id: () => Promise<AsyncIterator<String>>;
   identity: () => Promise<AsyncIterator<String>>;
@@ -2418,6 +2541,9 @@ export interface UserNullablePromise
   email: () => Promise<String>;
   role: () => Promise<Role>;
   name: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  username: () => Promise<String>;
   avatar: () => Promise<String>;
   auth0id: () => Promise<String>;
   identity: () => Promise<String>;
@@ -2704,6 +2830,9 @@ export interface UserPreviousValues {
   email?: String;
   role?: Role;
   name: String;
+  firstName?: String;
+  lastName?: String;
+  username: String;
   avatar?: String;
   auth0id: String;
   identity?: String;
@@ -2720,6 +2849,9 @@ export interface UserPreviousValuesPromise
   email: () => Promise<String>;
   role: () => Promise<Role>;
   name: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  username: () => Promise<String>;
   avatar: () => Promise<String>;
   auth0id: () => Promise<String>;
   identity: () => Promise<String>;
@@ -2736,6 +2868,9 @@ export interface UserPreviousValuesSubscription
   email: () => Promise<AsyncIterator<String>>;
   role: () => Promise<AsyncIterator<Role>>;
   name: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  username: () => Promise<AsyncIterator<String>>;
   avatar: () => Promise<AsyncIterator<String>>;
   auth0id: () => Promise<AsyncIterator<String>>;
   identity: () => Promise<AsyncIterator<String>>;

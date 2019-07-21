@@ -57,7 +57,10 @@ type User {
   email: String
   role: Role
   name: String
+  firstName: String
+  lastName: String
   avatar: String
+  username: String
   identity: String
   privateKey: String
   followedTopics: [Topic!]!

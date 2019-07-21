@@ -27,9 +27,12 @@ async function createPrismaUser(context, idToken) {
     identity: idToken.sub.split(`|`)[0],
     auth0id: idToken.sub.split(`|`)[1],
     name: idToken.name,
+    firstName: idToken.given_name,
+    lastName: idToken.family_name,
     email: idToken.email,
     avatar: idToken.picture,
     privateKey: privateKeyStr,
+    username: 'piesrtasty',
     address
   });
   return user;

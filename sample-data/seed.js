@@ -1,6 +1,8 @@
 /* eslint no-await-in-loop: 0, no-bitwise: 0 */
 const moment = require('moment');
+const { LocalAddress, CryptoUtils } = require('loom-js');
 
+const { users } = require('./users');
 const { topics } = require('./topics');
 const { posts, slugs: postSlugs } = require('./posts');
 
@@ -22,6 +24,26 @@ const galleryThumbs = [
 ];
 
 const setup = async () => {
+  for (let i = 0; i < users.length; i += 1) {
+    const bytes = CryptoUtils.generatePrivateKey();
+    const privateKey = Buffer.from(
+      bytes.buffer,
+      bytes.byteOffset,
+      bytes.byteLength
+    );
+    const privateKeyStr = privateKey.toString('base64');
+    const publicKey = CryptoUtils.publicKeyFromPrivateKey(privateKey);
+    const address = LocalAddress.fromPublicKey(publicKey).toString();
+    const { firstName, lastName } = users[i];
+    await prisma.createUser({
+      ...users[i],
+      privateKey: privateKeyStr,
+      address,
+      identity: 'google-oauth2',
+      name: `${firstName} ${lastName}`
+    });
+  }
+
   for (let i = 0; i < topics.length; i += 1) {
     await prisma.createTopic(topics[i]);
   }

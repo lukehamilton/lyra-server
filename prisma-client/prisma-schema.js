@@ -1536,6 +1536,9 @@ type User {
   email: String
   role: Role
   name: String!
+  firstName: String
+  lastName: String
+  username: String!
   avatar: String
   auth0id: String!
   identity: String
@@ -1556,6 +1559,9 @@ input UserCreateInput {
   email: String
   role: Role
   name: String!
+  firstName: String
+  lastName: String
+  username: String!
   avatar: String
   auth0id: String!
   identity: String
@@ -1580,6 +1586,9 @@ input UserCreateWithoutFollowedTopicsInput {
   email: String
   role: Role
   name: String!
+  firstName: String
+  lastName: String
+  username: String!
   avatar: String
   auth0id: String!
   identity: String
@@ -1593,6 +1602,9 @@ input UserCreateWithoutVotesInput {
   email: String
   role: Role
   name: String!
+  firstName: String
+  lastName: String
+  username: String!
   avatar: String
   auth0id: String!
   identity: String
@@ -1619,6 +1631,12 @@ enum UserOrderByInput {
   role_DESC
   name_ASC
   name_DESC
+  firstName_ASC
+  firstName_DESC
+  lastName_ASC
+  lastName_DESC
+  username_ASC
+  username_DESC
   avatar_ASC
   avatar_DESC
   auth0id_ASC
@@ -1638,6 +1656,9 @@ type UserPreviousValues {
   email: String
   role: Role
   name: String!
+  firstName: String
+  lastName: String
+  username: String!
   avatar: String
   auth0id: String!
   identity: String
@@ -1708,6 +1729,48 @@ input UserScalarWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  firstName: String
+  firstName_not: String
+  firstName_in: [String!]
+  firstName_not_in: [String!]
+  firstName_lt: String
+  firstName_lte: String
+  firstName_gt: String
+  firstName_gte: String
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  lastName: String
+  lastName_not: String
+  lastName_in: [String!]
+  lastName_not_in: [String!]
+  lastName_lt: String
+  lastName_lte: String
+  lastName_gt: String
+  lastName_gte: String
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]
@@ -1805,6 +1868,9 @@ input UserUpdateInput {
   email: String
   role: Role
   name: String
+  firstName: String
+  lastName: String
+  username: String
   avatar: String
   auth0id: String
   identity: String
@@ -1818,6 +1884,9 @@ input UserUpdateManyDataInput {
   email: String
   role: Role
   name: String
+  firstName: String
+  lastName: String
+  username: String
   avatar: String
   auth0id: String
   identity: String
@@ -1829,6 +1898,9 @@ input UserUpdateManyMutationInput {
   email: String
   role: Role
   name: String
+  firstName: String
+  lastName: String
+  username: String
   avatar: String
   auth0id: String
   identity: String
@@ -1864,6 +1936,9 @@ input UserUpdateWithoutFollowedTopicsDataInput {
   email: String
   role: Role
   name: String
+  firstName: String
+  lastName: String
+  username: String
   avatar: String
   auth0id: String
   identity: String
@@ -1876,6 +1951,9 @@ input UserUpdateWithoutVotesDataInput {
   email: String
   role: Role
   name: String
+  firstName: String
+  lastName: String
+  username: String
   avatar: String
   auth0id: String
   identity: String
@@ -1963,6 +2041,48 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  firstName: String
+  firstName_not: String
+  firstName_in: [String!]
+  firstName_not_in: [String!]
+  firstName_lt: String
+  firstName_lte: String
+  firstName_gt: String
+  firstName_gte: String
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  lastName: String
+  lastName_not: String
+  lastName_in: [String!]
+  lastName_not_in: [String!]
+  lastName_lt: String
+  lastName_lte: String
+  lastName_gt: String
+  lastName_gte: String
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]
