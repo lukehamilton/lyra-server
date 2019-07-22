@@ -18,7 +18,7 @@ const Query = {
     return context.prisma
       .posts({ first: args.first, skip: args.skip })
       .$fragment(
-        `{ id name slug description tagline imageUrl topics { id  name slug } }`
+        `{ id name slug description tagline  topics { id  name slug } }`
       );
   },
   post(root, args, context, info) {

@@ -2,7 +2,7 @@
 const moment = require('moment');
 const { LocalAddress, CryptoUtils } = require('loom-js');
 
-const { users } = require('./users');
+const { users, usernames } = require('./users');
 const { topics } = require('./topics');
 const { posts, slugs: postSlugs } = require('./posts');
 
@@ -13,6 +13,10 @@ const config = {
     count: 45,
     minPosts: 8,
     maxPosts: 20
+  },
+  votes: {
+    minVotes: 0,
+    maxVotes: 10
   }
 };
 
@@ -24,6 +28,7 @@ const galleryThumbs = [
 ];
 
 const setup = async () => {
+  // Create users
   for (let i = 0; i < users.length; i += 1) {
     const bytes = CryptoUtils.generatePrivateKey();
     const privateKey = Buffer.from(
@@ -44,10 +49,12 @@ const setup = async () => {
     });
   }
 
+  // Create topics
   for (let i = 0; i < topics.length; i += 1) {
     await prisma.createTopic(topics[i]);
   }
 
+  // Create posts
   for (let i = 0; i < posts.length; i += 1) {
     await prisma.createPost({
       ...posts[i],
@@ -58,6 +65,7 @@ const setup = async () => {
     });
   }
 
+  // Create sections
   for (let i = 0; i < config.sections.count; i += 1) {
     const date = moment()
       .subtract(i, 'd')
@@ -74,6 +82,21 @@ const setup = async () => {
       date,
       posts: { connect: connectedPostSlugs }
     });
+  }
+
+  // Create votes
+  for (let i = 0; i < postSlugs.length; i += 1) {
+    const { minVotes, maxVotes } = config.votes;
+    const selectedUsernames = usernames.slice(
+      0,
+      Math.floor(Math.random() * (maxVotes - minVotes + 1)) + minVotes
+    );
+    for (let j = 0; j < selectedUsernames.length; j += 1) {
+      await prisma.createVote({
+        user: { connect: { username: selectedUsernames[j] } },
+        post: { connect: { slug: postSlugs[i] } }
+      });
+    }
   }
 };
 

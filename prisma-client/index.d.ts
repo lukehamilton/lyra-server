@@ -343,8 +343,6 @@ export type PostOrderByInput =
   | "description_DESC"
   | "tagline_ASC"
   | "tagline_DESC"
-  | "votesCount_ASC"
-  | "votesCount_DESC"
   | "commentsCount_ASC"
   | "commentsCount_DESC"
   | "day_ASC"
@@ -752,14 +750,6 @@ export interface PostWhereInput {
   tagline_not_starts_with?: Maybe<String>;
   tagline_ends_with?: Maybe<String>;
   tagline_not_ends_with?: Maybe<String>;
-  votesCount?: Maybe<Int>;
-  votesCount_not?: Maybe<Int>;
-  votesCount_in?: Maybe<Int[] | Int>;
-  votesCount_not_in?: Maybe<Int[] | Int>;
-  votesCount_lt?: Maybe<Int>;
-  votesCount_lte?: Maybe<Int>;
-  votesCount_gt?: Maybe<Int>;
-  votesCount_gte?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   commentsCount_not?: Maybe<Int>;
   commentsCount_in?: Maybe<Int[] | Int>;
@@ -994,7 +984,6 @@ export interface PostCreateWithoutTopicsInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostCreategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -1053,7 +1042,6 @@ export interface PostUpdateInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostUpdategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -1256,7 +1244,6 @@ export interface PostUpdateManyMutationInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostUpdategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -1286,6 +1273,7 @@ export interface VoteUpdateManyWithoutUserInput {
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   email?: Maybe<String>;
+  username?: Maybe<String>;
   auth0id?: Maybe<String>;
 }>;
 
@@ -1328,7 +1316,6 @@ export interface PostUpdateWithoutVotesDataInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostUpdategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -1438,7 +1425,6 @@ export interface PostCreateWithoutVotesInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostCreategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -1797,7 +1783,6 @@ export interface PostUpdateDataInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostUpdategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -1837,7 +1822,6 @@ export interface PostCreateInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostCreategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -1892,7 +1876,6 @@ export interface PostUpdateWithoutTopicsDataInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostUpdategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -2118,14 +2101,6 @@ export interface PostScalarWhereInput {
   tagline_not_starts_with?: Maybe<String>;
   tagline_ends_with?: Maybe<String>;
   tagline_not_ends_with?: Maybe<String>;
-  votesCount?: Maybe<Int>;
-  votesCount_not?: Maybe<Int>;
-  votesCount_in?: Maybe<Int[] | Int>;
-  votesCount_not_in?: Maybe<Int[] | Int>;
-  votesCount_lt?: Maybe<Int>;
-  votesCount_lte?: Maybe<Int>;
-  votesCount_gt?: Maybe<Int>;
-  votesCount_gte?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   commentsCount_not?: Maybe<Int>;
   commentsCount_in?: Maybe<Int[] | Int>;
@@ -2306,7 +2281,6 @@ export interface PostUpdateManyDataInput {
   description?: Maybe<String>;
   galleryThumbs?: Maybe<PostUpdategalleryThumbsInput>;
   tagline?: Maybe<String>;
-  votesCount?: Maybe<Int>;
   commentsCount?: Maybe<Int>;
   day?: Maybe<String>;
   featured?: Maybe<Boolean>;
@@ -3070,7 +3044,6 @@ export interface PostPreviousValues {
   description?: String;
   galleryThumbs: String[];
   tagline?: String;
-  votesCount?: Int;
   commentsCount?: Int;
   day?: String;
   featured?: Boolean;
@@ -3090,7 +3063,6 @@ export interface PostPreviousValuesPromise
   description: () => Promise<String>;
   galleryThumbs: () => Promise<String[]>;
   tagline: () => Promise<String>;
-  votesCount: () => Promise<Int>;
   commentsCount: () => Promise<Int>;
   day: () => Promise<String>;
   featured: () => Promise<Boolean>;
@@ -3110,7 +3082,6 @@ export interface PostPreviousValuesSubscription
   description: () => Promise<AsyncIterator<String>>;
   galleryThumbs: () => Promise<AsyncIterator<String[]>>;
   tagline: () => Promise<AsyncIterator<String>>;
-  votesCount: () => Promise<AsyncIterator<Int>>;
   commentsCount: () => Promise<AsyncIterator<Int>>;
   day: () => Promise<AsyncIterator<String>>;
   featured: () => Promise<AsyncIterator<Boolean>>;
@@ -3365,7 +3336,6 @@ export interface Post {
   description?: String;
   galleryThumbs: String[];
   tagline?: String;
-  votesCount?: Int;
   commentsCount?: Int;
   day?: String;
   featured?: Boolean;
@@ -3383,7 +3353,6 @@ export interface PostPromise extends Promise<Post>, Fragmentable {
   description: () => Promise<String>;
   galleryThumbs: () => Promise<String[]>;
   tagline: () => Promise<String>;
-  votesCount: () => Promise<Int>;
   commentsCount: () => Promise<Int>;
   day: () => Promise<String>;
   featured: () => Promise<Boolean>;
@@ -3421,7 +3390,6 @@ export interface PostSubscription
   description: () => Promise<AsyncIterator<String>>;
   galleryThumbs: () => Promise<AsyncIterator<String[]>>;
   tagline: () => Promise<AsyncIterator<String>>;
-  votesCount: () => Promise<AsyncIterator<Int>>;
   commentsCount: () => Promise<AsyncIterator<Int>>;
   day: () => Promise<AsyncIterator<String>>;
   featured: () => Promise<AsyncIterator<Boolean>>;
@@ -3459,7 +3427,6 @@ export interface PostNullablePromise
   description: () => Promise<String>;
   galleryThumbs: () => Promise<String[]>;
   tagline: () => Promise<String>;
-  votesCount: () => Promise<Int>;
   commentsCount: () => Promise<Int>;
   day: () => Promise<String>;
   featured: () => Promise<Boolean>;

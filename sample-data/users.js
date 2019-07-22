@@ -81,6 +81,20 @@ const users = [
   }
 ];
 
+const usernames = [
+  'brownmouse513',
+  'organicbear668',
+  'lazyzebra545',
+  'silvercat216',
+  'whitemouse889',
+  'greenwolf741',
+  'bigsnake450',
+  'ticklishbird779',
+  'brownduck767',
+  'purplesnake426'
+];
+
 module.exports = {
-  users
+  users,
+  usernames
 };

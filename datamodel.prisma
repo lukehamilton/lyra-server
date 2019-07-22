@@ -17,7 +17,7 @@ type User {
   name: String!
   firstName: String
   lastName: String
-  username: String!
+  username: String! @unique
   avatar: String
   auth0id: String! @unique
   identity: String
@@ -55,7 +55,6 @@ type Post {
   description: String
   galleryThumbs: [String!] @scalarList(strategy: RELATION)
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean

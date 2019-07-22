@@ -7,7 +7,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Psychedelic glitch fx',
-    votesCount: 55,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -21,7 +20,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Slack bot for running retrospectives with action items',
-    votesCount: 19,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -36,7 +34,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: "Zoho's new office suite of apps.",
-    votesCount: 92,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -50,7 +47,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A pack of 100 animated vector icons.',
-    votesCount: 412,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -72,7 +68,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: '360 Camera with eyes just like yours',
-    votesCount: 33,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -86,7 +81,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'User feedback in 1 simple overview 🔥',
-    votesCount: 556,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -108,7 +102,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A bot to help you with the basics of using Slack',
-    votesCount: 99,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -123,7 +116,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Find recommendations suggested by locals 🗺',
-    votesCount: 128,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -145,7 +137,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Control Facebook videos playback speed on Android',
-    votesCount: 14,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -160,7 +151,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Easy-to-use font editor for Mac',
-    votesCount: 38,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -174,7 +164,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Get SMS anywhere while traveling.',
-    votesCount: 111,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -195,7 +184,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Thoughtfully crafted and easy-to-use color palettes',
-    votesCount: 324,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -217,7 +205,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Turn sketch into iOS, android, react and flutter in minutes',
-    votesCount: 449,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -232,7 +219,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Beautiful, free resources for your next deck. ',
-    votesCount: 243,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -247,7 +233,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'An interactive map of live radio stations across the globe.',
-    votesCount: 23,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -268,7 +253,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Add 1-click video calls to any product, easily',
-    votesCount: 521,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -290,7 +274,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A premium publication for untold South Asian stories',
-    votesCount: 95,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -307,7 +290,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Google Docs for planning your trips with friends.',
-    votesCount: 256,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -322,7 +304,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Restaurant reviews & guides',
-    votesCount: 56,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -344,7 +325,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The blackest black acrylic art paint',
-    votesCount: 192,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -358,7 +338,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Collect art and interact with the art community',
-    votesCount: 173,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -372,7 +351,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Create and purchase unique generative art',
-    votesCount: 163,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -387,7 +365,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: '= Medium + Books + Paypal',
-    votesCount: 31,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -404,7 +381,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Start voice calls directly within Intercom Messenger',
-    votesCount: 90,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -418,7 +394,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Business management suite for bloggers',
-    votesCount: 47,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -439,7 +414,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A smarter carry on luggage with a 100% polycarbonate shell.',
-    votesCount: 17,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -460,7 +434,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Mac app that lets you display a dark overlay over the screen',
-    votesCount: 48,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -475,7 +448,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Next generation email template editor',
-    votesCount: 54,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -497,7 +469,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A new AR app that puts women back in the history books',
-    votesCount: 29,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -512,7 +483,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Remote jobs for developers',
-    votesCount: 82,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -526,7 +496,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'You can try to catch Carmen Sandiego in Google Earth',
-    votesCount: 33,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -548,7 +517,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Create professional business plans quickly',
-    votesCount: 93,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -570,7 +538,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'An app that identifies objects for the visually impaired',
-    votesCount: 126,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -591,7 +558,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'An app to help manage meeting room bookings',
-    votesCount: 51,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -612,7 +578,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Analyze and identify your predominant type of intelligence.',
-    votesCount: 37,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -626,7 +591,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: "Microsoft's new game streaming service",
-    votesCount: 119,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -641,7 +605,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Explore when your startup will hit profitability',
-    votesCount: 173,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -656,7 +619,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The most comprehensive collection of charts for Sketch',
-    votesCount: 533,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -671,7 +633,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A completely remastered version of the classic game',
-    votesCount: 16,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -692,7 +653,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Colorize black and white photos with power of ML',
-    votesCount: 55,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -707,7 +667,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Facebook Messenger sequences and growth widgets for creators',
-    votesCount: 329,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -721,7 +680,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Ask questions in natural language and find answers in data ⚡',
-    votesCount: 181,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -735,7 +693,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: '3D printable add-ons to make furniture accessible by IKEA',
-    votesCount: 323,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -750,7 +707,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The most powerful bluetooth HiFi amp for audiophiles',
-    votesCount: 284,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -772,7 +728,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Share your stuff with friends for free or $$',
-    votesCount: 252,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -787,7 +742,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: "A compilation of Naval's wisdom, knowledge and thoughts.",
-    votesCount: 132,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -801,7 +755,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Find the perfect cable replacement',
-    votesCount: 34,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -823,7 +776,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A new way to watch short-form videos on mobile',
-    votesCount: 41,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -845,7 +797,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Learn everything there is to know about sloths',
-    votesCount: 26,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -860,7 +811,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Figure out who to trust by looking at a social credit score',
-    votesCount: 45,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -875,7 +825,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'AI-powered Chrome extension that hides toxic comments',
-    votesCount: 279,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -890,7 +839,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Party supplies delivered right to your door',
-    votesCount: 35,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -904,7 +852,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Enterprise solution for furniture and E-com brands',
-    votesCount: 31,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -919,7 +866,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'You can now try on our eyeglasses using your iPhone X',
-    votesCount: 181,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -933,7 +879,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Keypress visualizer for macOS',
-    votesCount: 184,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -948,7 +893,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Allow clients to schedule meetings directly in your calendar',
-    votesCount: 35,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -963,7 +907,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Convert a Google Sheet into a embed update page.',
-    votesCount: 178,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -978,7 +921,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Mouse highlighter & magnifier for macOS',
-    votesCount: 151,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -995,7 +937,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Smaller more affordable electric mobility by OneWheel',
-    votesCount: 33,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1016,7 +957,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: "See who's on Houseparty while you browse",
-    votesCount: 52,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1033,7 +973,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'An advanced music player for iPhone',
-    votesCount: 23,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -1055,7 +994,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A weekly podcast from Twitter about businesses 🎙️🐣',
-    votesCount: 91,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1076,7 +1014,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A sleep tracking mat by Withings',
-    votesCount: 72,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1090,7 +1027,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: "Anomaly detection to learn your environment's current state ",
-    votesCount: 41,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1105,7 +1041,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A tool to browse similar fake faces',
-    votesCount: 67,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1127,7 +1062,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Stats, lessons, & tactics from world’s best marketers',
-    votesCount: 311,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1142,7 +1076,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'One click productivity analytics inside of Slack',
-    votesCount: 39,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1164,7 +1097,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Helping you to be the perfect partner',
-    votesCount: 60,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1181,7 +1113,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The global school for remote software developers.',
-    votesCount: 258,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1203,7 +1134,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Combine your company data and goals in three simple steps',
-    votesCount: 77,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1225,7 +1155,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'An app to explore over 1400 musical scales and modes',
-    votesCount: 54,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1239,7 +1168,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A real-time vocal recognition MIDI controller',
-    votesCount: 66,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -1253,7 +1181,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Crowdsourced list of places to work around the world 🗺️',
-    votesCount: 151,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1275,7 +1202,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Design with components based on Sketch nested symbols',
-    votesCount: 326,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1297,7 +1223,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'GitHub Chrome Extension to track and manage issues',
-    votesCount: 23,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1312,7 +1237,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Learn-by-doing personal finance for kids 💰',
-    votesCount: 48,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1326,7 +1250,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The biggest list of free product management resources',
-    votesCount: 1034,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -1347,7 +1270,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Build voice apps in your browser without coding',
-    votesCount: 1334,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1364,7 +1286,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Instant access to open/public data from a one-stop place.',
-    votesCount: 30,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -1379,7 +1300,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Make greeting and invites cool again using augmented reality',
-    votesCount: 21,
     day: '2019-03-14',
     featured: true,
     thumbnail:
@@ -1394,7 +1314,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A calming game where you switch tiles to reveal an image',
-    votesCount: 25,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1415,7 +1334,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Translation management platform for teams',
-    votesCount: 97,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1436,7 +1354,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Build, share, learn, and thrive in front-end development',
-    votesCount: 141,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1450,7 +1367,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Automatic tax write offs for freelancers',
-    votesCount: 354,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1471,7 +1387,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Get your favorite tweet printed on a coffee mug for only $15',
-    votesCount: 96,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1492,7 +1407,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Mobile app for couples to improve sex.',
-    votesCount: 62,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1507,7 +1421,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The notebook designed for chefs',
-    votesCount: 79,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1524,7 +1437,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A marketplace for curated art',
-    votesCount: 80,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1538,7 +1450,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The podcast app that helps podcasters grow',
-    votesCount: 214,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1553,7 +1464,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A job board for companies and people focused on slow growth.',
-    votesCount: 131,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1567,7 +1477,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Raise your social media marketing to the next level',
-    votesCount: 85,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1588,7 +1497,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Discover dishes and restaurants while traveling at ease',
-    votesCount: 33,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1602,7 +1510,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Lower stress and increase mindfulness with VR',
-    votesCount: 43,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1624,7 +1531,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Co-working and innovation school bundled into one.',
-    votesCount: 49,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1641,7 +1547,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A menu bar app to boost productivity',
-    votesCount: 327,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1662,7 +1567,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'An app to enable people to chat via anonymized videos',
-    votesCount: 30,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1676,7 +1580,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: '$6 lunches from over 100 DC restaurants',
-    votesCount: 77,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1697,7 +1600,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The Support Network // Any Topic-24/7-No Trolls #PeerSupport',
-    votesCount: 154,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1712,7 +1614,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Rotate web videos to your desired orientation',
-    votesCount: 42,
     day: '2019-03-12',
     featured: true,
     thumbnail:
@@ -1734,7 +1635,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Search through 1000+ TLDs and find yours',
-    votesCount: 383,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1756,7 +1656,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Get the replies to an email in a spreadsheet',
-    votesCount: 150,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1777,7 +1676,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Create your own grid wallpapers.',
-    votesCount: 112,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1791,7 +1689,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: "The best boyfriend you've ever had",
-    votesCount: 63,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1806,7 +1703,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Touchscreen device to revolutionize vacation rentals',
-    votesCount: 258,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1828,7 +1724,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A salary estimate on every job listing',
-    votesCount: 55,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1843,7 +1738,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A platform to bring people together and end loneliness',
-    votesCount: 37,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1864,7 +1758,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Your privacy-first epic weight loss dashboard',
-    votesCount: 42,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1879,7 +1772,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Colors that look and work great for everyone.',
-    votesCount: 432,
     day: '2019-03-13',
     featured: true,
     thumbnail:
@@ -1894,7 +1786,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Helping women use contraceptives easily 🗓️',
-    votesCount: 27,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1915,7 +1806,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Create a free downloadable electronic signature',
-    votesCount: 113,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -1929,7 +1819,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'The ultimate survival flashlight and multi-tool',
-    votesCount: 165,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1951,7 +1840,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Unlock job referrals with paid, online apprenticeships',
-    votesCount: 212,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1965,7 +1853,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'See how your environment and lifestyle affects your DNA 🧬',
-    votesCount: 84,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -1986,7 +1873,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Deep insights about your health and life',
-    votesCount: 36,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2001,7 +1887,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'An online payment gateway for African businesses 🌍',
-    votesCount: 34,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2016,7 +1901,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Research-backed mental training for better confidence in bed',
-    votesCount: 416,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2038,7 +1922,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Copy paste reusable elements into your Bubble projects 🚧',
-    votesCount: 98,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2053,7 +1936,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Write to throw away all your troubles',
-    votesCount: 39,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2075,7 +1957,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Pay-as-you-go contracts for freelancers',
-    votesCount: 603,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2097,7 +1978,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Helping amateur artists launch careers.',
-    votesCount: 97,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2119,7 +1999,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Race for the Premier League title',
-    votesCount: 41,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2140,7 +2019,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'A timeline of movie and TV show recommendations',
-    votesCount: 40,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2161,7 +2039,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Make money turning your photos into stickers',
-    votesCount: 47,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2182,7 +2059,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Cat app for cat lovers for iPhone and iPad',
-    votesCount: 57,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2196,7 +2072,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Craft your personal brand with a unique e-resume',
-    votesCount: 263,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2211,7 +2086,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Vlog using clips that turn into stories',
-    votesCount: 67,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2233,7 +2107,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Watch streaming media with friends',
-    votesCount: 117,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2248,7 +2121,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Provides one unified interface for your PC games',
-    votesCount: 66,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2269,7 +2141,6 @@ const posts = [
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
     tagline: 'Articles for science lovers shortened to five bullet points.',
-    votesCount: 303,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2280,7 +2151,6 @@ const posts = [
     slug: 'shift-keyboard',
     commentsCount: 1,
     tagline: 'A keyboard for your Apple Watch',
-    votesCount: 63,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2299,7 +2169,6 @@ const posts = [
     slug: 'gainful',
     commentsCount: 6,
     tagline: 'Protein powder tailored specifically to you',
-    votesCount: 146,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2318,7 +2187,6 @@ const posts = [
     slug: 'day-night-for-macos',
     commentsCount: 20,
     tagline: 'A desktop app that kills the procrastination in you.',
-    votesCount: 314,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2330,7 +2198,6 @@ const posts = [
     slug: 'menu-world-time',
     commentsCount: 9,
     tagline: 'World times at your fingertips',
-    votesCount: 202,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2342,7 +2209,6 @@ const posts = [
     slug: 'citationsy-for-chrome',
     commentsCount: 6,
     tagline: 'Cite anything in one-click right from Chrome',
-    votesCount: 266,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2353,7 +2219,6 @@ const posts = [
     slug: 'dofollow-link-checker',
     commentsCount: 3,
     tagline: 'Check if a post provides dofollow or nofollow links',
-    votesCount: 52,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2365,7 +2230,6 @@ const posts = [
     slug: 'wingman-for-dji',
     commentsCount: 3,
     tagline: 'Flight formation for DJI Drone',
-    votesCount: 53,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2377,7 +2241,6 @@ const posts = [
     slug: 'volpe',
     commentsCount: 9,
     tagline: 'A web reader for PDF & EPUB to enrich your publications',
-    votesCount: 174,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2395,7 +2258,6 @@ const posts = [
     slug: 'hyperpush',
     commentsCount: 3,
     tagline: 'Increase your Instagram reach with analytics 📈',
-    votesCount: 110,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2407,7 +2269,6 @@ const posts = [
     slug: 'money-building',
     commentsCount: 0,
     tagline: 'Simple expense tracker with advanced reporting',
-    votesCount: 38,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2419,7 +2280,6 @@ const posts = [
     slug: 'unicode-calendar-generator',
     commentsCount: 7,
     tagline: 'Generate unique text calendars using Unicode 🗓️',
-    votesCount: 284,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2438,7 +2298,6 @@ const posts = [
     slug: 'maze-2-0',
     commentsCount: 34,
     tagline: 'Go from prototype to UX report in minutes',
-    votesCount: 851,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2450,7 +2309,6 @@ const posts = [
     slug: 'ella-the-engineer-2-0',
     commentsCount: 3,
     tagline: 'A comic encouraging young girls interest in STEM',
-    votesCount: 120,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2462,7 +2320,6 @@ const posts = [
     slug: 'egloo-2',
     commentsCount: 25,
     tagline: 'A customizable and versatile bio page',
-    votesCount: 244,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -2474,7 +2331,6 @@ const posts = [
     slug: 'pathfinder',
     commentsCount: 7,
     tagline: 'AI marketing employee for e-commerce stores',
-    votesCount: 218,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2492,7 +2348,6 @@ const posts = [
     slug: 'musepeach',
     commentsCount: 3,
     tagline: 'Journaling app that makes it easy for non writers to start.',
-    votesCount: 99,
     day: '2019-03-10',
     featured: true,
     thumbnail:
@@ -2503,7 +2358,6 @@ const posts = [
     slug: 'ampler-curt',
     commentsCount: 1,
     tagline: 'An e-bike designed for the city',
-    votesCount: 45,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2514,7 +2368,6 @@ const posts = [
     slug: 'pokeguess',
     commentsCount: 7,
     tagline: 'Are you a Pokemon fan? Can you guess all of them?',
-    votesCount: 29,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2525,7 +2378,6 @@ const posts = [
     slug: 'stairway',
     commentsCount: 9,
     tagline: 'Learn Mathematics, completely free!',
-    votesCount: 194,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2536,7 +2388,6 @@ const posts = [
     slug: 'personal-robots',
     commentsCount: 3,
     tagline: 'Discover a new toy robot every day',
-    votesCount: 133,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2550,7 +2401,6 @@ const posts = [
     slug: 'aero-attack',
     commentsCount: 1,
     tagline: "It's an addictive game of luck and skill.",
-    votesCount: 35,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2561,7 +2411,6 @@ const posts = [
     slug: 'how-much-would-you-make-as-a-woman',
     commentsCount: 10,
     tagline: 'Find out how much you would earn if you were a woman',
-    votesCount: 148,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2579,7 +2428,6 @@ const posts = [
     slug: 'women-world-wide',
     commentsCount: 3,
     tagline: 'An open source map of organizations for women in tech 🌎',
-    votesCount: 116,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2590,7 +2438,6 @@ const posts = [
     slug: 'byte-crypto-price-tracker',
     commentsCount: 2,
     tagline: 'Realtime crypto tracker for everyone',
-    votesCount: 46,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2602,7 +2449,6 @@ const posts = [
     slug: 'women-made-it',
     commentsCount: 33,
     tagline: 'Awesome design tools, books, podcasts & blogs made by women',
-    votesCount: 283,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2620,7 +2466,6 @@ const posts = [
     slug: 'progress-dashboard',
     commentsCount: 24,
     tagline: 'Chrome dashboard to stay productive with progress bars',
-    votesCount: 260,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2639,7 +2484,6 @@ const posts = [
     slug: 'interview-school',
     commentsCount: 6,
     tagline: 'Cheatsheets for your next interview with AI assistance',
-    votesCount: 138,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2651,7 +2495,6 @@ const posts = [
     slug: 'clubhouse-3',
     commentsCount: 6,
     tagline: 'Unique challenges with others in your city',
-    votesCount: 98,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2662,7 +2505,6 @@ const posts = [
     slug: 'cafei',
     commentsCount: 3,
     tagline: 'Track caffeine intake in order to sleep better',
-    votesCount: 45,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2674,7 +2516,6 @@ const posts = [
     slug: 'algoexpert',
     commentsCount: 0,
     tagline: 'A better way to prep for tech interviews',
-    votesCount: 159,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2686,7 +2527,6 @@ const posts = [
     slug: 'stenon',
     commentsCount: 1,
     tagline: 'Portable soil monitoring device',
-    votesCount: 31,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2704,7 +2544,6 @@ const posts = [
     slug: 'locelle',
     commentsCount: 1,
     tagline: 'App for women to connect with like-minded friends & mentors',
-    votesCount: 28,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -2722,7 +2561,6 @@ const posts = [
     slug: 'haiku-animator',
     commentsCount: 28,
     tagline: 'Create powerful animations for any app or website',
-    votesCount: 1150,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2734,7 +2572,6 @@ const posts = [
     slug: 'nice-sex-tracker',
     commentsCount: 9,
     tagline: 'Privacy centric sex and intimacy tracking app for iOS',
-    votesCount: 72,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2745,7 +2582,6 @@ const posts = [
     slug: 'findmyinvoice',
     commentsCount: 20,
     tagline: 'Automatically collect expense receipts from your Gmail',
-    votesCount: 207,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2764,7 +2600,6 @@ const posts = [
     slug: 'text-austin-music',
     commentsCount: 0,
     tagline: 'Visual, artistic texts about the coolest SXSW music events',
-    votesCount: 35,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2782,7 +2617,6 @@ const posts = [
     slug: 'who-runs-the-world',
     commentsCount: 4,
     tagline: "Infographics website for International Women's Day 2019",
-    votesCount: 97,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2794,7 +2628,6 @@ const posts = [
     slug: 'alethio',
     commentsCount: 0,
     tagline: 'Powerful blockchain data, analytics & visualization platform',
-    votesCount: 67,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2806,7 +2639,6 @@ const posts = [
     slug: 'transposit',
     commentsCount: 12,
     tagline: 'Build API-dependent applications effortlessly',
-    votesCount: 194,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2818,7 +2650,6 @@ const posts = [
     slug: 'screenlapse',
     commentsCount: 19,
     tagline: 'Automatically capture website screenshots every day/week/etc',
-    votesCount: 222,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2830,7 +2661,6 @@ const posts = [
     slug: 'hooch-rewards',
     commentsCount: 3,
     tagline: 'Hooch rewards up to 10% back when you shop',
-    votesCount: 29,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2841,7 +2671,6 @@ const posts = [
     slug: 'laazy',
     commentsCount: 11,
     tagline: 'Time saving image tools.',
-    votesCount: 352,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2860,7 +2689,6 @@ const posts = [
     slug: 'simple-quoter',
     commentsCount: 3,
     tagline: 'The easiest way to build interactive sales quotes',
-    votesCount: 37,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2872,7 +2700,6 @@ const posts = [
     slug: 'public-art-street-art-museum',
     commentsCount: 4,
     tagline: 'Discover street art photos found with ML from 170+ countries',
-    votesCount: 181,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2884,7 +2711,6 @@ const posts = [
     slug: 'stress-anxiety-companion',
     commentsCount: 2,
     tagline: 'An app to help counter stress and anxiety',
-    votesCount: 46,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2896,7 +2722,6 @@ const posts = [
     slug: 'everyday-german',
     commentsCount: 7,
     tagline: 'Learn useful German words & phrases on every new tab',
-    votesCount: 53,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2907,7 +2732,6 @@ const posts = [
     slug: 'labo-vr-kit',
     commentsCount: 3,
     tagline: "Nintendo's new VR kit for Labo",
-    votesCount: 92,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2921,7 +2745,6 @@ const posts = [
     slug: 'notion-2-3',
     commentsCount: 60,
     tagline: 'Notions big update, now with Evernote import and web clipper',
-    votesCount: 1076,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2933,7 +2756,6 @@ const posts = [
     slug: 'clipcoverage',
     commentsCount: 5,
     tagline: 'A Google Slides add-on that automates media coverage reports',
-    votesCount: 80,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2945,7 +2767,6 @@ const posts = [
     slug: 'vurku',
     commentsCount: 10,
     tagline: 'Download Instagram posts by username or hashtag',
-    votesCount: 129,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2956,7 +2777,6 @@ const posts = [
     slug: 'receiptlens',
     commentsCount: 2,
     tagline: 'A smart tool for receipt scanning,expense tracking&reporting',
-    votesCount: 85,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -2968,7 +2788,6 @@ const posts = [
     slug: 'code-time',
     commentsCount: 23,
     tagline: 'VS Code extension for automatic programming metrics',
-    votesCount: 328,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2987,7 +2806,6 @@ const posts = [
     slug: 'easter-eggs-by-hoversignal',
     commentsCount: 26,
     tagline: 'Boost engagement & SEO with hidden presents on your website',
-    votesCount: 741,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -2998,7 +2816,6 @@ const posts = [
     slug: 'makeml',
     commentsCount: 39,
     tagline: 'Train Neural Networks without a line of code',
-    votesCount: 563,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3010,7 +2827,6 @@ const posts = [
     slug: 'butleroy-4-0',
     commentsCount: 49,
     tagline: 'Your personal butler for more productivity',
-    votesCount: 296,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3024,7 +2840,6 @@ const posts = [
     slug: 'faruno',
     commentsCount: 9,
     tagline: 'A unique email address within one inbox',
-    votesCount: 74,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3038,7 +2853,6 @@ const posts = [
     slug: 'sauna',
     commentsCount: 1,
     tagline: 'Track heat & cold exposure with your Apple Watch and iPhone',
-    votesCount: 65,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3050,7 +2864,6 @@ const posts = [
     slug: 'popcity',
     commentsCount: 12,
     tagline: 'Instantly map any photo on Instagram',
-    votesCount: 61,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3062,7 +2875,6 @@ const posts = [
     slug: 'urbanwatch',
     commentsCount: 3,
     tagline: 'Lets you access Urban Dictionary on your Apple Watch',
-    votesCount: 27,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3081,7 +2893,6 @@ const posts = [
     slug: 'ruler-analytics',
     commentsCount: 1,
     tagline: 'Close the loop between leads and revenue',
-    votesCount: 30,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -3093,7 +2904,6 @@ const posts = [
     slug: 'lazy-surfer',
     commentsCount: 5,
     tagline: 'Surf better waves with less effort',
-    votesCount: 94,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -3107,7 +2917,6 @@ const posts = [
     slug: 'music-match',
     commentsCount: 4,
     tagline: 'Find out how musically compatible you are with friends',
-    votesCount: 48,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3119,7 +2928,6 @@ const posts = [
     slug: 'health-news',
     commentsCount: 8,
     tagline: 'Hacker News for health 🔬',
-    votesCount: 98,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3131,7 +2939,6 @@ const posts = [
     slug: 'elin-ai-1',
     commentsCount: 33,
     tagline: 'A slack bot to boost your team engagement and collaboration',
-    votesCount: 374,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3142,7 +2949,6 @@ const posts = [
     slug: 'pei-2',
     commentsCount: 6,
     tagline: 'Earn cashback in crypto using your debit or credit card',
-    votesCount: 50,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3160,7 +2966,6 @@ const posts = [
     slug: 'calpal-2',
     commentsCount: 2,
     tagline: 'A super simple calculator with instant as you type results',
-    votesCount: 34,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3172,7 +2977,6 @@ const posts = [
     slug: 'kavtek',
     commentsCount: 3,
     tagline: 'Augmented reality home improvement app',
-    votesCount: 88,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3191,7 +2995,6 @@ const posts = [
     slug: 'github-personal-website-generator',
     commentsCount: 6,
     tagline: 'Generate a personal website based on GitHub contributions',
-    votesCount: 480,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3209,7 +3012,6 @@ const posts = [
     slug: 'newsletter-cli',
     commentsCount: 2,
     tagline: 'CLI tool to write and send newsletters in Markdown',
-    votesCount: 36,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3220,7 +3022,6 @@ const posts = [
     slug: 'justcomments',
     commentsCount: 18,
     tagline: 'Comment system for websites',
-    votesCount: 189,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -3239,7 +3040,6 @@ const posts = [
     slug: 'tombot',
     commentsCount: 1,
     tagline: 'More realistic, affordable animal companion for the elderly',
-    votesCount: 36,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -3251,7 +3051,6 @@ const posts = [
     slug: 'textstandup',
     commentsCount: 10,
     tagline: 'Web application for text based stand-ups',
-    votesCount: 65,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3265,7 +3064,6 @@ const posts = [
     slug: 'reportz-v2-0',
     commentsCount: 9,
     tagline: 'All-in-one reporting tool for digital marketers',
-    votesCount: 378,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3283,7 +3081,6 @@ const posts = [
     slug: 'baremetrics-for-apple-app-store-connect',
     commentsCount: 9,
     tagline: "Subscription analytics & insights for Apple's app store",
-    votesCount: 70,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3294,7 +3091,6 @@ const posts = [
     slug: 'feedbacks',
     commentsCount: 8,
     tagline: 'Capture user feedback effortlessly with emojis 😎',
-    votesCount: 56,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3306,7 +3102,6 @@ const posts = [
     slug: 'product-hunt-cli',
     commentsCount: 6,
     tagline: 'Access the top products on PH right from your terminal',
-    votesCount: 138,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3317,7 +3112,6 @@ const posts = [
     slug: 'fitbit-inspire',
     commentsCount: 6,
     tagline: "Fitbit's newest tracker with a detachable band",
-    votesCount: 27,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3329,7 +3123,6 @@ const posts = [
     slug: 'fitbit-ace-2',
     commentsCount: 1,
     tagline: 'An activity tracker for kids',
-    votesCount: 21,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3341,7 +3134,6 @@ const posts = [
     slug: 'ompractice',
     commentsCount: 6,
     tagline: 'Online interactive yoga+meditation classes via two-way video',
-    votesCount: 25,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3360,7 +3152,6 @@ const posts = [
     slug: 'fitbit-versa-lite',
     commentsCount: 3,
     tagline: "Fitbit's new smart watch starting at $160",
-    votesCount: 18,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3379,7 +3170,6 @@ const posts = [
     slug: 'maker-stories-by-product-hunt',
     commentsCount: 19,
     tagline: 'A platform for Makers to share their knowledge',
-    votesCount: 495,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3393,7 +3183,6 @@ const posts = [
     slug: 'good-job-description',
     commentsCount: 13,
     tagline: 'See good job descriptions from the most-loved companies',
-    votesCount: 615,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -3405,7 +3194,6 @@ const posts = [
     slug: 'dendo-drive-house',
     commentsCount: 3,
     tagline: 'Mitsubishi’s new power system lets your car power your home',
-    votesCount: 33,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3416,7 +3204,6 @@ const posts = [
     slug: 'vectary-3-0',
     commentsCount: 21,
     tagline: 'Create 3D and AR designs for your website',
-    votesCount: 258,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3435,7 +3222,6 @@ const posts = [
     slug: 'kidpography',
     commentsCount: 28,
     tagline: 'Save your children’s calligraphy forever',
-    votesCount: 56,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3447,7 +3233,6 @@ const posts = [
     slug: 'bolo-2',
     commentsCount: 3,
     tagline: 'Learn English and Hindi with your voice, available in: 🇮🇳',
-    votesCount: 24,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3466,7 +3251,6 @@ const posts = [
     slug: 'minaurs',
     commentsCount: 1,
     tagline: 'A unique adventure game full of exploratory expeditions.',
-    votesCount: 25,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3477,7 +3261,6 @@ const posts = [
     slug: 'birthday-cleaner',
     commentsCount: 10,
     tagline: 'Review and clear birthdays from your calendar',
-    votesCount: 443,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3491,7 +3274,6 @@ const posts = [
     slug: 'two-three-bricks',
     commentsCount: 2,
     tagline: 'Customised LEGO caricatures to be used any way you want.',
-    votesCount: 32,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3502,7 +3284,6 @@ const posts = [
     slug: 'battista',
     commentsCount: 2,
     tagline: "Pinnfarina's 1'900 horse-power electric hypercar ",
-    votesCount: 52,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3513,7 +3294,6 @@ const posts = [
     slug: 'repair-alert',
     commentsCount: 9,
     tagline: 'Never miss out on an Apple repair or exchange program.',
-    votesCount: 89,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3525,7 +3305,6 @@ const posts = [
     slug: 'muterkelly',
     commentsCount: 6,
     tagline: 'Automatically mute all R. Kelly songs',
-    votesCount: 61,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3537,7 +3316,6 @@ const posts = [
     slug: 'product-wars',
     commentsCount: 12,
     tagline: 'A real-time war room for your product launch',
-    votesCount: 180,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3556,7 +3334,6 @@ const posts = [
     slug: 'aiko-meet',
     commentsCount: 39,
     tagline: '🤖 Video Chat in browser with AI Subtitles + Transcript 🤖',
-    votesCount: 963,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3568,7 +3345,6 @@ const posts = [
     slug: 'freshstatus-by-freshworks',
     commentsCount: 56,
     tagline: 'Better statuspage, in 1-click, FREE forever 🔥',
-    votesCount: 558,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3579,7 +3355,6 @@ const posts = [
     slug: 'gitpress',
     commentsCount: 10,
     tagline: 'A blog writing tool based on GitHub, designed for developers',
-    votesCount: 197,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3591,7 +3366,6 @@ const posts = [
     slug: 'digitalocean-marketplace',
     commentsCount: 20,
     tagline: 'Discover and deploy preconfigured one-click applications',
-    votesCount: 422,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3603,7 +3377,6 @@ const posts = [
     slug: 'lightdogs',
     commentsCount: 13,
     tagline: 'Collect dogs by staying productive',
-    votesCount: 44,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3615,7 +3388,6 @@ const posts = [
     slug: 'linkpot',
     commentsCount: 49,
     tagline: 'Add clickable links to your Instagram Posts',
-    votesCount: 1081,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3633,7 +3405,6 @@ const posts = [
     slug: 'ear-palettes',
     commentsCount: 3,
     tagline: 'Color palette inspirations from album covers',
-    votesCount: 86,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3652,7 +3423,6 @@ const posts = [
     slug: 'routable',
     commentsCount: 13,
     tagline: 'The simplest way to send B2B payments and invoices',
-    votesCount: 61,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3664,7 +3434,6 @@ const posts = [
     slug: 'livestats',
     commentsCount: 3,
     tagline: 'Real time visitor stats for all of your websites',
-    votesCount: 102,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3675,7 +3444,6 @@ const posts = [
     slug: 'family-friendly-live',
     commentsCount: 3,
     tagline: 'Accessible, family-friendly Twitch streamers',
-    votesCount: 38,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3687,7 +3455,6 @@ const posts = [
     slug: 'rank-math-seo',
     commentsCount: 98,
     tagline: 'A FREE powerful and lightweight SEO plugin for WordPress',
-    votesCount: 1611,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3698,7 +3465,6 @@ const posts = [
     slug: 'truffle-3',
     commentsCount: 26,
     tagline: 'File your taxes like the 1%',
-    votesCount: 648,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -3717,7 +3483,6 @@ const posts = [
     slug: 'axdraft',
     commentsCount: 119,
     tagline: 'Free legal documents for startups in minutes',
-    votesCount: 1513,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3729,7 +3494,6 @@ const posts = [
     slug: 'jour',
     commentsCount: 21,
     tagline: 'Jour is a daily journal, guiding you towards self-care',
-    votesCount: 258,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3741,7 +3505,6 @@ const posts = [
     slug: 'shopbrain',
     commentsCount: 4,
     tagline: 'Shopbrain instantly finds you the best price online',
-    votesCount: 56,
     day: '2019-03-08',
     featured: true,
     thumbnail:
@@ -3753,7 +3516,6 @@ const posts = [
     slug: 'new-segment-platform',
     commentsCount: 0,
     tagline: '15,000 Customers, 9,000 Integrations Enabled / Month',
-    votesCount: 84,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3772,7 +3534,6 @@ const posts = [
     slug: 'merge-sx',
     commentsCount: 3,
     tagline: 'Join a collection of videos into a single movie.',
-    votesCount: 25,
     day: '2019-03-11',
     featured: true,
     thumbnail:
@@ -3783,7 +3544,6 @@ const posts = [
     slug: 'divide-sx',
     commentsCount: 5,
     tagline: 'Cut your movies into an arbitrary number of segments.',
-    votesCount: 75,
     day: '2019-03-09',
     featured: true,
     thumbnail:
@@ -3802,7 +3562,6 @@ const posts = [
     slug: 'moneon',
     commentsCount: 17,
     tagline: 'Free app to track and save money',
-    votesCount: 275,
     day: '2019-03-07',
     featured: true,
     thumbnail:
@@ -3813,7 +3572,6 @@ const posts = [
     slug: 'am-rb-003',
     commentsCount: 3,
     tagline: "Aston Martin's new hypercar",
-    votesCount: 40,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3825,7 +3583,6 @@ const posts = [
     slug: 'august-view-doorbell-camera',
     commentsCount: 2,
     tagline: 'Sleek, wire-free doorbell camera',
-    votesCount: 32,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3844,7 +3601,6 @@ const posts = [
     slug: 'tidyshift',
     commentsCount: 1,
     tagline: 'A super-simple way to schedule shifts for members of staff',
-    votesCount: 14,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3856,7 +3612,6 @@ const posts = [
     slug: 'midnight-lizard-2',
     commentsCount: 1,
     tagline: 'Accessible color schemes for all websites',
-    votesCount: 21,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3870,7 +3625,6 @@ const posts = [
     slug: 'kettlebell-connect',
     commentsCount: 4,
     tagline: 'A smart kettlebell with motion sensors',
-    votesCount: 30,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3882,7 +3636,6 @@ const posts = [
     slug: 'facecode',
     commentsCount: 7,
     tagline: 'Hire top tech talent with video interviews',
-    votesCount: 172,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3900,7 +3653,6 @@ const posts = [
     slug: 'teamspoor',
     commentsCount: 2,
     tagline: 'Track your field force and automate their reporting',
-    votesCount: 20,
     day: '2019-03-06',
     featured: true,
     thumbnail:
@@ -3911,7 +3663,6 @@ const posts = [
     slug: '30-seconds-of-knowledge-2',
     commentsCount: 0,
     tagline: 'Become a better developer, one new tab at a time',
-    votesCount: 63,
     day: '2019-03-05',
     featured: true,
     thumbnail:
@@ -3922,7 +3673,6 @@ const posts = [
     slug: 'i-d-buggy',
     commentsCount: 1,
     tagline: "Volkswagen's electric dune buggy ",
-    votesCount: 49,
     day: '2019-03-05',
     featured: true,
     thumbnail:

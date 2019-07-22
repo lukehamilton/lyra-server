@@ -13,6 +13,33 @@ const Post = {
       }
     }
     return false;
+  },
+  // votesCount: {
+  //   fragment: `fragment Votes on Post { id }`,
+  //   resolve: async ({ id }, args, context, info) => {
+  //     // console.log('context.prisma', context.prisma.votes);
+  //     const votes = await context.prisma.votesConnection(
+  //       { where: { post: { id } } },
+  //       `{ aggregate { count } }`
+  //     );
+  //     // return votes.aggregate.count;
+  //     // return 420;
+  //   }
+  // }
+
+  async votesCount(root, args, context, info) {
+    console.log('context.prisma', context.prisma.votesConnection);
+    const votes = await context.prisma
+      .votesConnection({
+        where: { post: { id: root.id } }
+      })
+      .$fragment(`{ aggregate { count } }`);
+    // const votes = await context.prisma.votesConnection(
+    //   { post: { id: root.id } },
+    //   `{ aggregate { count } }`
+    // );
+    console.log('votes', votes);
+    return votes.aggregate.count;
   }
 };
 

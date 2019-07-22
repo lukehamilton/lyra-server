@@ -102,7 +102,6 @@ type Post {
   description: String
   galleryThumbs: [String!]!
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -130,7 +129,6 @@ input PostCreateInput {
   description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -163,7 +161,6 @@ input PostCreateWithoutTopicsInput {
   description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -180,7 +177,6 @@ input PostCreateWithoutVotesInput {
   description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -213,8 +209,6 @@ enum PostOrderByInput {
   description_DESC
   tagline_ASC
   tagline_DESC
-  votesCount_ASC
-  votesCount_DESC
   commentsCount_ASC
   commentsCount_DESC
   day_ASC
@@ -235,7 +229,6 @@ type PostPreviousValues {
   description: String
   galleryThumbs: [String!]!
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -360,14 +353,6 @@ input PostScalarWhereInput {
   tagline_not_starts_with: String
   tagline_ends_with: String
   tagline_not_ends_with: String
-  votesCount: Int
-  votesCount_not: Int
-  votesCount_in: [Int!]
-  votesCount_not_in: [Int!]
-  votesCount_lt: Int
-  votesCount_lte: Int
-  votesCount_gt: Int
-  votesCount_gte: Int
   commentsCount: Int
   commentsCount_not: Int
   commentsCount_in: [Int!]
@@ -429,7 +414,6 @@ input PostUpdateDataInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -450,7 +434,6 @@ input PostUpdateInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -467,7 +450,6 @@ input PostUpdateManyDataInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -494,7 +476,6 @@ input PostUpdateManyMutationInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -533,7 +514,6 @@ input PostUpdateWithoutTopicsDataInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -549,7 +529,6 @@ input PostUpdateWithoutVotesDataInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  votesCount: Int
   commentsCount: Int
   day: String
   featured: Boolean
@@ -702,14 +681,6 @@ input PostWhereInput {
   tagline_not_starts_with: String
   tagline_ends_with: String
   tagline_not_ends_with: String
-  votesCount: Int
-  votesCount_not: Int
-  votesCount_in: [Int!]
-  votesCount_not_in: [Int!]
-  votesCount_lt: Int
-  votesCount_lte: Int
-  votesCount_gt: Int
-  votesCount_gte: Int
   commentsCount: Int
   commentsCount_not: Int
   commentsCount_in: [Int!]
@@ -2167,6 +2138,7 @@ input UserWhereInput {
 input UserWhereUniqueInput {
   id: ID
   email: String
+  username: String
   auth0id: String
 }
 
