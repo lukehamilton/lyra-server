@@ -6,7 +6,7 @@
 
 type Query {
   posts(first: Int, skip: Int): [Post!]!
-  post(slug: String!): Post!
+  post(slug: String!, voterCount: Int): Post!
   topics: [Topic!]!
   sections(first: Int, skip: Int, after: String): [Section!]!
   tokenInfo: TokenInfo

@@ -21,11 +21,11 @@ const Query = {
         `{ id name slug description tagline  topics { id  name slug } }`
       );
   },
-  post(root, args, context, info) {
+  post(root, { slug, voterCount = 3 }, context, info) {
     return context.prisma
-      .post({ slug: args.slug })
+      .post({ slug })
       .$fragment(
-        `{ id slug name tagline link description thumbnail galleryThumbs topics { id name slug} }`
+        `{ id slug name tagline link description thumbnail galleryThumbs topics { id name slug} votes(first: ${voterCount}) { user { id } } }`
       );
   },
   me(root, args, context, info) {
