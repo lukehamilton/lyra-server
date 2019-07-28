@@ -16,15 +16,6 @@ type Query {
 type Mutation {
   authenticate(idToken: String!): User
   createTopic(name: String!, slug: String!): Topic
-  # createPost(name: String!): Post
-  # createPost(
-  #   name: String!
-  #   slug: String!
-  #   imageUrl: String!
-  #   description: String!
-  #   votesCount: Int
-  #   commentsCount: Int
-  # ): Post
   createPost(
     link: String
     name: String
@@ -61,8 +52,11 @@ type User {
   lastName: String
   avatar: String
   username: String
+  headline: String
   identity: String
   privateKey: String
+  submittedPosts: [Post!]
+  createdPosts: [Post!]
   followedTopics: [Topic!]!
   votes: [Vote!]!
 }
@@ -76,6 +70,8 @@ type Post {
   tagline: String
   link: String
   description: String
+  submitter: User
+  creators: [User!]
   galleryThumbs: [String!]
   votesCount: Int
   commentsCount: Int

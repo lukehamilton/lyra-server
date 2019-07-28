@@ -2,7 +2,6 @@ const posts = [
   {
     name: 'Hyperspektiv 2.0',
     slug: 'hyperspektiv-2-0',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -15,7 +14,6 @@ const posts = [
   {
     name: 'Retrochat',
     slug: 'retrochat',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -29,7 +27,6 @@ const posts = [
   {
     name: 'Zoho Office Suite',
     slug: 'zoho-office-suite',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -42,7 +39,6 @@ const posts = [
   {
     name: 'Animated Icons Pack',
     slug: 'animated-icons-pack',
-    commentsCount: 13,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -63,7 +59,6 @@ const posts = [
   {
     name: 'Insta360 evo',
     slug: 'insta360-evo',
-    commentsCount: 0,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -76,7 +71,6 @@ const posts = [
   {
     name: 'Upvoty',
     slug: 'upvoty-2',
-    commentsCount: 13,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -97,7 +91,6 @@ const posts = [
   {
     name: 'Slack Foundry',
     slug: 'slack-foundry-3',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -111,7 +104,6 @@ const posts = [
   {
     name: 'WTF should I do in?',
     slug: 'wtf-should-i-do-in',
-    commentsCount: 17,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -132,7 +124,6 @@ const posts = [
   {
     name: 'Fast Playback for Facebook Videos',
     slug: 'fast-playback-for-facebook-videos',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -146,7 +137,6 @@ const posts = [
   {
     name: 'Crossfont',
     slug: 'crossfont',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -159,7 +149,6 @@ const posts = [
   {
     name: 'Nomad Text',
     slug: 'nomad-text',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -179,7 +168,6 @@ const posts = [
   {
     name: 'Culrs 2.0',
     slug: 'culrs-2-0',
-    commentsCount: 20,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -200,7 +188,6 @@ const posts = [
   {
     name: 'Supernova V6',
     slug: 'supernova-v6',
-    commentsCount: 40,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -214,7 +201,6 @@ const posts = [
   {
     name: 'UnDeck',
     slug: 'undeck',
-    commentsCount: 15,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -228,7 +214,6 @@ const posts = [
   {
     name: 'RadioGarden',
     slug: 'radiogarden',
-    commentsCount: 0,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -248,7 +233,6 @@ const posts = [
   {
     name: 'Daily.co Video Call API',
     slug: 'daily-co-video-call-api',
-    commentsCount: 23,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -269,7 +253,6 @@ const posts = [
   {
     name: 'The Juggernaut',
     slug: 'the-juggernaut',
-    commentsCount: 8,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -285,7 +268,6 @@ const posts = [
   {
     name: 'Travelchime',
     slug: 'travelchime',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -299,7 +281,6 @@ const posts = [
   {
     name: 'The Infatuation iOS 5.0',
     slug: 'the-infatuation-ios-5-0',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -320,7 +301,6 @@ const posts = [
   {
     name: 'Black 3.0',
     slug: 'black-3-0',
-    commentsCount: 45,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -333,7 +313,6 @@ const posts = [
   {
     name: 'RADICLE',
     slug: 'radicle',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -346,7 +325,6 @@ const posts = [
   {
     name: 'Tinkersynth',
     slug: 'tinkersynth',
-    commentsCount: 6,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -360,7 +338,6 @@ const posts = [
   {
     name: 'Blook',
     slug: 'blook-2',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -376,7 +353,6 @@ const posts = [
   {
     name: 'Toky Instant Call',
     slug: 'toky-instant-call',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -389,7 +365,6 @@ const posts = [
   {
     name: 'Paydrt',
     slug: 'paydrt',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -409,7 +384,6 @@ const posts = [
   {
     name: 'Genius Pack Supercharged',
     slug: 'genius-pack-supercharged',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -429,7 +403,6 @@ const posts = [
   {
     name: 'SPF',
     slug: 'spf',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -443,7 +416,6 @@ const posts = [
   {
     name: 'KraftNow',
     slug: 'kraftnow',
-    commentsCount: 6,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -464,7 +436,6 @@ const posts = [
   {
     name: 'Lessons in Herstory',
     slug: 'lessons-in-herstory',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -478,7 +449,6 @@ const posts = [
   {
     name: 'YoRemote',
     slug: 'yoremote',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -491,7 +461,6 @@ const posts = [
   {
     name: 'Where is Carmen Sandiego?',
     slug: 'where-is-carmen-sandiego',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -512,7 +481,6 @@ const posts = [
   {
     name: 'Upmetrics 2.0',
     slug: 'upmetrics-2-0',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -533,7 +501,6 @@ const posts = [
   {
     name: 'Google Lookout',
     slug: 'google-lookout',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -553,7 +520,6 @@ const posts = [
   {
     name: 'andcards Kiosk',
     slug: 'andcards-kiosk',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -573,7 +539,6 @@ const posts = [
   {
     name: 'Compass by Jobtome',
     slug: 'compass-by-jobtome',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -586,7 +551,6 @@ const posts = [
   {
     name: 'Microsoft X Cloud',
     slug: 'microsoft-x-cloud',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -600,7 +564,6 @@ const posts = [
   {
     name: 'The Startup Calculator',
     slug: 'the-startup-calculator',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -614,7 +577,6 @@ const posts = [
   {
     name: 'Charts',
     slug: 'charts-3',
-    commentsCount: 10,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -628,7 +590,6 @@ const posts = [
   {
     name: 'Rolando: Royal Edition',
     slug: 'rolando-royal-edition',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -648,7 +609,6 @@ const posts = [
   {
     name: 'colorize.cc',
     slug: 'colorize-cc',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -662,7 +622,6 @@ const posts = [
   {
     name: 'MFY.im',
     slug: 'mfy-im',
-    commentsCount: 60,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -675,7 +634,6 @@ const posts = [
   {
     name: 'Askdata',
     slug: 'askdata',
-    commentsCount: 10,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -688,7 +646,6 @@ const posts = [
   {
     name: 'IKEA ThisAbles',
     slug: 'ikea-thisables',
-    commentsCount: 12,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -702,7 +659,6 @@ const posts = [
   {
     name: 'HiBy W5',
     slug: 'hiby-w5',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -723,7 +679,6 @@ const posts = [
   {
     name: 'Keeple',
     slug: 'keeple',
-    commentsCount: 16,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -737,7 +692,6 @@ const posts = [
   {
     name: 'The Angel Philosopher',
     slug: 'the-angel-philosopher',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -750,7 +704,6 @@ const posts = [
   {
     name: 'Cord-Cutter Express',
     slug: 'cord-cutter-express',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -771,7 +724,6 @@ const posts = [
   {
     name: 'Firework',
     slug: 'firework-2',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -792,7 +744,6 @@ const posts = [
   {
     name: 'Sloth Facts',
     slug: 'sloth-facts',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -806,7 +757,6 @@ const posts = [
   {
     name: 'Credo360 2.0',
     slug: 'credo360-2-0',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -820,7 +770,6 @@ const posts = [
   {
     name: 'Tune by Google',
     slug: 'tune-by-google',
-    commentsCount: 21,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -834,7 +783,6 @@ const posts = [
   {
     name: 'Coterie',
     slug: 'coterie',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -847,7 +795,6 @@ const posts = [
   {
     name: 'Faradise',
     slug: 'faradise',
-    commentsCount: 0,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -861,7 +808,6 @@ const posts = [
   {
     name: 'Warby Parker Virtual Try-On',
     slug: 'warby-parker-virtual-try-on',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -874,7 +820,6 @@ const posts = [
   {
     name: 'Keystroke Pro',
     slug: 'keystroke-pro',
-    commentsCount: 11,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -888,7 +833,6 @@ const posts = [
   {
     name: 'Kwikcal',
     slug: 'kwikcal',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -902,7 +846,6 @@ const posts = [
   {
     name: 'Updatefy',
     slug: 'updatefy',
-    commentsCount: 17,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -916,7 +859,6 @@ const posts = [
   {
     name: 'Cursor Pro',
     slug: 'cursor-pro',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -932,7 +874,6 @@ const posts = [
   {
     name: 'Pint',
     slug: 'pint',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -952,7 +893,6 @@ const posts = [
   {
     name: 'Houseparty Chrome Extension',
     slug: 'houseparty-chrome-extension',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -968,7 +908,6 @@ const posts = [
   {
     name: 'Sathorn',
     slug: 'sathorn',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -989,7 +928,6 @@ const posts = [
   {
     name: 'Character Count',
     slug: 'character-count',
-    commentsCount: 6,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1009,7 +947,6 @@ const posts = [
   {
     name: 'Withings Sleep',
     slug: 'withings-sleep',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1022,7 +959,6 @@ const posts = [
   {
     name: 'Unomaly',
     slug: 'unomaly',
-    commentsCount: 0,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1036,7 +972,6 @@ const posts = [
   {
     name: 'Fake faces',
     slug: 'fake-faces',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1057,7 +992,6 @@ const posts = [
   {
     name: 'Instagram 2019 Content Spotlight',
     slug: 'instagram-2019-content-spotlight',
-    commentsCount: 14,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1071,7 +1005,6 @@ const posts = [
   {
     name: 'Time is Ltd',
     slug: 'time-is-ltd',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1092,7 +1025,6 @@ const posts = [
   {
     name: 'Perfect Dude',
     slug: 'perfect-dude',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1108,7 +1040,6 @@ const posts = [
   {
     name: 'Microverse 2.0',
     slug: 'microverse-2-0',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1129,7 +1060,6 @@ const posts = [
   {
     name: 'The Growth Machine by Yaguara',
     slug: 'the-growth-machine-by-yaguara',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1150,7 +1080,6 @@ const posts = [
   {
     name: 'Pensato',
     slug: 'pensato',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1163,7 +1092,6 @@ const posts = [
   {
     name: 'Dubler Studio Kit',
     slug: 'dubler-studio-kit',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1176,7 +1104,6 @@ const posts = [
   {
     name: 'Workplace List',
     slug: 'workplace-list',
-    commentsCount: 10,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1197,7 +1124,6 @@ const posts = [
   {
     name: 'Symbol Design System 2',
     slug: 'symbol-design-system-2',
-    commentsCount: 23,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1218,7 +1144,6 @@ const posts = [
   {
     name: 'Zokyo',
     slug: 'zokyo',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1232,7 +1157,6 @@ const posts = [
   {
     name: 'PracticeBank',
     slug: 'practicebank',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1245,7 +1169,6 @@ const posts = [
   {
     name: 'Product Resources List',
     slug: 'product-resources-list',
-    commentsCount: 53,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1265,7 +1188,6 @@ const posts = [
   {
     name: 'Voiceflow',
     slug: 'voiceflow-2',
-    commentsCount: 86,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1281,7 +1203,6 @@ const posts = [
   {
     name: 'Vacuum Data',
     slug: 'vacuum-data',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1295,7 +1216,6 @@ const posts = [
   {
     name: 'Vxcards',
     slug: 'vxcards',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1309,7 +1229,6 @@ const posts = [
   {
     name: 'Puzzle Swap',
     slug: 'puzzle-swap',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1329,7 +1248,6 @@ const posts = [
   {
     name: 'traduora',
     slug: 'traduora',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1349,7 +1267,6 @@ const posts = [
   {
     name: 'Web Dev Education Platform',
     slug: 'web-dev-education-platform',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1362,7 +1279,6 @@ const posts = [
   {
     name: 'Keeper',
     slug: 'keeper-3',
-    commentsCount: 28,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1382,7 +1298,6 @@ const posts = [
   {
     name: 'Print My Tweets',
     slug: 'print-my-tweets',
-    commentsCount: 8,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1402,7 +1317,6 @@ const posts = [
   {
     name: 'Spicer',
     slug: 'spicer',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1416,7 +1330,6 @@ const posts = [
   {
     name: 'The Classic Stone',
     slug: 'the-classic-stone',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1432,7 +1345,6 @@ const posts = [
   {
     name: 'RoomFifty',
     slug: 'roomfifty',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1445,7 +1357,6 @@ const posts = [
   {
     name: 'RadioPublic',
     slug: 'radiopublic-3',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1459,7 +1370,6 @@ const posts = [
   {
     name: 'Slogro',
     slug: 'slogro',
-    commentsCount: 16,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1472,7 +1382,6 @@ const posts = [
   {
     name: 'Epichat for Messenger',
     slug: 'epichat-for-messenger',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1492,7 +1401,6 @@ const posts = [
   {
     name: 'GoEat Me - Your food guru',
     slug: 'goeat-me-your-food-guru',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1505,7 +1413,6 @@ const posts = [
   {
     name: 'Healium',
     slug: 'healium-2',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1526,7 +1433,6 @@ const posts = [
   {
     name: 'Talent Garden',
     slug: 'talent-garden',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1542,7 +1448,6 @@ const posts = [
   {
     name: 'Pomo Timer',
     slug: 'pomo-timer',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1562,7 +1467,6 @@ const posts = [
   {
     name: 'Soul',
     slug: 'soul',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1575,7 +1479,6 @@ const posts = [
   {
     name: 'Twenty Tables',
     slug: 'twenty-tables',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1595,7 +1498,6 @@ const posts = [
   {
     name: 'Supportiv',
     slug: 'supportiv',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1609,7 +1511,6 @@ const posts = [
   {
     name: 'Rotate Videos',
     slug: 'rotate-videos',
-    commentsCount: 6,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1630,7 +1531,6 @@ const posts = [
   {
     name: 'TLD.party',
     slug: 'tld-party',
-    commentsCount: 13,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1651,7 +1551,6 @@ const posts = [
   {
     name: 'replies.cc',
     slug: 'replies-cc',
-    commentsCount: 6,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1671,7 +1570,6 @@ const posts = [
   {
     name: 'Grid Wallpaper',
     slug: 'grid-wallpaper',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1684,7 +1582,6 @@ const posts = [
   {
     name: 'Lukas',
     slug: 'lukas',
-    commentsCount: 12,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1698,7 +1595,6 @@ const posts = [
   {
     name: 'GuestBot',
     slug: 'guestbot-2',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1719,7 +1615,6 @@ const posts = [
   {
     name: 'YouWorth for Chrome',
     slug: 'youworth-for-chrome',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1733,7 +1628,6 @@ const posts = [
   {
     name: 'Miit',
     slug: 'miit',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1753,7 +1647,6 @@ const posts = [
   {
     name: 'Thunderstack',
     slug: 'thunderstack',
-    commentsCount: 3,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1767,7 +1660,6 @@ const posts = [
   {
     name: 'Color.review',
     slug: 'color-review',
-    commentsCount: 13,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1781,7 +1673,6 @@ const posts = [
   {
     name: 'Ginger-U',
     slug: 'ginger-u',
-    commentsCount: 0,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1801,7 +1692,6 @@ const posts = [
   {
     name: 'Online Signature Maker',
     slug: 'online-signature-maker',
-    commentsCount: 11,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1814,7 +1704,6 @@ const posts = [
   {
     name: 'Pyyros',
     slug: 'pyyros',
-    commentsCount: 54,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1835,7 +1724,6 @@ const posts = [
   {
     name: 'NewCraft',
     slug: 'newcraft',
-    commentsCount: 17,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1848,7 +1736,6 @@ const posts = [
   {
     name: 'Chronomics',
     slug: 'chronomics',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1868,7 +1755,6 @@ const posts = [
   {
     name: 'Solid Balance',
     slug: 'solid-balance',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1882,7 +1768,6 @@ const posts = [
   {
     name: 'KkiaPay',
     slug: 'kkiapay',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1896,7 +1781,6 @@ const posts = [
   {
     name: 'GG Sex Life',
     slug: 'gg-sex-life',
-    commentsCount: 16,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1917,7 +1801,6 @@ const posts = [
   {
     name: 'Kith Elements',
     slug: 'kith-elements',
-    commentsCount: 7,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1931,7 +1814,6 @@ const posts = [
   {
     name: 'Stress Buster Challenge',
     slug: 'stress-buster-challenge',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1952,7 +1834,6 @@ const posts = [
   {
     name: 'Deel',
     slug: 'deel',
-    commentsCount: 53,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1973,7 +1854,6 @@ const posts = [
   {
     name: 'The Rookies',
     slug: 'the-rookies',
-    commentsCount: 2,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -1994,7 +1874,6 @@ const posts = [
   {
     name: 'Title Race',
     slug: 'title-race',
-    commentsCount: 5,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2014,7 +1893,6 @@ const posts = [
   {
     name: 'Peek',
     slug: 'peek-11',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2034,7 +1912,6 @@ const posts = [
   {
     name: 'Pop Creators Studio',
     slug: 'pop-creators-studio',
-    commentsCount: 4,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2054,7 +1931,6 @@ const posts = [
   {
     name: 'Meowly',
     slug: 'meowly',
-    commentsCount: 8,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2067,7 +1943,6 @@ const posts = [
   {
     name: "Resume'ed",
     slug: 'resume-ed',
-    commentsCount: 12,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2081,7 +1956,6 @@ const posts = [
   {
     name: 'Day.ly',
     slug: 'day-ly',
-    commentsCount: 8,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2102,7 +1976,6 @@ const posts = [
   {
     name: 'Metastream',
     slug: 'metastream',
-    commentsCount: 9,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2116,7 +1989,6 @@ const posts = [
   {
     name: 'Playnite',
     slug: 'playnite',
-    commentsCount: 1,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2136,7 +2008,6 @@ const posts = [
   {
     name: 'Bullets.tech',
     slug: 'bullets-tech',
-    commentsCount: 16,
     link: 'https://loomx.io/',
     description:
       'Put the outside world on hold – this is all about you and your music. No noise, no wires, no distractions. Just exceptional sound, industry-leading noise cancellation, and hour upon hour of pure listening freedom.',
@@ -2149,7 +2020,6 @@ const posts = [
   {
     name: 'Shift Keyboard',
     slug: 'shift-keyboard',
-    commentsCount: 1,
     tagline: 'A keyboard for your Apple Watch',
     day: '2019-03-10',
     featured: true,
@@ -2167,7 +2037,6 @@ const posts = [
   {
     name: 'Gainful',
     slug: 'gainful',
-    commentsCount: 6,
     tagline: 'Protein powder tailored specifically to you',
     day: '2019-03-10',
     featured: true,
@@ -2185,7 +2054,6 @@ const posts = [
   {
     name: 'Day Night for macOS ',
     slug: 'day-night-for-macos',
-    commentsCount: 20,
     tagline: 'A desktop app that kills the procrastination in you.',
     day: '2019-03-10',
     featured: true,
@@ -2196,7 +2064,6 @@ const posts = [
   {
     name: 'Menu World Time',
     slug: 'menu-world-time',
-    commentsCount: 9,
     tagline: 'World times at your fingertips',
     day: '2019-03-10',
     featured: true,
@@ -2207,7 +2074,6 @@ const posts = [
   {
     name: 'Citationsy for Chrome',
     slug: 'citationsy-for-chrome',
-    commentsCount: 6,
     tagline: 'Cite anything in one-click right from Chrome',
     day: '2019-03-09',
     featured: true,
@@ -2217,7 +2083,6 @@ const posts = [
   {
     name: 'Dofollow Link Checker',
     slug: 'dofollow-link-checker',
-    commentsCount: 3,
     tagline: 'Check if a post provides dofollow or nofollow links',
     day: '2019-03-09',
     featured: true,
@@ -2228,7 +2093,6 @@ const posts = [
   {
     name: 'Wingman for DJI',
     slug: 'wingman-for-dji',
-    commentsCount: 3,
     tagline: 'Flight formation for DJI Drone',
     day: '2019-03-09',
     featured: true,
@@ -2239,7 +2103,6 @@ const posts = [
   {
     name: 'Volpe',
     slug: 'volpe',
-    commentsCount: 9,
     tagline: 'A web reader for PDF & EPUB to enrich your publications',
     day: '2019-03-10',
     featured: true,
@@ -2256,7 +2119,6 @@ const posts = [
   {
     name: 'HyperPush',
     slug: 'hyperpush',
-    commentsCount: 3,
     tagline: 'Increase your Instagram reach with analytics 📈',
     day: '2019-03-09',
     featured: true,
@@ -2267,7 +2129,6 @@ const posts = [
   {
     name: 'Money Building',
     slug: 'money-building',
-    commentsCount: 0,
     tagline: 'Simple expense tracker with advanced reporting',
     day: '2019-03-11',
     featured: true,
@@ -2278,7 +2139,6 @@ const posts = [
   {
     name: 'Unicode Calendar Generator',
     slug: 'unicode-calendar-generator',
-    commentsCount: 7,
     tagline: 'Generate unique text calendars using Unicode 🗓️',
     day: '2019-03-09',
     featured: true,
@@ -2296,7 +2156,6 @@ const posts = [
   {
     name: 'Maze 2.0',
     slug: 'maze-2-0',
-    commentsCount: 34,
     tagline: 'Go from prototype to UX report in minutes',
     day: '2019-03-11',
     featured: true,
@@ -2307,7 +2166,6 @@ const posts = [
   {
     name: 'Ella the Engineer 2.0',
     slug: 'ella-the-engineer-2-0',
-    commentsCount: 3,
     tagline: 'A comic encouraging young girls interest in STEM',
     day: '2019-03-09',
     featured: true,
@@ -2318,7 +2176,6 @@ const posts = [
   {
     name: 'Egloo',
     slug: 'egloo-2',
-    commentsCount: 25,
     tagline: 'A customizable and versatile bio page',
     day: '2019-03-11',
     featured: true,
@@ -2329,7 +2186,6 @@ const posts = [
   {
     name: 'Pathfinder',
     slug: 'pathfinder',
-    commentsCount: 7,
     tagline: 'AI marketing employee for e-commerce stores',
     day: '2019-03-09',
     featured: true,
@@ -2346,7 +2202,6 @@ const posts = [
   {
     name: 'MusePeach',
     slug: 'musepeach',
-    commentsCount: 3,
     tagline: 'Journaling app that makes it easy for non writers to start.',
     day: '2019-03-10',
     featured: true,
@@ -2356,7 +2211,6 @@ const posts = [
   {
     name: 'Ampler Curt',
     slug: 'ampler-curt',
-    commentsCount: 1,
     tagline: 'An e-bike designed for the city',
     day: '2019-03-08',
     featured: true,
@@ -2366,7 +2220,6 @@ const posts = [
   {
     name: 'PokeGuess',
     slug: 'pokeguess',
-    commentsCount: 7,
     tagline: 'Are you a Pokemon fan? Can you guess all of them?',
     day: '2019-03-09',
     featured: true,
@@ -2376,7 +2229,6 @@ const posts = [
   {
     name: 'Stairway',
     slug: 'stairway',
-    commentsCount: 9,
     tagline: 'Learn Mathematics, completely free!',
     day: '2019-03-08',
     featured: true,
@@ -2386,7 +2238,6 @@ const posts = [
   {
     name: 'Personal Robots',
     slug: 'personal-robots',
-    commentsCount: 3,
     tagline: 'Discover a new toy robot every day',
     day: '2019-03-09',
     featured: true,
@@ -2399,7 +2250,6 @@ const posts = [
   {
     name: 'Aero Attack',
     slug: 'aero-attack',
-    commentsCount: 1,
     tagline: "It's an addictive game of luck and skill.",
     day: '2019-03-09',
     featured: true,
@@ -2409,7 +2259,6 @@ const posts = [
   {
     name: 'How Much Would You Make as a Woman?',
     slug: 'how-much-would-you-make-as-a-woman',
-    commentsCount: 10,
     tagline: 'Find out how much you would earn if you were a woman',
     day: '2019-03-09',
     featured: true,
@@ -2426,7 +2275,6 @@ const posts = [
   {
     name: 'Women World Wide',
     slug: 'women-world-wide',
-    commentsCount: 3,
     tagline: 'An open source map of organizations for women in tech 🌎',
     day: '2019-03-08',
     featured: true,
@@ -2436,7 +2284,6 @@ const posts = [
   {
     name: 'Byte - Crypto price tracker',
     slug: 'byte-crypto-price-tracker',
-    commentsCount: 2,
     tagline: 'Realtime crypto tracker for everyone',
     day: '2019-03-08',
     featured: true,
@@ -2447,7 +2294,6 @@ const posts = [
   {
     name: 'Women Made It',
     slug: 'women-made-it',
-    commentsCount: 33,
     tagline: 'Awesome design tools, books, podcasts & blogs made by women',
     day: '2019-03-08',
     featured: true,
@@ -2464,7 +2310,6 @@ const posts = [
   {
     name: 'Progress Dashboard',
     slug: 'progress-dashboard',
-    commentsCount: 24,
     tagline: 'Chrome dashboard to stay productive with progress bars',
     day: '2019-03-08',
     featured: true,
@@ -2482,7 +2327,6 @@ const posts = [
   {
     name: 'Interview School',
     slug: 'interview-school',
-    commentsCount: 6,
     tagline: 'Cheatsheets for your next interview with AI assistance',
     day: '2019-03-08',
     featured: true,
@@ -2493,7 +2337,6 @@ const posts = [
   {
     name: 'Clubhouse',
     slug: 'clubhouse-3',
-    commentsCount: 6,
     tagline: 'Unique challenges with others in your city',
     day: '2019-03-08',
     featured: true,
@@ -2503,7 +2346,6 @@ const posts = [
   {
     name: 'Cafei',
     slug: 'cafei',
-    commentsCount: 3,
     tagline: 'Track caffeine intake in order to sleep better',
     day: '2019-03-08',
     featured: true,
@@ -2514,7 +2356,6 @@ const posts = [
   {
     name: 'AlgoExpert',
     slug: 'algoexpert',
-    commentsCount: 0,
     tagline: 'A better way to prep for tech interviews',
     day: '2019-03-09',
     featured: true,
@@ -2525,7 +2366,6 @@ const posts = [
   {
     name: 'Stenon',
     slug: 'stenon',
-    commentsCount: 1,
     tagline: 'Portable soil monitoring device',
     day: '2019-03-08',
     featured: true,
@@ -2542,7 +2382,6 @@ const posts = [
   {
     name: 'Locelle',
     slug: 'locelle',
-    commentsCount: 1,
     tagline: 'App for women to connect with like-minded friends & mentors',
     day: '2019-03-09',
     featured: true,
@@ -2559,7 +2398,6 @@ const posts = [
   {
     name: 'Haiku Animator',
     slug: 'haiku-animator',
-    commentsCount: 28,
     tagline: 'Create powerful animations for any app or website',
     day: '2019-03-08',
     featured: true,
@@ -2570,7 +2408,6 @@ const posts = [
   {
     name: 'Nice Sex Tracker',
     slug: 'nice-sex-tracker',
-    commentsCount: 9,
     tagline: 'Privacy centric sex and intimacy tracking app for iOS',
     day: '2019-03-08',
     featured: true,
@@ -2580,7 +2417,6 @@ const posts = [
   {
     name: 'FindMyInvoice',
     slug: 'findmyinvoice',
-    commentsCount: 20,
     tagline: 'Automatically collect expense receipts from your Gmail',
     day: '2019-03-08',
     featured: true,
@@ -2598,7 +2434,6 @@ const posts = [
   {
     name: 'Text Austin Music',
     slug: 'text-austin-music',
-    commentsCount: 0,
     tagline: 'Visual, artistic texts about the coolest SXSW music events',
     day: '2019-03-08',
     featured: true,
@@ -2615,7 +2450,6 @@ const posts = [
   {
     name: 'Who Runs The World',
     slug: 'who-runs-the-world',
-    commentsCount: 4,
     tagline: "Infographics website for International Women's Day 2019",
     day: '2019-03-08',
     featured: true,
@@ -2626,7 +2460,6 @@ const posts = [
   {
     name: 'Alethio',
     slug: 'alethio',
-    commentsCount: 0,
     tagline: 'Powerful blockchain data, analytics & visualization platform',
     day: '2019-03-08',
     featured: true,
@@ -2637,7 +2470,6 @@ const posts = [
   {
     name: 'Transposit',
     slug: 'transposit',
-    commentsCount: 12,
     tagline: 'Build API-dependent applications effortlessly',
     day: '2019-03-08',
     featured: true,
@@ -2648,7 +2480,6 @@ const posts = [
   {
     name: 'Screenlapse',
     slug: 'screenlapse',
-    commentsCount: 19,
     tagline: 'Automatically capture website screenshots every day/week/etc',
     day: '2019-03-08',
     featured: true,
@@ -2659,7 +2490,6 @@ const posts = [
   {
     name: 'Hooch Rewards',
     slug: 'hooch-rewards',
-    commentsCount: 3,
     tagline: 'Hooch rewards up to 10% back when you shop',
     day: '2019-03-07',
     featured: true,
@@ -2669,7 +2499,6 @@ const posts = [
   {
     name: 'Laazy',
     slug: 'laazy',
-    commentsCount: 11,
     tagline: 'Time saving image tools.',
     day: '2019-03-07',
     featured: true,
@@ -2687,7 +2516,6 @@ const posts = [
   {
     name: 'Simple Quoter',
     slug: 'simple-quoter',
-    commentsCount: 3,
     tagline: 'The easiest way to build interactive sales quotes',
     day: '2019-03-07',
     featured: true,
@@ -2698,7 +2526,6 @@ const posts = [
   {
     name: 'Public Art - Street Art Museum',
     slug: 'public-art-street-art-museum',
-    commentsCount: 4,
     tagline: 'Discover street art photos found with ML from 170+ countries',
     day: '2019-03-07',
     featured: true,
@@ -2709,7 +2536,6 @@ const posts = [
   {
     name: 'Stress & Anxiety Companion',
     slug: 'stress-anxiety-companion',
-    commentsCount: 2,
     tagline: 'An app to help counter stress and anxiety',
     day: '2019-03-07',
     featured: true,
@@ -2720,7 +2546,6 @@ const posts = [
   {
     name: 'Everyday German',
     slug: 'everyday-german',
-    commentsCount: 7,
     tagline: 'Learn useful German words & phrases on every new tab',
     day: '2019-03-07',
     featured: true,
@@ -2730,7 +2555,6 @@ const posts = [
   {
     name: 'Labo VR Kit',
     slug: 'labo-vr-kit',
-    commentsCount: 3,
     tagline: "Nintendo's new VR kit for Labo",
     day: '2019-03-07',
     featured: true,
@@ -2743,7 +2567,6 @@ const posts = [
   {
     name: 'Notion 2.3',
     slug: 'notion-2-3',
-    commentsCount: 60,
     tagline: 'Notions big update, now with Evernote import and web clipper',
     day: '2019-03-07',
     featured: true,
@@ -2754,7 +2577,6 @@ const posts = [
   {
     name: 'ClipCoverage',
     slug: 'clipcoverage',
-    commentsCount: 5,
     tagline: 'A Google Slides add-on that automates media coverage reports',
     day: '2019-03-07',
     featured: true,
@@ -2765,7 +2587,6 @@ const posts = [
   {
     name: 'Vurku',
     slug: 'vurku',
-    commentsCount: 10,
     tagline: 'Download Instagram posts by username or hashtag',
     day: '2019-03-07',
     featured: true,
@@ -2775,7 +2596,6 @@ const posts = [
   {
     name: 'ReceiptLens',
     slug: 'receiptlens',
-    commentsCount: 2,
     tagline: 'A smart tool for receipt scanning,expense tracking&reporting',
     day: '2019-03-08',
     featured: true,
@@ -2786,7 +2606,6 @@ const posts = [
   {
     name: 'Code Time',
     slug: 'code-time',
-    commentsCount: 23,
     tagline: 'VS Code extension for automatic programming metrics',
     day: '2019-03-07',
     featured: true,
@@ -2804,7 +2623,6 @@ const posts = [
   {
     name: 'Easter Eggs by HoverSignal',
     slug: 'easter-eggs-by-hoversignal',
-    commentsCount: 26,
     tagline: 'Boost engagement & SEO with hidden presents on your website',
     day: '2019-03-07',
     featured: true,
@@ -2814,7 +2632,6 @@ const posts = [
   {
     name: 'MakeML',
     slug: 'makeml',
-    commentsCount: 39,
     tagline: 'Train Neural Networks without a line of code',
     day: '2019-03-07',
     featured: true,
@@ -2825,7 +2642,6 @@ const posts = [
   {
     name: 'Butleroy 4.0',
     slug: 'butleroy-4-0',
-    commentsCount: 49,
     tagline: 'Your personal butler for more productivity',
     day: '2019-03-07',
     featured: true,
@@ -2838,7 +2654,6 @@ const posts = [
   {
     name: 'Faruno',
     slug: 'faruno',
-    commentsCount: 9,
     tagline: 'A unique email address within one inbox',
     day: '2019-03-07',
     featured: true,
@@ -2851,7 +2666,6 @@ const posts = [
   {
     name: 'Sauna',
     slug: 'sauna',
-    commentsCount: 1,
     tagline: 'Track heat & cold exposure with your Apple Watch and iPhone',
     day: '2019-03-07',
     featured: true,
@@ -2862,7 +2676,6 @@ const posts = [
   {
     name: 'Popcity',
     slug: 'popcity',
-    commentsCount: 12,
     tagline: 'Instantly map any photo on Instagram',
     day: '2019-03-07',
     featured: true,
@@ -2873,7 +2686,6 @@ const posts = [
   {
     name: 'UrbanWatch',
     slug: 'urbanwatch',
-    commentsCount: 3,
     tagline: 'Lets you access Urban Dictionary on your Apple Watch',
     day: '2019-03-07',
     featured: true,
@@ -2891,7 +2703,6 @@ const posts = [
   {
     name: 'Ruler Analytics',
     slug: 'ruler-analytics',
-    commentsCount: 1,
     tagline: 'Close the loop between leads and revenue',
     day: '2019-03-11',
     featured: true,
@@ -2902,7 +2713,6 @@ const posts = [
   {
     name: 'Lazy Surfer',
     slug: 'lazy-surfer',
-    commentsCount: 5,
     tagline: 'Surf better waves with less effort',
     day: '2019-03-09',
     featured: true,
@@ -2915,7 +2725,6 @@ const posts = [
   {
     name: 'Music Match',
     slug: 'music-match',
-    commentsCount: 4,
     tagline: 'Find out how musically compatible you are with friends',
     day: '2019-03-07',
     featured: true,
@@ -2926,7 +2735,6 @@ const posts = [
   {
     name: 'Health News',
     slug: 'health-news',
-    commentsCount: 8,
     tagline: 'Hacker News for health 🔬',
     day: '2019-03-07',
     featured: true,
@@ -2937,7 +2745,6 @@ const posts = [
   {
     name: 'Elin.ai',
     slug: 'elin-ai-1',
-    commentsCount: 33,
     tagline: 'A slack bot to boost your team engagement and collaboration',
     day: '2019-03-07',
     featured: true,
@@ -2947,7 +2754,6 @@ const posts = [
   {
     name: 'Pei',
     slug: 'pei-2',
-    commentsCount: 6,
     tagline: 'Earn cashback in crypto using your debit or credit card',
     day: '2019-03-07',
     featured: true,
@@ -2964,7 +2770,6 @@ const posts = [
   {
     name: 'CalPal',
     slug: 'calpal-2',
-    commentsCount: 2,
     tagline: 'A super simple calculator with instant as you type results',
     day: '2019-03-07',
     featured: true,
@@ -2975,7 +2780,6 @@ const posts = [
   {
     name: 'Kavtek',
     slug: 'kavtek',
-    commentsCount: 3,
     tagline: 'Augmented reality home improvement app',
     day: '2019-03-07',
     featured: true,
@@ -2993,7 +2797,6 @@ const posts = [
   {
     name: 'GitHub Personal Website Generator',
     slug: 'github-personal-website-generator',
-    commentsCount: 6,
     tagline: 'Generate a personal website based on GitHub contributions',
     day: '2019-03-07',
     featured: true,
@@ -3010,7 +2813,6 @@ const posts = [
   {
     name: 'newsletter-cli',
     slug: 'newsletter-cli',
-    commentsCount: 2,
     tagline: 'CLI tool to write and send newsletters in Markdown',
     day: '2019-03-07',
     featured: true,
@@ -3020,7 +2822,6 @@ const posts = [
   {
     name: 'JustComments',
     slug: 'justcomments',
-    commentsCount: 18,
     tagline: 'Comment system for websites',
     day: '2019-03-11',
     featured: true,
@@ -3038,7 +2839,6 @@ const posts = [
   {
     name: 'Tombot',
     slug: 'tombot',
-    commentsCount: 1,
     tagline: 'More realistic, affordable animal companion for the elderly',
     day: '2019-03-09',
     featured: true,
@@ -3049,7 +2849,6 @@ const posts = [
   {
     name: 'Textstandup',
     slug: 'textstandup',
-    commentsCount: 10,
     tagline: 'Web application for text based stand-ups',
     day: '2019-03-07',
     featured: true,
@@ -3062,7 +2861,6 @@ const posts = [
   {
     name: 'Reportz v2.0',
     slug: 'reportz-v2-0',
-    commentsCount: 9,
     tagline: 'All-in-one reporting tool for digital marketers',
     day: '2019-03-07',
     featured: true,
@@ -3079,7 +2877,6 @@ const posts = [
   {
     name: 'Baremetrics for Apple App Store Connect',
     slug: 'baremetrics-for-apple-app-store-connect',
-    commentsCount: 9,
     tagline: "Subscription analytics & insights for Apple's app store",
     day: '2019-03-06',
     featured: true,
@@ -3089,7 +2886,6 @@ const posts = [
   {
     name: 'Feedbacks',
     slug: 'feedbacks',
-    commentsCount: 8,
     tagline: 'Capture user feedback effortlessly with emojis 😎',
     day: '2019-03-07',
     featured: true,
@@ -3100,7 +2896,6 @@ const posts = [
   {
     name: 'Product Hunt CLI',
     slug: 'product-hunt-cli',
-    commentsCount: 6,
     tagline: 'Access the top products on PH right from your terminal',
     day: '2019-03-07',
     featured: true,
@@ -3110,7 +2905,6 @@ const posts = [
   {
     name: 'Fitbit Inspire',
     slug: 'fitbit-inspire',
-    commentsCount: 6,
     tagline: "Fitbit's newest tracker with a detachable band",
     day: '2019-03-06',
     featured: true,
@@ -3121,7 +2915,6 @@ const posts = [
   {
     name: 'Fitbit Ace 2',
     slug: 'fitbit-ace-2',
-    commentsCount: 1,
     tagline: 'An activity tracker for kids',
     day: '2019-03-06',
     featured: true,
@@ -3132,7 +2925,6 @@ const posts = [
   {
     name: 'Ompractice',
     slug: 'ompractice',
-    commentsCount: 6,
     tagline: 'Online interactive yoga+meditation classes via two-way video',
     day: '2019-03-07',
     featured: true,
@@ -3150,7 +2942,6 @@ const posts = [
   {
     name: 'Fitbit Versa Lite',
     slug: 'fitbit-versa-lite',
-    commentsCount: 3,
     tagline: "Fitbit's new smart watch starting at $160",
     day: '2019-03-06',
     featured: true,
@@ -3168,7 +2959,6 @@ const posts = [
   {
     name: 'Maker Stories by Product Hunt',
     slug: 'maker-stories-by-product-hunt',
-    commentsCount: 19,
     tagline: 'A platform for Makers to share their knowledge',
     day: '2019-03-06',
     featured: true,
@@ -3181,7 +2971,6 @@ const posts = [
   {
     name: 'Good Job Description',
     slug: 'good-job-description',
-    commentsCount: 13,
     tagline: 'See good job descriptions from the most-loved companies',
     day: '2019-03-08',
     featured: true,
@@ -3192,7 +2981,6 @@ const posts = [
   {
     name: 'Dendo Drive House ',
     slug: 'dendo-drive-house',
-    commentsCount: 3,
     tagline: 'Mitsubishi’s new power system lets your car power your home',
     day: '2019-03-06',
     featured: true,
@@ -3202,7 +2990,6 @@ const posts = [
   {
     name: 'Vectary 3.0',
     slug: 'vectary-3-0',
-    commentsCount: 21,
     tagline: 'Create 3D and AR designs for your website',
     day: '2019-03-06',
     featured: true,
@@ -3220,7 +3007,6 @@ const posts = [
   {
     name: 'Kidpography',
     slug: 'kidpography',
-    commentsCount: 28,
     tagline: 'Save your children’s calligraphy forever',
     day: '2019-03-06',
     featured: true,
@@ -3231,7 +3017,6 @@ const posts = [
   {
     name: 'Bolo',
     slug: 'bolo-2',
-    commentsCount: 3,
     tagline: 'Learn English and Hindi with your voice, available in: 🇮🇳',
     day: '2019-03-06',
     featured: true,
@@ -3249,7 +3034,6 @@ const posts = [
   {
     name: 'Minaurs',
     slug: 'minaurs',
-    commentsCount: 1,
     tagline: 'A unique adventure game full of exploratory expeditions.',
     day: '2019-03-06',
     featured: true,
@@ -3259,7 +3043,6 @@ const posts = [
   {
     name: 'Birthday Cleaner',
     slug: 'birthday-cleaner',
-    commentsCount: 10,
     tagline: 'Review and clear birthdays from your calendar',
     day: '2019-03-06',
     featured: true,
@@ -3272,7 +3055,6 @@ const posts = [
   {
     name: 'Two Three Bricks',
     slug: 'two-three-bricks',
-    commentsCount: 2,
     tagline: 'Customised LEGO caricatures to be used any way you want.',
     day: '2019-03-06',
     featured: true,
@@ -3282,7 +3064,6 @@ const posts = [
   {
     name: 'Battista',
     slug: 'battista',
-    commentsCount: 2,
     tagline: "Pinnfarina's 1'900 horse-power electric hypercar ",
     day: '2019-03-06',
     featured: true,
@@ -3292,7 +3073,6 @@ const posts = [
   {
     name: 'Repair Alert',
     slug: 'repair-alert',
-    commentsCount: 9,
     tagline: 'Never miss out on an Apple repair or exchange program.',
     day: '2019-03-06',
     featured: true,
@@ -3303,7 +3083,6 @@ const posts = [
   {
     name: 'MuteRKelly',
     slug: 'muterkelly',
-    commentsCount: 6,
     tagline: 'Automatically mute all R. Kelly songs',
     day: '2019-03-06',
     featured: true,
@@ -3314,7 +3093,6 @@ const posts = [
   {
     name: 'Product Wars',
     slug: 'product-wars',
-    commentsCount: 12,
     tagline: 'A real-time war room for your product launch',
     day: '2019-03-06',
     featured: true,
@@ -3332,7 +3110,6 @@ const posts = [
   {
     name: 'Aiko Meet',
     slug: 'aiko-meet',
-    commentsCount: 39,
     tagline: '🤖 Video Chat in browser with AI Subtitles + Transcript 🤖',
     day: '2019-03-06',
     featured: true,
@@ -3343,7 +3120,6 @@ const posts = [
   {
     name: 'Freshstatus by Freshworks',
     slug: 'freshstatus-by-freshworks',
-    commentsCount: 56,
     tagline: 'Better statuspage, in 1-click, FREE forever 🔥',
     day: '2019-03-06',
     featured: true,
@@ -3353,7 +3129,6 @@ const posts = [
   {
     name: 'GitPress',
     slug: 'gitpress',
-    commentsCount: 10,
     tagline: 'A blog writing tool based on GitHub, designed for developers',
     day: '2019-03-06',
     featured: true,
@@ -3364,7 +3139,6 @@ const posts = [
   {
     name: 'DigitalOcean Marketplace',
     slug: 'digitalocean-marketplace',
-    commentsCount: 20,
     tagline: 'Discover and deploy preconfigured one-click applications',
     day: '2019-03-06',
     featured: true,
@@ -3375,7 +3149,6 @@ const posts = [
   {
     name: 'Lightdogs',
     slug: 'lightdogs',
-    commentsCount: 13,
     tagline: 'Collect dogs by staying productive',
     day: '2019-03-06',
     featured: true,
@@ -3386,7 +3159,6 @@ const posts = [
   {
     name: 'LinkPot',
     slug: 'linkpot',
-    commentsCount: 49,
     tagline: 'Add clickable links to your Instagram Posts',
     day: '2019-03-06',
     featured: true,
@@ -3403,7 +3175,6 @@ const posts = [
   {
     name: 'Ear Palettes',
     slug: 'ear-palettes',
-    commentsCount: 3,
     tagline: 'Color palette inspirations from album covers',
     day: '2019-03-06',
     featured: true,
@@ -3421,7 +3192,6 @@ const posts = [
   {
     name: 'Routable',
     slug: 'routable',
-    commentsCount: 13,
     tagline: 'The simplest way to send B2B payments and invoices',
     day: '2019-03-06',
     featured: true,
@@ -3432,7 +3202,6 @@ const posts = [
   {
     name: 'Livestats',
     slug: 'livestats',
-    commentsCount: 3,
     tagline: 'Real time visitor stats for all of your websites',
     day: '2019-03-06',
     featured: true,
@@ -3442,7 +3211,6 @@ const posts = [
   {
     name: 'Family Friendly Live',
     slug: 'family-friendly-live',
-    commentsCount: 3,
     tagline: 'Accessible, family-friendly Twitch streamers',
     day: '2019-03-06',
     featured: true,
@@ -3453,7 +3221,6 @@ const posts = [
   {
     name: 'Rank Math SEO',
     slug: 'rank-math-seo',
-    commentsCount: 98,
     tagline: 'A FREE powerful and lightweight SEO plugin for WordPress',
     day: '2019-03-06',
     featured: true,
@@ -3463,7 +3230,6 @@ const posts = [
   {
     name: 'Truffle',
     slug: 'truffle-3',
-    commentsCount: 26,
     tagline: 'File your taxes like the 1%',
     day: '2019-03-08',
     featured: true,
@@ -3481,7 +3247,6 @@ const posts = [
   {
     name: 'AXDRAFT',
     slug: 'axdraft',
-    commentsCount: 119,
     tagline: 'Free legal documents for startups in minutes',
     day: '2019-03-06',
     featured: true,
@@ -3492,7 +3257,6 @@ const posts = [
   {
     name: 'Jour',
     slug: 'jour',
-    commentsCount: 21,
     tagline: 'Jour is a daily journal, guiding you towards self-care',
     day: '2019-03-06',
     featured: true,
@@ -3503,7 +3267,6 @@ const posts = [
   {
     name: 'Shopbrain',
     slug: 'shopbrain',
-    commentsCount: 4,
     tagline: 'Shopbrain instantly finds you the best price online',
     day: '2019-03-08',
     featured: true,
@@ -3514,7 +3277,6 @@ const posts = [
   {
     name: 'New Segment Platform',
     slug: 'new-segment-platform',
-    commentsCount: 0,
     tagline: '15,000 Customers, 9,000 Integrations Enabled / Month',
     day: '2019-03-05',
     featured: true,
@@ -3532,7 +3294,6 @@ const posts = [
   {
     name: 'Merge SX',
     slug: 'merge-sx',
-    commentsCount: 3,
     tagline: 'Join a collection of videos into a single movie.',
     day: '2019-03-11',
     featured: true,
@@ -3542,7 +3303,6 @@ const posts = [
   {
     name: 'Divide SX',
     slug: 'divide-sx',
-    commentsCount: 5,
     tagline: 'Cut your movies into an arbitrary number of segments.',
     day: '2019-03-09',
     featured: true,
@@ -3560,7 +3320,6 @@ const posts = [
   {
     name: 'Moneon',
     slug: 'moneon',
-    commentsCount: 17,
     tagline: 'Free app to track and save money',
     day: '2019-03-07',
     featured: true,
@@ -3570,7 +3329,6 @@ const posts = [
   {
     name: 'AM-RB 003',
     slug: 'am-rb-003',
-    commentsCount: 3,
     tagline: "Aston Martin's new hypercar",
     day: '2019-03-05',
     featured: true,
@@ -3581,7 +3339,6 @@ const posts = [
   {
     name: 'August View Doorbell Camera',
     slug: 'august-view-doorbell-camera',
-    commentsCount: 2,
     tagline: 'Sleek, wire-free doorbell camera',
     day: '2019-03-05',
     featured: true,
@@ -3599,7 +3356,6 @@ const posts = [
   {
     name: 'TidyShift',
     slug: 'tidyshift',
-    commentsCount: 1,
     tagline: 'A super-simple way to schedule shifts for members of staff',
     day: '2019-03-05',
     featured: true,
@@ -3610,7 +3366,6 @@ const posts = [
   {
     name: 'Midnight Lizard',
     slug: 'midnight-lizard-2',
-    commentsCount: 1,
     tagline: 'Accessible color schemes for all websites',
     day: '2019-03-05',
     featured: true,
@@ -3623,7 +3378,6 @@ const posts = [
   {
     name: 'KettleBell Connect',
     slug: 'kettlebell-connect',
-    commentsCount: 4,
     tagline: 'A smart kettlebell with motion sensors',
     day: '2019-03-05',
     featured: true,
@@ -3634,7 +3388,6 @@ const posts = [
   {
     name: 'FaceCode',
     slug: 'facecode',
-    commentsCount: 7,
     tagline: 'Hire top tech talent with video interviews',
     day: '2019-03-05',
     featured: true,
@@ -3651,7 +3404,6 @@ const posts = [
   {
     name: 'TeamSpoor',
     slug: 'teamspoor',
-    commentsCount: 2,
     tagline: 'Track your field force and automate their reporting',
     day: '2019-03-06',
     featured: true,
@@ -3661,7 +3413,6 @@ const posts = [
   {
     name: '30 Seconds of Knowledge',
     slug: '30-seconds-of-knowledge-2',
-    commentsCount: 0,
     tagline: 'Become a better developer, one new tab at a time',
     day: '2019-03-05',
     featured: true,
@@ -3671,7 +3422,6 @@ const posts = [
   {
     name: 'I.D Buggy',
     slug: 'i-d-buggy',
-    commentsCount: 1,
     tagline: "Volkswagen's electric dune buggy ",
     day: '2019-03-05',
     featured: true,
@@ -3680,7 +3430,6 @@ const posts = [
     topics: { connect: [{ slug: 'medtech' }, { slug: 'apple' }] }
   }
 ];
-
 const slugs = [
   'hyperspektiv-2-0',
   'retrochat',
@@ -3933,7 +3682,6 @@ const slugs = [
   '30-seconds-of-knowledge-2',
   'i-d-buggy'
 ];
-
 module.exports = {
   posts,
   slugs

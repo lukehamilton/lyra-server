@@ -3,6 +3,8 @@ datamodel: datamodel.prisma
 generate:
   - generator: javascript-client
     output: ./prisma-client/
+  - generator: graphql-schema
+    output: ./generated/prisma.graphql # <--schema.graphql
 seed:
   run: node ./sample-data/seed.js
   # import: seed.graphql

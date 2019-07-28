@@ -3,7 +3,11 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregatePost {
+/* GraphQL */ `type AggregateComment {
+  count: Int!
+}
+
+type AggregatePost {
   count: Int!
 }
 
@@ -31,11 +35,392 @@ type BatchPayload {
   count: Long!
 }
 
+type Comment {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
+  text: String!
+  post: Post
+  parent: Comment
+  author: User!
+  replies(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
+}
+
+type CommentConnection {
+  pageInfo: PageInfo!
+  edges: [CommentEdge]!
+  aggregate: AggregateComment!
+}
+
+input CommentCreateInput {
+  id: ID
+  votes: VoteCreateManyInput
+  text: String!
+  post: PostCreateOneWithoutCommentsInput
+  parent: CommentCreateOneWithoutParentInput
+  author: UserCreateOneWithoutCommentsInput!
+  replies: CommentCreateManyWithoutRepliesInput
+}
+
+input CommentCreateManyWithoutAuthorInput {
+  create: [CommentCreateWithoutAuthorInput!]
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentCreateManyWithoutPostInput {
+  create: [CommentCreateWithoutPostInput!]
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentCreateManyWithoutRepliesInput {
+  create: [CommentCreateWithoutRepliesInput!]
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentCreateOneWithoutParentInput {
+  create: CommentCreateWithoutParentInput
+  connect: CommentWhereUniqueInput
+}
+
+input CommentCreateWithoutAuthorInput {
+  id: ID
+  votes: VoteCreateManyInput
+  text: String!
+  post: PostCreateOneWithoutCommentsInput
+  parent: CommentCreateOneWithoutParentInput
+  replies: CommentCreateManyWithoutRepliesInput
+}
+
+input CommentCreateWithoutParentInput {
+  id: ID
+  votes: VoteCreateManyInput
+  text: String!
+  post: PostCreateOneWithoutCommentsInput
+  author: UserCreateOneWithoutCommentsInput!
+  replies: CommentCreateManyWithoutRepliesInput
+}
+
+input CommentCreateWithoutPostInput {
+  id: ID
+  votes: VoteCreateManyInput
+  text: String!
+  parent: CommentCreateOneWithoutParentInput
+  author: UserCreateOneWithoutCommentsInput!
+  replies: CommentCreateManyWithoutRepliesInput
+}
+
+input CommentCreateWithoutRepliesInput {
+  id: ID
+  votes: VoteCreateManyInput
+  text: String!
+  post: PostCreateOneWithoutCommentsInput
+  parent: CommentCreateOneWithoutParentInput
+  author: UserCreateOneWithoutCommentsInput!
+}
+
+type CommentEdge {
+  node: Comment!
+  cursor: String!
+}
+
+enum CommentOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  text_ASC
+  text_DESC
+}
+
+type CommentPreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  text: String!
+}
+
+input CommentScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  text: String
+  text_not: String
+  text_in: [String!]
+  text_not_in: [String!]
+  text_lt: String
+  text_lte: String
+  text_gt: String
+  text_gte: String
+  text_contains: String
+  text_not_contains: String
+  text_starts_with: String
+  text_not_starts_with: String
+  text_ends_with: String
+  text_not_ends_with: String
+  AND: [CommentScalarWhereInput!]
+  OR: [CommentScalarWhereInput!]
+  NOT: [CommentScalarWhereInput!]
+}
+
+type CommentSubscriptionPayload {
+  mutation: MutationType!
+  node: Comment
+  updatedFields: [String!]
+  previousValues: CommentPreviousValues
+}
+
+input CommentSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CommentWhereInput
+  AND: [CommentSubscriptionWhereInput!]
+  OR: [CommentSubscriptionWhereInput!]
+  NOT: [CommentSubscriptionWhereInput!]
+}
+
+input CommentUpdateInput {
+  votes: VoteUpdateManyInput
+  text: String
+  post: PostUpdateOneWithoutCommentsInput
+  parent: CommentUpdateOneWithoutParentInput
+  author: UserUpdateOneRequiredWithoutCommentsInput
+  replies: CommentUpdateManyWithoutRepliesInput
+}
+
+input CommentUpdateManyDataInput {
+  text: String
+}
+
+input CommentUpdateManyMutationInput {
+  text: String
+}
+
+input CommentUpdateManyWithoutAuthorInput {
+  create: [CommentCreateWithoutAuthorInput!]
+  delete: [CommentWhereUniqueInput!]
+  connect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [CommentScalarWhereInput!]
+  updateMany: [CommentUpdateManyWithWhereNestedInput!]
+}
+
+input CommentUpdateManyWithoutPostInput {
+  create: [CommentCreateWithoutPostInput!]
+  delete: [CommentWhereUniqueInput!]
+  connect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutPostInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutPostInput!]
+  deleteMany: [CommentScalarWhereInput!]
+  updateMany: [CommentUpdateManyWithWhereNestedInput!]
+}
+
+input CommentUpdateManyWithoutRepliesInput {
+  create: [CommentCreateWithoutRepliesInput!]
+  delete: [CommentWhereUniqueInput!]
+  connect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutRepliesInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutRepliesInput!]
+  deleteMany: [CommentScalarWhereInput!]
+  updateMany: [CommentUpdateManyWithWhereNestedInput!]
+}
+
+input CommentUpdateManyWithWhereNestedInput {
+  where: CommentScalarWhereInput!
+  data: CommentUpdateManyDataInput!
+}
+
+input CommentUpdateOneWithoutParentInput {
+  create: CommentCreateWithoutParentInput
+  update: CommentUpdateWithoutParentDataInput
+  upsert: CommentUpsertWithoutParentInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: CommentWhereUniqueInput
+}
+
+input CommentUpdateWithoutAuthorDataInput {
+  votes: VoteUpdateManyInput
+  text: String
+  post: PostUpdateOneWithoutCommentsInput
+  parent: CommentUpdateOneWithoutParentInput
+  replies: CommentUpdateManyWithoutRepliesInput
+}
+
+input CommentUpdateWithoutParentDataInput {
+  votes: VoteUpdateManyInput
+  text: String
+  post: PostUpdateOneWithoutCommentsInput
+  author: UserUpdateOneRequiredWithoutCommentsInput
+  replies: CommentUpdateManyWithoutRepliesInput
+}
+
+input CommentUpdateWithoutPostDataInput {
+  votes: VoteUpdateManyInput
+  text: String
+  parent: CommentUpdateOneWithoutParentInput
+  author: UserUpdateOneRequiredWithoutCommentsInput
+  replies: CommentUpdateManyWithoutRepliesInput
+}
+
+input CommentUpdateWithoutRepliesDataInput {
+  votes: VoteUpdateManyInput
+  text: String
+  post: PostUpdateOneWithoutCommentsInput
+  parent: CommentUpdateOneWithoutParentInput
+  author: UserUpdateOneRequiredWithoutCommentsInput
+}
+
+input CommentUpdateWithWhereUniqueWithoutAuthorInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutAuthorDataInput!
+}
+
+input CommentUpdateWithWhereUniqueWithoutPostInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutPostDataInput!
+}
+
+input CommentUpdateWithWhereUniqueWithoutRepliesInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutRepliesDataInput!
+}
+
+input CommentUpsertWithoutParentInput {
+  update: CommentUpdateWithoutParentDataInput!
+  create: CommentCreateWithoutParentInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutAuthorInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutAuthorDataInput!
+  create: CommentCreateWithoutAuthorInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutPostInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutPostDataInput!
+  create: CommentCreateWithoutPostInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutRepliesInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutRepliesDataInput!
+  create: CommentCreateWithoutRepliesInput!
+}
+
+input CommentWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  votes_every: VoteWhereInput
+  votes_some: VoteWhereInput
+  votes_none: VoteWhereInput
+  text: String
+  text_not: String
+  text_in: [String!]
+  text_not_in: [String!]
+  text_lt: String
+  text_lte: String
+  text_gt: String
+  text_gte: String
+  text_contains: String
+  text_not_contains: String
+  text_starts_with: String
+  text_not_starts_with: String
+  text_ends_with: String
+  text_not_ends_with: String
+  post: PostWhereInput
+  parent: CommentWhereInput
+  author: UserWhereInput
+  replies_every: CommentWhereInput
+  replies_some: CommentWhereInput
+  replies_none: CommentWhereInput
+  AND: [CommentWhereInput!]
+  OR: [CommentWhereInput!]
+  NOT: [CommentWhereInput!]
+}
+
+input CommentWhereUniqueInput {
+  id: ID
+}
+
 scalar DateTime
 
 scalar Long
 
 type Mutation {
+  createComment(data: CommentCreateInput!): Comment!
+  updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
+  updateManyComments(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
+  upsertComment(where: CommentWhereUniqueInput!, create: CommentCreateInput!, update: CommentUpdateInput!): Comment!
+  deleteComment(where: CommentWhereUniqueInput!): Comment
+  deleteManyComments(where: CommentWhereInput): BatchPayload!
   createPost(data: PostCreateInput!): Post!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
@@ -99,10 +484,12 @@ type Post {
   slug: String!
   link: String
   thumbnail: String
+  submitter: User!
+  creators(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   description: String
   galleryThumbs: [String!]!
   tagline: String
-  commentsCount: Int
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
   day: String
   featured: Boolean
   topics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic!]
@@ -126,10 +513,12 @@ input PostCreateInput {
   slug: String!
   link: String
   thumbnail: String
+  submitter: UserCreateOneWithoutSubmittedPostsInput!
+  creators: UserCreateManyWithoutCreatedPostsInput
   description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  commentsCount: Int
+  comments: CommentCreateManyWithoutPostInput
   day: String
   featured: Boolean
   topics: TopicCreateManyWithoutPostsInput
@@ -141,14 +530,83 @@ input PostCreateManyInput {
   connect: [PostWhereUniqueInput!]
 }
 
+input PostCreateManyWithoutCreatorsInput {
+  create: [PostCreateWithoutCreatorsInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateManyWithoutSubmitterInput {
+  create: [PostCreateWithoutSubmitterInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
 input PostCreateManyWithoutTopicsInput {
   create: [PostCreateWithoutTopicsInput!]
   connect: [PostWhereUniqueInput!]
 }
 
+input PostCreateOneWithoutCommentsInput {
+  create: PostCreateWithoutCommentsInput
+  connect: PostWhereUniqueInput
+}
+
 input PostCreateOneWithoutVotesInput {
   create: PostCreateWithoutVotesInput
   connect: PostWhereUniqueInput
+}
+
+input PostCreateWithoutCommentsInput {
+  id: ID
+  type: PostType
+  name: String
+  slug: String!
+  link: String
+  thumbnail: String
+  submitter: UserCreateOneWithoutSubmittedPostsInput!
+  creators: UserCreateManyWithoutCreatedPostsInput
+  description: String
+  galleryThumbs: PostCreategalleryThumbsInput
+  tagline: String
+  day: String
+  featured: Boolean
+  topics: TopicCreateManyWithoutPostsInput
+  votes: VoteCreateManyWithoutPostInput
+}
+
+input PostCreateWithoutCreatorsInput {
+  id: ID
+  type: PostType
+  name: String
+  slug: String!
+  link: String
+  thumbnail: String
+  submitter: UserCreateOneWithoutSubmittedPostsInput!
+  description: String
+  galleryThumbs: PostCreategalleryThumbsInput
+  tagline: String
+  comments: CommentCreateManyWithoutPostInput
+  day: String
+  featured: Boolean
+  topics: TopicCreateManyWithoutPostsInput
+  votes: VoteCreateManyWithoutPostInput
+}
+
+input PostCreateWithoutSubmitterInput {
+  id: ID
+  type: PostType
+  name: String
+  slug: String!
+  link: String
+  thumbnail: String
+  creators: UserCreateManyWithoutCreatedPostsInput
+  description: String
+  galleryThumbs: PostCreategalleryThumbsInput
+  tagline: String
+  comments: CommentCreateManyWithoutPostInput
+  day: String
+  featured: Boolean
+  topics: TopicCreateManyWithoutPostsInput
+  votes: VoteCreateManyWithoutPostInput
 }
 
 input PostCreateWithoutTopicsInput {
@@ -158,10 +616,12 @@ input PostCreateWithoutTopicsInput {
   slug: String!
   link: String
   thumbnail: String
+  submitter: UserCreateOneWithoutSubmittedPostsInput!
+  creators: UserCreateManyWithoutCreatedPostsInput
   description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  commentsCount: Int
+  comments: CommentCreateManyWithoutPostInput
   day: String
   featured: Boolean
   votes: VoteCreateManyWithoutPostInput
@@ -174,10 +634,12 @@ input PostCreateWithoutVotesInput {
   slug: String!
   link: String
   thumbnail: String
+  submitter: UserCreateOneWithoutSubmittedPostsInput!
+  creators: UserCreateManyWithoutCreatedPostsInput
   description: String
   galleryThumbs: PostCreategalleryThumbsInput
   tagline: String
-  commentsCount: Int
+  comments: CommentCreateManyWithoutPostInput
   day: String
   featured: Boolean
   topics: TopicCreateManyWithoutPostsInput
@@ -209,8 +671,6 @@ enum PostOrderByInput {
   description_DESC
   tagline_ASC
   tagline_DESC
-  commentsCount_ASC
-  commentsCount_DESC
   day_ASC
   day_DESC
   featured_ASC
@@ -229,7 +689,6 @@ type PostPreviousValues {
   description: String
   galleryThumbs: [String!]!
   tagline: String
-  commentsCount: Int
   day: String
   featured: Boolean
 }
@@ -353,14 +812,6 @@ input PostScalarWhereInput {
   tagline_not_starts_with: String
   tagline_ends_with: String
   tagline_not_ends_with: String
-  commentsCount: Int
-  commentsCount_not: Int
-  commentsCount_in: [Int!]
-  commentsCount_not_in: [Int!]
-  commentsCount_lt: Int
-  commentsCount_lte: Int
-  commentsCount_gt: Int
-  commentsCount_gte: Int
   day: String
   day_not: String
   day_in: [String!]
@@ -411,10 +862,12 @@ input PostUpdateDataInput {
   slug: String
   link: String
   thumbnail: String
+  submitter: UserUpdateOneRequiredWithoutSubmittedPostsInput
+  creators: UserUpdateManyWithoutCreatedPostsInput
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  commentsCount: Int
+  comments: CommentUpdateManyWithoutPostInput
   day: String
   featured: Boolean
   topics: TopicUpdateManyWithoutPostsInput
@@ -431,10 +884,12 @@ input PostUpdateInput {
   slug: String
   link: String
   thumbnail: String
+  submitter: UserUpdateOneRequiredWithoutSubmittedPostsInput
+  creators: UserUpdateManyWithoutCreatedPostsInput
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  commentsCount: Int
+  comments: CommentUpdateManyWithoutPostInput
   day: String
   featured: Boolean
   topics: TopicUpdateManyWithoutPostsInput
@@ -450,7 +905,6 @@ input PostUpdateManyDataInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  commentsCount: Int
   day: String
   featured: Boolean
 }
@@ -476,9 +930,32 @@ input PostUpdateManyMutationInput {
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  commentsCount: Int
   day: String
   featured: Boolean
+}
+
+input PostUpdateManyWithoutCreatorsInput {
+  create: [PostCreateWithoutCreatorsInput!]
+  delete: [PostWhereUniqueInput!]
+  connect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutCreatorsInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutCreatorsInput!]
+  deleteMany: [PostScalarWhereInput!]
+  updateMany: [PostUpdateManyWithWhereNestedInput!]
+}
+
+input PostUpdateManyWithoutSubmitterInput {
+  create: [PostCreateWithoutSubmitterInput!]
+  delete: [PostWhereUniqueInput!]
+  connect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutSubmitterInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutSubmitterInput!]
+  deleteMany: [PostScalarWhereInput!]
+  updateMany: [PostUpdateManyWithWhereNestedInput!]
 }
 
 input PostUpdateManyWithoutTopicsInput {
@@ -505,16 +982,78 @@ input PostUpdateOneRequiredWithoutVotesInput {
   connect: PostWhereUniqueInput
 }
 
+input PostUpdateOneWithoutCommentsInput {
+  create: PostCreateWithoutCommentsInput
+  update: PostUpdateWithoutCommentsDataInput
+  upsert: PostUpsertWithoutCommentsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: PostWhereUniqueInput
+}
+
+input PostUpdateWithoutCommentsDataInput {
+  type: PostType
+  name: String
+  slug: String
+  link: String
+  thumbnail: String
+  submitter: UserUpdateOneRequiredWithoutSubmittedPostsInput
+  creators: UserUpdateManyWithoutCreatedPostsInput
+  description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
+  tagline: String
+  day: String
+  featured: Boolean
+  topics: TopicUpdateManyWithoutPostsInput
+  votes: VoteUpdateManyWithoutPostInput
+}
+
+input PostUpdateWithoutCreatorsDataInput {
+  type: PostType
+  name: String
+  slug: String
+  link: String
+  thumbnail: String
+  submitter: UserUpdateOneRequiredWithoutSubmittedPostsInput
+  description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
+  tagline: String
+  comments: CommentUpdateManyWithoutPostInput
+  day: String
+  featured: Boolean
+  topics: TopicUpdateManyWithoutPostsInput
+  votes: VoteUpdateManyWithoutPostInput
+}
+
+input PostUpdateWithoutSubmitterDataInput {
+  type: PostType
+  name: String
+  slug: String
+  link: String
+  thumbnail: String
+  creators: UserUpdateManyWithoutCreatedPostsInput
+  description: String
+  galleryThumbs: PostUpdategalleryThumbsInput
+  tagline: String
+  comments: CommentUpdateManyWithoutPostInput
+  day: String
+  featured: Boolean
+  topics: TopicUpdateManyWithoutPostsInput
+  votes: VoteUpdateManyWithoutPostInput
+}
+
 input PostUpdateWithoutTopicsDataInput {
   type: PostType
   name: String
   slug: String
   link: String
   thumbnail: String
+  submitter: UserUpdateOneRequiredWithoutSubmittedPostsInput
+  creators: UserUpdateManyWithoutCreatedPostsInput
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  commentsCount: Int
+  comments: CommentUpdateManyWithoutPostInput
   day: String
   featured: Boolean
   votes: VoteUpdateManyWithoutPostInput
@@ -526,10 +1065,12 @@ input PostUpdateWithoutVotesDataInput {
   slug: String
   link: String
   thumbnail: String
+  submitter: UserUpdateOneRequiredWithoutSubmittedPostsInput
+  creators: UserUpdateManyWithoutCreatedPostsInput
   description: String
   galleryThumbs: PostUpdategalleryThumbsInput
   tagline: String
-  commentsCount: Int
+  comments: CommentUpdateManyWithoutPostInput
   day: String
   featured: Boolean
   topics: TopicUpdateManyWithoutPostsInput
@@ -540,9 +1081,24 @@ input PostUpdateWithWhereUniqueNestedInput {
   data: PostUpdateDataInput!
 }
 
+input PostUpdateWithWhereUniqueWithoutCreatorsInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutCreatorsDataInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutSubmitterInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutSubmitterDataInput!
+}
+
 input PostUpdateWithWhereUniqueWithoutTopicsInput {
   where: PostWhereUniqueInput!
   data: PostUpdateWithoutTopicsDataInput!
+}
+
+input PostUpsertWithoutCommentsInput {
+  update: PostUpdateWithoutCommentsDataInput!
+  create: PostCreateWithoutCommentsInput!
 }
 
 input PostUpsertWithoutVotesInput {
@@ -554,6 +1110,18 @@ input PostUpsertWithWhereUniqueNestedInput {
   where: PostWhereUniqueInput!
   update: PostUpdateDataInput!
   create: PostCreateInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutCreatorsInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutCreatorsDataInput!
+  create: PostCreateWithoutCreatorsInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutSubmitterInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutSubmitterDataInput!
+  create: PostCreateWithoutSubmitterInput!
 }
 
 input PostUpsertWithWhereUniqueWithoutTopicsInput {
@@ -653,6 +1221,10 @@ input PostWhereInput {
   thumbnail_not_starts_with: String
   thumbnail_ends_with: String
   thumbnail_not_ends_with: String
+  submitter: UserWhereInput
+  creators_every: UserWhereInput
+  creators_some: UserWhereInput
+  creators_none: UserWhereInput
   description: String
   description_not: String
   description_in: [String!]
@@ -681,14 +1253,9 @@ input PostWhereInput {
   tagline_not_starts_with: String
   tagline_ends_with: String
   tagline_not_ends_with: String
-  commentsCount: Int
-  commentsCount_not: Int
-  commentsCount_in: [Int!]
-  commentsCount_not_in: [Int!]
-  commentsCount_lt: Int
-  commentsCount_lte: Int
-  commentsCount_gt: Int
-  commentsCount_gte: Int
+  comments_every: CommentWhereInput
+  comments_some: CommentWhereInput
+  comments_none: CommentWhereInput
   day: String
   day_not: String
   day_in: [String!]
@@ -722,6 +1289,9 @@ input PostWhereUniqueInput {
 }
 
 type Query {
+  comment(where: CommentWhereUniqueInput!): Comment
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment]!
+  commentsConnection(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CommentConnection!
   post(where: PostWhereUniqueInput!): Post
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
@@ -1019,6 +1589,7 @@ input SignedUploadWhereUniqueInput {
 }
 
 type Subscription {
+  comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   section(where: SectionSubscriptionWhereInput): SectionSubscriptionPayload
   signedUpload(where: SignedUploadSubscriptionWhereInput): SignedUploadSubscriptionPayload
@@ -1510,6 +2081,7 @@ type User {
   firstName: String
   lastName: String
   username: String!
+  headline: String
   avatar: String
   auth0id: String!
   identity: String
@@ -1517,6 +2089,9 @@ type User {
   address: String
   followedTopics(where: TopicWhereInput, orderBy: TopicOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Topic!]
   votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
+  submittedPosts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  createdPosts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
 }
 
 type UserConnection {
@@ -1533,6 +2108,7 @@ input UserCreateInput {
   firstName: String
   lastName: String
   username: String!
+  headline: String
   avatar: String
   auth0id: String!
   identity: String
@@ -1540,6 +2116,14 @@ input UserCreateInput {
   address: String
   followedTopics: TopicCreateManyWithoutFollowedByInput
   votes: VoteCreateManyWithoutUserInput
+  submittedPosts: PostCreateManyWithoutSubmitterInput
+  createdPosts: PostCreateManyWithoutCreatorsInput
+  comments: CommentCreateManyWithoutAuthorInput
+}
+
+input UserCreateManyWithoutCreatedPostsInput {
+  create: [UserCreateWithoutCreatedPostsInput!]
+  connect: [UserWhereUniqueInput!]
 }
 
 input UserCreateManyWithoutFollowedTopicsInput {
@@ -1547,9 +2131,59 @@ input UserCreateManyWithoutFollowedTopicsInput {
   connect: [UserWhereUniqueInput!]
 }
 
+input UserCreateOneWithoutCommentsInput {
+  create: UserCreateWithoutCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutSubmittedPostsInput {
+  create: UserCreateWithoutSubmittedPostsInput
+  connect: UserWhereUniqueInput
+}
+
 input UserCreateOneWithoutVotesInput {
   create: UserCreateWithoutVotesInput
   connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutCommentsInput {
+  id: ID
+  email: String
+  role: Role
+  name: String!
+  firstName: String
+  lastName: String
+  username: String!
+  headline: String
+  avatar: String
+  auth0id: String!
+  identity: String
+  privateKey: String
+  address: String
+  followedTopics: TopicCreateManyWithoutFollowedByInput
+  votes: VoteCreateManyWithoutUserInput
+  submittedPosts: PostCreateManyWithoutSubmitterInput
+  createdPosts: PostCreateManyWithoutCreatorsInput
+}
+
+input UserCreateWithoutCreatedPostsInput {
+  id: ID
+  email: String
+  role: Role
+  name: String!
+  firstName: String
+  lastName: String
+  username: String!
+  headline: String
+  avatar: String
+  auth0id: String!
+  identity: String
+  privateKey: String
+  address: String
+  followedTopics: TopicCreateManyWithoutFollowedByInput
+  votes: VoteCreateManyWithoutUserInput
+  submittedPosts: PostCreateManyWithoutSubmitterInput
+  comments: CommentCreateManyWithoutAuthorInput
 }
 
 input UserCreateWithoutFollowedTopicsInput {
@@ -1560,12 +2194,36 @@ input UserCreateWithoutFollowedTopicsInput {
   firstName: String
   lastName: String
   username: String!
+  headline: String
   avatar: String
   auth0id: String!
   identity: String
   privateKey: String
   address: String
   votes: VoteCreateManyWithoutUserInput
+  submittedPosts: PostCreateManyWithoutSubmitterInput
+  createdPosts: PostCreateManyWithoutCreatorsInput
+  comments: CommentCreateManyWithoutAuthorInput
+}
+
+input UserCreateWithoutSubmittedPostsInput {
+  id: ID
+  email: String
+  role: Role
+  name: String!
+  firstName: String
+  lastName: String
+  username: String!
+  headline: String
+  avatar: String
+  auth0id: String!
+  identity: String
+  privateKey: String
+  address: String
+  followedTopics: TopicCreateManyWithoutFollowedByInput
+  votes: VoteCreateManyWithoutUserInput
+  createdPosts: PostCreateManyWithoutCreatorsInput
+  comments: CommentCreateManyWithoutAuthorInput
 }
 
 input UserCreateWithoutVotesInput {
@@ -1576,12 +2234,16 @@ input UserCreateWithoutVotesInput {
   firstName: String
   lastName: String
   username: String!
+  headline: String
   avatar: String
   auth0id: String!
   identity: String
   privateKey: String
   address: String
   followedTopics: TopicCreateManyWithoutFollowedByInput
+  submittedPosts: PostCreateManyWithoutSubmitterInput
+  createdPosts: PostCreateManyWithoutCreatorsInput
+  comments: CommentCreateManyWithoutAuthorInput
 }
 
 type UserEdge {
@@ -1608,6 +2270,8 @@ enum UserOrderByInput {
   lastName_DESC
   username_ASC
   username_DESC
+  headline_ASC
+  headline_DESC
   avatar_ASC
   avatar_DESC
   auth0id_ASC
@@ -1630,6 +2294,7 @@ type UserPreviousValues {
   firstName: String
   lastName: String
   username: String!
+  headline: String
   avatar: String
   auth0id: String!
   identity: String
@@ -1742,6 +2407,20 @@ input UserScalarWhereInput {
   username_not_starts_with: String
   username_ends_with: String
   username_not_ends_with: String
+  headline: String
+  headline_not: String
+  headline_in: [String!]
+  headline_not_in: [String!]
+  headline_lt: String
+  headline_lte: String
+  headline_gt: String
+  headline_gte: String
+  headline_contains: String
+  headline_not_contains: String
+  headline_starts_with: String
+  headline_not_starts_with: String
+  headline_ends_with: String
+  headline_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]
@@ -1842,6 +2521,7 @@ input UserUpdateInput {
   firstName: String
   lastName: String
   username: String
+  headline: String
   avatar: String
   auth0id: String
   identity: String
@@ -1849,6 +2529,9 @@ input UserUpdateInput {
   address: String
   followedTopics: TopicUpdateManyWithoutFollowedByInput
   votes: VoteUpdateManyWithoutUserInput
+  submittedPosts: PostUpdateManyWithoutSubmitterInput
+  createdPosts: PostUpdateManyWithoutCreatorsInput
+  comments: CommentUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateManyDataInput {
@@ -1858,6 +2541,7 @@ input UserUpdateManyDataInput {
   firstName: String
   lastName: String
   username: String
+  headline: String
   avatar: String
   auth0id: String
   identity: String
@@ -1872,11 +2556,24 @@ input UserUpdateManyMutationInput {
   firstName: String
   lastName: String
   username: String
+  headline: String
   avatar: String
   auth0id: String
   identity: String
   privateKey: String
   address: String
+}
+
+input UserUpdateManyWithoutCreatedPostsInput {
+  create: [UserCreateWithoutCreatedPostsInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutCreatedPostsInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutCreatedPostsInput!]
+  deleteMany: [UserScalarWhereInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
 }
 
 input UserUpdateManyWithoutFollowedTopicsInput {
@@ -1896,11 +2593,63 @@ input UserUpdateManyWithWhereNestedInput {
   data: UserUpdateManyDataInput!
 }
 
+input UserUpdateOneRequiredWithoutCommentsInput {
+  create: UserCreateWithoutCommentsInput
+  update: UserUpdateWithoutCommentsDataInput
+  upsert: UserUpsertWithoutCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutSubmittedPostsInput {
+  create: UserCreateWithoutSubmittedPostsInput
+  update: UserUpdateWithoutSubmittedPostsDataInput
+  upsert: UserUpsertWithoutSubmittedPostsInput
+  connect: UserWhereUniqueInput
+}
+
 input UserUpdateOneRequiredWithoutVotesInput {
   create: UserCreateWithoutVotesInput
   update: UserUpdateWithoutVotesDataInput
   upsert: UserUpsertWithoutVotesInput
   connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutCommentsDataInput {
+  email: String
+  role: Role
+  name: String
+  firstName: String
+  lastName: String
+  username: String
+  headline: String
+  avatar: String
+  auth0id: String
+  identity: String
+  privateKey: String
+  address: String
+  followedTopics: TopicUpdateManyWithoutFollowedByInput
+  votes: VoteUpdateManyWithoutUserInput
+  submittedPosts: PostUpdateManyWithoutSubmitterInput
+  createdPosts: PostUpdateManyWithoutCreatorsInput
+}
+
+input UserUpdateWithoutCreatedPostsDataInput {
+  email: String
+  role: Role
+  name: String
+  firstName: String
+  lastName: String
+  username: String
+  headline: String
+  avatar: String
+  auth0id: String
+  identity: String
+  privateKey: String
+  address: String
+  followedTopics: TopicUpdateManyWithoutFollowedByInput
+  votes: VoteUpdateManyWithoutUserInput
+  submittedPosts: PostUpdateManyWithoutSubmitterInput
+  comments: CommentUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateWithoutFollowedTopicsDataInput {
@@ -1910,12 +2659,35 @@ input UserUpdateWithoutFollowedTopicsDataInput {
   firstName: String
   lastName: String
   username: String
+  headline: String
   avatar: String
   auth0id: String
   identity: String
   privateKey: String
   address: String
   votes: VoteUpdateManyWithoutUserInput
+  submittedPosts: PostUpdateManyWithoutSubmitterInput
+  createdPosts: PostUpdateManyWithoutCreatorsInput
+  comments: CommentUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutSubmittedPostsDataInput {
+  email: String
+  role: Role
+  name: String
+  firstName: String
+  lastName: String
+  username: String
+  headline: String
+  avatar: String
+  auth0id: String
+  identity: String
+  privateKey: String
+  address: String
+  followedTopics: TopicUpdateManyWithoutFollowedByInput
+  votes: VoteUpdateManyWithoutUserInput
+  createdPosts: PostUpdateManyWithoutCreatorsInput
+  comments: CommentUpdateManyWithoutAuthorInput
 }
 
 input UserUpdateWithoutVotesDataInput {
@@ -1925,12 +2697,21 @@ input UserUpdateWithoutVotesDataInput {
   firstName: String
   lastName: String
   username: String
+  headline: String
   avatar: String
   auth0id: String
   identity: String
   privateKey: String
   address: String
   followedTopics: TopicUpdateManyWithoutFollowedByInput
+  submittedPosts: PostUpdateManyWithoutSubmitterInput
+  createdPosts: PostUpdateManyWithoutCreatorsInput
+  comments: CommentUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithWhereUniqueWithoutCreatedPostsInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutCreatedPostsDataInput!
 }
 
 input UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
@@ -1938,9 +2719,25 @@ input UserUpdateWithWhereUniqueWithoutFollowedTopicsInput {
   data: UserUpdateWithoutFollowedTopicsDataInput!
 }
 
+input UserUpsertWithoutCommentsInput {
+  update: UserUpdateWithoutCommentsDataInput!
+  create: UserCreateWithoutCommentsInput!
+}
+
+input UserUpsertWithoutSubmittedPostsInput {
+  update: UserUpdateWithoutSubmittedPostsDataInput!
+  create: UserCreateWithoutSubmittedPostsInput!
+}
+
 input UserUpsertWithoutVotesInput {
   update: UserUpdateWithoutVotesDataInput!
   create: UserCreateWithoutVotesInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutCreatedPostsInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutCreatedPostsDataInput!
+  create: UserCreateWithoutCreatedPostsInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutFollowedTopicsInput {
@@ -2054,6 +2851,20 @@ input UserWhereInput {
   username_not_starts_with: String
   username_ends_with: String
   username_not_ends_with: String
+  headline: String
+  headline_not: String
+  headline_in: [String!]
+  headline_not_in: [String!]
+  headline_lt: String
+  headline_lte: String
+  headline_gt: String
+  headline_gte: String
+  headline_contains: String
+  headline_not_contains: String
+  headline_starts_with: String
+  headline_not_starts_with: String
+  headline_ends_with: String
+  headline_not_ends_with: String
   avatar: String
   avatar_not: String
   avatar_in: [String!]
@@ -2130,6 +2941,15 @@ input UserWhereInput {
   votes_every: VoteWhereInput
   votes_some: VoteWhereInput
   votes_none: VoteWhereInput
+  submittedPosts_every: PostWhereInput
+  submittedPosts_some: PostWhereInput
+  submittedPosts_none: PostWhereInput
+  createdPosts_every: PostWhereInput
+  createdPosts_some: PostWhereInput
+  createdPosts_none: PostWhereInput
+  comments_every: CommentWhereInput
+  comments_some: CommentWhereInput
+  comments_none: CommentWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
