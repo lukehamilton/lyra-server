@@ -25,7 +25,7 @@ const Query = {
     return context.prisma
       .post({ slug })
       .$fragment(
-        `{ id slug name tagline link description thumbnail galleryThumbs topics { id name slug} votes(first: ${voterCount}) { id user { id } } }`
+        `{ id slug name tagline link description thumbnail galleryThumbs topics { id name slug} submitter { username avatar headline name } creators { username avatar headline name } votes(first: ${voterCount}) { id user { id } } }`
       );
   },
   me(root, args, context, info) {
