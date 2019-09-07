@@ -58,13 +58,16 @@ const setup = async () => {
     const privateKeyStr = privateKey.toString('base64');
     const publicKey = CryptoUtils.publicKeyFromPrivateKey(privateKey);
     const address = LocalAddress.fromPublicKey(publicKey).toString();
-    const { firstName, lastName } = users[i];
+    const { firstName, lastName, username } = users[i];
+    const name = `${firstName} ${lastName}`;
     await prisma.createUser({
       ...users[i],
       privateKey: privateKeyStr,
       address,
       identity: 'google-oauth2',
-      name: `${firstName} ${lastName}`
+      name,
+      name_lower: name.toLowerCase(),
+      username_lower: username.toLowerCase()
     });
   }
 
@@ -143,6 +146,20 @@ const setup = async () => {
         post: { connect: { slug: postSlugs[i] } },
         text: COMMENT_PARENT_TEXT
       });
+
+      const selectedUsernames = usernames.slice(
+        0,
+        Math.floor(
+          Math.random() * (config.votes.maxVotes - config.votes.minVotes + 1)
+        ) + config.votes.minVotes
+      );
+      for (let h = 0; h < selectedUsernames.length; h += 1) {
+        await prisma.createCommentVote({
+          user: { connect: { username: selectedUsernames[0] } },
+          comment: { connect: { id: parent.id } }
+        });
+      }
+
       let replyIds = [];
       for (let k = minReplies; k < maxReplies; k += 1) {
         const replyAuthor =
@@ -152,6 +169,20 @@ const setup = async () => {
           text: COMMENT_REPLY_TEXT,
           parent: { connect: { id: parent.id } }
         });
+
+        const selectedUsernames = usernames.slice(
+          0,
+          Math.floor(
+            Math.random() * (config.votes.maxVotes - config.votes.minVotes + 1)
+          ) + config.votes.minVotes
+        );
+        for (let l = 0; l < selectedUsernames.length; l += 1) {
+          await prisma.createCommentVote({
+            user: { connect: { username: selectedUsernames[0] } },
+            comment: { connect: { id: reply.id } }
+          });
+        }
+
         replyIds.push(reply.id);
       }
       const connectedreplyIds = replyIds.map(id => ({ id }));

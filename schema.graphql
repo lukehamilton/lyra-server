@@ -1,6 +1,7 @@
 # import Role from "./generated/prisma.graphql"
 # import Topic from "./generated/prisma.graphql"
 # import Vote from "./generated/prisma.graphql"
+# import CommentVote from "./generated/prisma.graphql"
 # import PostType from "./generated/prisma.graphql"
 # import SignedUpload from "./generated/prisma.graphql"
 
@@ -8,6 +9,7 @@ type Query {
   posts(first: Int, skip: Int): [Post!]!
   post(slug: String!, voterCount: Int): Post!
   topics: [Topic!]!
+  userSearch(keyword: String): [User!]
   sections(first: Int, skip: Int, after: String): [Section!]!
   tokenInfo: TokenInfo
   me: User
@@ -25,14 +27,11 @@ type Mutation {
     topics: [String]
     galleryThumbs: [String]
   ): Post
+  createComment(postId: ID!, parentId: ID, body: String): Comment
   vote(postId: ID!): Vote!
   updateFollowedTopic(userId: ID!, topicId: ID!, following: Boolean): Topic
   mintTokens(amount: Int, address: String): Transaction
   signUpload(fileName: String, fileType: String): SignedUpload
-}
-
-type Cool {
-  name: String
 }
 
 type Transaction {
@@ -75,9 +74,23 @@ type Post {
   galleryThumbs: [String!]
   votesCount: Int
   commentsCount: Int
+  comments: [Comment!]
   day: String
   featured: Boolean
   upvoted: Boolean
   topics: [Topic!]
   votes: [Vote!]
+}
+
+type Comment {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  text: String!
+  post: Post
+  parent: Comment
+  author: User!
+  replies: [Comment!]
+  votesCount: Int
+  votes: [CommentVote!]
 }

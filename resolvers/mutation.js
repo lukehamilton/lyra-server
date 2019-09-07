@@ -27,12 +27,14 @@ async function createPrismaUser(context, idToken) {
     identity: idToken.sub.split(`|`)[0],
     auth0id: idToken.sub.split(`|`)[1],
     name: idToken.name,
+    name_lower: idToken.name.toLowerCase(),
     firstName: idToken.given_name,
     lastName: idToken.family_name,
     email: idToken.email,
     avatar: idToken.picture,
     privateKey: privateKeyStr,
     username: 'piesrtasty',
+    username_lower: 'piesrtasty',
     address
   });
   return user;
@@ -103,20 +105,37 @@ const Mutations = {
       user: { connect: { id: userId } },
       post: { connect: { id: postId } }
     });
+  },
 
-    // console.log('vote', vote);
-    // const vote = votes
-    // console.log('votes', votes);
-    // const voteExists = await context.prisma.$exists.vote({
-    //   user: { id: userId },
-    //   post: { id: postId }
-    // });
-    // if (voteExists) {
-    //   console.log('voteexists', voteExists);
-    //   const votes = await context.prisma.user({ id: userId }).votes();
-    //   console.log('votes', votes);
-    //   // context.prisma.user({ id: ctxUser(context).id });
-    // }
+  async createComment(root, payload, context) {
+    const { postId, parentId, body } = payload;
+    const userId = ctxUser(context).id;
+    const regex = /@\[(.+?)\]\((.+?)\)/g;
+    const mentionedUsers = (body.match(regex) || []).map(e =>
+      e.replace(regex, '$1')
+    );
+    // TODO: Email mentioned users
+    const obj = {
+      author: { connect: { id: userId } },
+      text: body
+    };
+    if (parentId) {
+      obj.parent = { connect: { id: parentId } };
+    } else {
+      obj.post = { connect: { id: postId } };
+    }
+
+    const comment = await context.prisma.createComment(obj);
+
+    if (parentId) {
+      await prisma.updateComment({
+        where: { id: parentId },
+        data: {
+          replies: { connect: { id: comment.id } }
+        }
+      });
+    }
+    return comment;
   },
 
   async createPost(root, payload, context) {
